@@ -15,3 +15,5 @@ export type MatchConfig = {
 };
 
 export type ExtractMode = "text" | "html" | "attr";
+
+export type SnapshotsFile = Record<string, string>;

@@ -4,7 +4,7 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Argentina#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
-      "extract": "text"
+      "extract": "html"
     }
   }
 ]

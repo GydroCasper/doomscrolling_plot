@@ -1,4 +1,4 @@
-import {ConfigFile} from "./types"
+import {ConfigFile, SnapshotsFile} from "./types"
 import { promises as fs } from "node:fs";
 
 export async function loadConfig(path: string): Promise<ConfigFile> {
@@ -15,4 +15,23 @@ export async function loadConfig(path: string): Promise<ConfigFile> {
         ids.add(s.id);
     }
     return parsed;
+}
+
+export async function loadSnapshots(path: string): Promise<SnapshotsFile> {
+    try {
+        const raw = await fs.readFile(path, "utf-8");
+        return JSON.parse(raw) as SnapshotsFile;
+    } catch {
+        return {};
+    }
+}
+
+export async function saveSnapshots(path: string, data: SnapshotsFile): Promise<void> {
+    await fs.writeFile(path, JSON.stringify(data, null, 2), "utf-8");
+}
+
+export async function saveDiff(dir: string, id: string, diff: string): Promise<void> {
+    await fs.mkdir(dir, { recursive: true });
+    const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+    await fs.writeFile(`${dir}/${id}_${timestamp}.diff`, diff, "utf-8");
 }
