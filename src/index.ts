@@ -33,10 +33,12 @@ async function main() {
                     extracted
                 );
                 await saveDiff(DIFFS_DIR, src.id, diff);
+                console.log(`${src.id}: CHANGED (diff saved)`);
+            } else {
+                console.log(`${src.id}: CREATED`);
             }
 
             snapshots[src.id] = extracted;
-            console.log(`${src.id}: CHANGED (diff saved)`);
         } catch (e: any) {
             results.push({id: src.id, status: "error", details: e?.message ?? String(e)});
         }
