@@ -1,9 +1,73 @@
 [
   {
-    "id": "argentina-vital-statistics-last-row",
+    "id": "mortgage-rates-first-row",
+    "url": "https://www.mortgagenewsdaily.com/mortgage-rates/mnd",
+    "match": {
+      "selector": "table.mtg-rates.full tbody tr:first-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "us-inflation-annual-rates-first-row",
+    "url": "https://www.usinflationcalculator.com/inflation/current-inflation-rates/",
+    "match": {
+      "selector": "table:first-of-type tr:nth-child(2)",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "us-gdp-growth-first-row",
+    "url": "https://tradingeconomics.com/united-states/gdp-growth",
+    "match": {
+      "selector": "#calendar tr:nth-child(2)",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "russia-gdp-growth-first-row",
+    "url": "https://tradingeconomics.com/russia/gdp-growth-annual",
+    "match": {
+      "selector": "#calendar tr:nth-child(2)",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "us-interest-rate-first-row",
+    "url": "https://tradingeconomics.com/united-states/interest-rate",
+    "match": {
+      "selector": "#calendar tr:nth-child(2)",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "russia-employed-persons-first-row",
+    "url": "https://ru.tradingeconomics.com/russia/employed-persons",
+    "match": {
+      "selector": "table.table-hover:first-of-type tr:nth-child(1)",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "argentina-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Argentina#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "jamaica-demographics-vital-statistics-last-3-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Jamaica#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+3)",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "jordan-demographics-registered-births-deaths-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Jordan#Registered_births_and_deaths",
+    "match": {
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
     }
   }

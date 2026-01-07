@@ -15,14 +15,17 @@ async function main() {
 
     for (const src of config) {
         try {
-            const html = await fetchHtml(src.url, { headers: src.headers, timeoutMs: src.timeoutMs });
+            const html = await fetchHtml(src.url, {headers: src.headers, timeoutMs: src.timeoutMs});
             const extracted = extractPart(html, src.match);
 
             const previous = snapshots[src.id];
 
             if (previous === extracted) {
                 console.log(`${src.id}: unchanged`);
-            } else {
+                continue;
+            }
+
+            if(previous) {
                 const diff = createTwoFilesPatch(
                     `${src.id}/old`,
                     `${src.id}/new`,
@@ -30,9 +33,10 @@ async function main() {
                     extracted
                 );
                 await saveDiff(DIFFS_DIR, src.id, diff);
-                snapshots[src.id] = extracted;
-                console.log(`${src.id}: CHANGED (diff saved)`);
             }
+
+            snapshots[src.id] = extracted;
+            console.log(`${src.id}: CHANGED (diff saved)`);
         } catch (e: any) {
             results.push({id: src.id, status: "error", details: e?.message ?? String(e)});
         }
