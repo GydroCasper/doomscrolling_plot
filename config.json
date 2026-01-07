@@ -496,5 +496,13 @@
       "selector": ".mw-heading:has(#Изменение_численности_населения) + table.standard tbody tr:nth-last-child(2) th:nth-child(6), .mw-heading:has(#Изменение_численности_населения) + table.standard tbody tr:last-child td:nth-child(6)",
       "extract": "text"
     }
+  },
+  {
+    "id": "us-census-population",
+    "url": "https://www.census.gov/quickfacts/",
+    "match": {
+      "selector": "tr[data-mnemonic='PST045224']:first td",
+      "extract": "text"
+    }
   }
 ]
