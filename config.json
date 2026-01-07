@@ -8,6 +8,32 @@
     }
   },
   {
+    "id": "boa-mortgage-rates",
+    "url": "https://www.bankofamerica.com/home-loans-sales/getProductRates",
+    "method": "POST",
+    "body": {
+      "rateInputs": {
+        "purchasePrice": 800000,
+        "amountBorrowed": 600000,
+        "postalCode": "02117",
+        "ficoScore": 740,
+        "lockPeriod": 60,
+        "financeType": 2,
+        "branchCode": "3018",
+        "downPayment": 200000
+      },
+      "mortgageProducts": [
+        { "productCode": 3, "productSubCode": "360", "productName": "Fixed 30 Years" },
+        { "productCode": 1, "productSubCode": "180", "productName": "Fixed 15 Years" },
+        { "productCode": 1698, "productSubCode": "360", "productName": "ARM Fixed First 5 Years, Then Adjusts Every 6 Months" }
+      ]
+    },
+    "match": {
+      "extract": "json",
+      "jsonPath": "mortgageProducts[*].{productName,rateDetails.rate}"
+    }
+  },
+  {
     "id": "us-inflation-annual-rates-first-row",
     "url": "https://www.usinflationcalculator.com/inflation/current-inflation-rates/",
     "match": {

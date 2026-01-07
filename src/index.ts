@@ -1,6 +1,6 @@
 import {loadConfig, loadSnapshots, saveDiff, saveSnapshots} from "./fileUtils"
-import {fetchHtml} from "./fetch"
-import {extractPart} from "./extract"
+import {fetchHtml, fetchJson} from "./fetch"
+import {extractJson, extractPart} from "./extract"
 import {createTwoFilesPatch} from "diff"
 
 const CONFIG_PATH = "../config.json";
@@ -15,8 +15,14 @@ async function main() {
 
     for (const src of config) {
         try {
-            const html = await fetchHtml(src.url, {headers: src.headers, timeoutMs: src.timeoutMs});
-            const extracted = extractPart(html, src.match);
+            let extracted: string;
+            if (src.match.extract === 'json') {
+                const data = await fetchJson(src.url, src);
+                extracted = extractJson(data, src.match.jsonPath!);
+            } else {
+                const html = await fetchHtml(src.url, src);
+                extracted = extractPart(html, src.match);
+            }
 
             const previous = snapshots[src.id];
 

@@ -33,6 +33,41 @@ export function extractPart(html: string, match: MatchConfig): string {
     return normalize(extracted);
 }
 
+export function extractJson(data: unknown, jsonPath: string): string {
+    if (jsonPath.includes('[*]')) {
+        const [arrayPath, fields] = jsonPath.split('[*].');
+        const array = getByPath(data, arrayPath);
+
+        if (!Array.isArray(array)) {
+            throw new Error(`Path "${arrayPath}" is not an array`);
+        }
+
+        const fieldList = fields.replace(/[{}]/g, '').split(',').map(f => f.trim());
+
+        return array.map(item =>
+            fieldList.map(field => {
+                const val = getByPath(item, field);
+                return typeof val === 'object' ? JSON.stringify(val) : val;
+            }).join(': ')
+        ).join('\n');
+    }
+
+    const result = getByPath(data, jsonPath);
+    return typeof result === 'object' ? JSON.stringify(result) : String(result);
+}
+
+function getByPath(obj: unknown, path: string): unknown {
+    const parts = path.split(/\.|\[|\]/).filter(p => p);
+    let current: any = obj;
+
+    for (const part of parts) {
+        if (current == null) return undefined;
+        current = current[part];
+    }
+
+    return current;
+}
+
 function normalize(s: string): string {
     // Нормализация, чтобы не реагировать на случайные пробелы/переводы строк.
     return s
