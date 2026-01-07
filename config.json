@@ -386,6 +386,14 @@
     }
   },
   {
+    "id": "panama-demographics-registered-births-deaths-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Panama#Registered_births_and_deaths",
+    "match": {
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "philippines-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_the_Philippines#Vital_statistics",
     "match": {

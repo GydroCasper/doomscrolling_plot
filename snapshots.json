@@ -59,5 +59,6 @@
   "us-demographics-vital-statistics-last-row": "<tr>\n<td>2024p<sup id=\"cite_ref-105\" class=\"reference\"><a href=\"#cite_note-105\"><span class=\"cite-bracket\">[</span>b<span class=\"cite-bracket\">]</span></a></sup><sup id=\"cite_ref-106\" class=\"reference\"><a href=\"#cite_note-106\"><span class=\"cite-bracket\">[</span>103<span class=\"cite-bracket\">]</span></a></sup><sup id=\"cite_ref-107\" class=\"reference\"><a href=\"#cite_note-107\"><span class=\"cite-bracket\">[</span>104<span class=\"cite-bracket\">]</span></a></sup>\n</td>\n<td style=\"color:blue\">340,110,988\n</td>\n<td>3,628,934\n</td>\n<td>3,072,039\n</td>\n<td>556,895\n</td>\n<td style=\"color:red\">10.7\n</td>\n<td>9.0\n</td>\n<td>1.7\n</td>\n<td style=\"color:blue\">8.2\n</td>\n<td style=\"color:red\">1.599\n</td>\n<td>5.5\n</td></tr>",
   "russia-population-latest": "2025[1]\n↘146 119 928",
   "moscow-population-latest": "2025[1]\n↗13 274 285",
-  "us-census-population": "Population estimates, July 1, 2024, (V2024)\n\n\n340,110,988"
+  "us-census-population": "Population estimates, July 1, 2024, (V2024)\n\n\n340,110,988",
+  "panama-demographics-registered-births-deaths-last-row": "<tr>\n<td align=\"right\">2025\n</td>\n<td align=\"right\">\n</td>\n<td align=\"right\">\n</td>\n<td align=\"right\">\n</td>\n<td align=\"right\">\n</td>\n<td align=\"right\">\n</td>\n<td align=\"right\">\n</td>\n<td align=\"right\">\n</td>\n<td>\n</td>\n<td>\n</td></tr>"
 }
