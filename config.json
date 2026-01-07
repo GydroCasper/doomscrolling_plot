@@ -480,5 +480,21 @@
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
     }
+  },
+  {
+    "id": "russia-population-latest",
+    "url": "https://ru.wikipedia.org/wiki/%D0%9D%D0%B0%D1%81%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B8",
+    "match": {
+      "selector": "table.standard:has(caption:contains('Численность населения')) tbody tr:nth-last-child(2) th:nth-last-child(4), table.standard:has(caption:contains('Численность населения')) tbody tr:last-child td:nth-last-child(4)",
+      "extract": "text"
+    }
+  },
+  {
+    "id": "moscow-population-latest",
+    "url": "https://ru.wikipedia.org/wiki/%D0%9D%D0%B0%D1%81%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D1%8B",
+    "match": {
+      "selector": ".mw-heading:has(#Изменение_численности_населения) + table.standard tbody tr:nth-last-child(2) th:nth-child(6), .mw-heading:has(#Изменение_численности_населения) + table.standard tbody tr:last-child td:nth-child(6)",
+      "extract": "text"
+    }
   }
 ]
