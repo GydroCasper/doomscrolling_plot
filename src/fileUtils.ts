@@ -33,5 +33,5 @@ export async function saveSnapshots(path: string, data: SnapshotsFile): Promise<
 export async function saveDiff(dir: string, id: string, diff: string): Promise<void> {
     await fs.mkdir(dir, { recursive: true });
     const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
-    await fs.writeFile(`${dir}/${id}_${timestamp}.diff`, diff, "utf-8");
+    await fs.writeFile(`${dir}/${timestamp}_${id}.diff`, diff, "utf-8");
 }
