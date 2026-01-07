@@ -1,10 +1,10 @@
 [
   {
-    "id": "mortgage-rates-first-row",
+    "id": "mortgage-rates-mnd",
     "url": "https://www.mortgagenewsdaily.com/mortgage-rates/mnd",
     "match": {
-      "selector": "table.mtg-rates.full tbody tr:first-child",
-      "extract": "html"
+      "selector": "table.mtg-rates tbody tr:contains('30 Yr. Fixed') th, table.mtg-rates tbody tr:contains('30 Yr. Fixed') td:first-of-type, table.mtg-rates tbody tr:contains('15 Yr. Fixed') th, table.mtg-rates tbody tr:contains('15 Yr. Fixed') td:first-of-type, table.mtg-rates tbody tr:contains('SOFR') th, table.mtg-rates tbody tr:contains('SOFR') td:first-of-type",
+      "extract": "text"
     }
   },
   {
