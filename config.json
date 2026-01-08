@@ -169,6 +169,14 @@
     }
   },
   {
+    "id": "bahrain-demographics-registered-data-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Bahrain",
+    "match": {
+      "selector": ".mw-heading:has(#Registered_data) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "extract": "html"
+    }
+  },
+  {
     "id": "bangladesh-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Bangladesh#Vital_statistics",
     "match": {
@@ -489,6 +497,14 @@
     }
   },
   {
+    "id": "israel-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Israel",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "ivory-coast-demographics-vital-statistics-last-2-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Ivory_Coast#Vital_statistics",
     "match": {
@@ -517,6 +533,14 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Kenya#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2), .mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(3)",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "kuwait-demographics-registered-births-deaths-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Kuwait",
+    "match": {
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
     }
   },
@@ -713,10 +737,26 @@
     }
   },
   {
+    "id": "oman-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Oman",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "pakistan-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Pakistan#Vital_statistics",
     "match": {
       "selector": "div.mw-heading:has(#Estimates_from_the_United_Nations_2) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "palestine-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Palestine",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
     }
   },
@@ -733,6 +773,14 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Paraguay#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "peru-demographics-vital-statistics-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Peru",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html"
     }
   },
@@ -765,6 +813,14 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_El_Salvador#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Registered_data) ~ table.wikitable:first tbody tr:nth-last-child(-n+3)",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "saudi-arabia-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Saudi_Arabia",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
     }
   },
@@ -835,6 +891,14 @@
   {
     "id": "sri-lanka-demographics-registered-births-deaths-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Sri_Lanka#Registered_births_and_deaths",
+    "match": {
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "suriname-demographics-registered-births-deaths-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Suriname",
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
@@ -921,6 +985,22 @@
     }
   },
   {
+    "id": "uae-demographics-registered-births-deaths-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_the_United_Arab_Emirates",
+    "match": {
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "uruguay-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Uruguay",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "us-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_the_United_States#Vital_statistics",
     "match": {
@@ -941,6 +1021,14 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Wales#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "yemen-demographics-un-estimates-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Yemen",
+    "match": {
+      "selector": ".mw-heading:has(#UN_estimates) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html"
     }
   },
