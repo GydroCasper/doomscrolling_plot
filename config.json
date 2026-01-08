@@ -202,6 +202,14 @@
     }
   },
   {
+    "id": "belgium-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Belgium",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "benin-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Benin#Vital_statistics",
     "match": {
@@ -386,14 +394,6 @@
     }
   },
   {
-    "id": "equatorial-guinea-demographics-vital-statistics-last-3-rows",
-    "url": "https://en.wikipedia.org/wiki/Demographics_of_Equatorial_Guinea#Vital_statistics",
-    "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2), .mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(3), .mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(4)",
-      "extract": "html"
-    }
-  },
-  {
     "id": "egypt-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Egypt#Vital_statistics",
     "match": {
@@ -410,10 +410,34 @@
     }
   },
   {
+    "id": "equatorial-guinea-demographics-vital-statistics-last-3-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Equatorial_Guinea#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2), .mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(3), .mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(4)",
+      "extract": "html"
+    }
+  },
+  {
     "id": "ethiopia-demographics-vital-statistics-last-2-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Ethiopia#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "eu-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_the_European_Union",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "france-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_France",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ div table.wikitable:first tbody tr:last-child",
       "extract": "html"
     }
   },
@@ -718,6 +742,14 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Namibia#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "netherlands-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_the_Netherlands",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
     }
   },
