@@ -50,13 +50,34 @@ function percentChangeDifferentDay(jsonArray: string, options?: TransformerOptio
 }
 
 function percentChangeLastTwo(jsonArray: string): string {
-    const candles = JSON.parse(jsonArray);
-    // Get last two candles, close price is index 4
-    const newest = candles[candles.length - 1][4];
-    const previous = candles[candles.length - 2][4];
+    const data = JSON.parse(jsonArray);
 
-    const change = ((newest - previous) / previous) * 100;
+    if (!Array.isArray(data) || data.length < 2) {
+        const lastVal = Array.isArray(data) ? data[data.length - 1] : data;
+        return `${lastVal} (no previous data)`;
+    }
+
+    // Find last two non-null values
+    let current: number | null = null;
+    let previous: number | null = null;
+
+    for (let i = data.length - 1; i >= 0; i--) {
+        if (data[i] != null) {
+            if (current === null) {
+                current = data[i];
+            } else {
+                previous = data[i];
+                break;
+            }
+        }
+    }
+
+    if (current === null || previous === null) {
+        return `${current ?? 'N/A'} (no previous data)`;
+    }
+
+    const change = ((current - previous) / previous) * 100;
     const sign = change >= 0 ? "+" : "";
 
-    return `${newest.toFixed(2)} (${sign}${change.toFixed(2)}%)`;
+    return `${current.toFixed(2)} (${sign}${change.toFixed(2)}%)`;
 }

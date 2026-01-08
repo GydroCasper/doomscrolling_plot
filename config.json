@@ -100,7 +100,16 @@
     "url": "https://api.coingecko.com/api/v3/coins/bitcoin/ohlc?vs_currency=usd&days=7",
     "match": {
       "extract": "json",
-      "jsonPath": "$",
+      "jsonPath": "$[*][4]",
+      "transformer": "percentChangeLastTwo"
+    }
+  },
+  {
+    "id": "brent-crude-oil-usd",
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ=F?interval=1d&range=5d",
+    "match": {
+      "extract": "json",
+      "jsonPath": "chart.result[0].indicators.quote[0].close",
       "transformer": "percentChangeLastTwo"
     }
   },

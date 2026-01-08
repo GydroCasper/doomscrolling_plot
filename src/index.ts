@@ -1,6 +1,6 @@
 import {loadConfig, loadSnapshots, saveDiff, saveSnapshots} from "./fileUtils"
 import {fetchHtml, fetchJson} from "./fetch"
-import {extractJson, extractMultiple, extractPart} from "./extract"
+import {extractJson, extractPart} from "./extract"
 import {createTwoFilesPatch} from "diff"
 import {applyTransformer} from "./transformers"
 

@@ -33,6 +33,21 @@ export function extractJson(data: unknown, jsonPath: string): string {
         return typeof data === 'object' ? JSON.stringify(data) : String(data);
     }
 
+    // Handle [*][index] - extract specific index from array of arrays
+    const arrayIndexMatch = jsonPath.match(/^(\$|\w+(?:\.\w+)*(?:\[\d+\])*)\[\*\]\[(\d+)\]$/);
+    if (arrayIndexMatch) {
+        const [, basePath, index] = arrayIndexMatch;
+        const array = basePath === '$' ? data : getByPath(data, basePath);
+
+        if (!Array.isArray(array)) {
+            throw new Error(`Path "${basePath}" is not an array`);
+        }
+
+        const idx = parseInt(index, 10);
+        const values = array.map(item => Array.isArray(item) ? item[idx] : null).filter(v => v != null);
+        return JSON.stringify(values);
+    }
+
     if (jsonPath.includes('[*]')) {
         const [arrayPath, fields] = jsonPath.split('[*].');
         const array = getByPath(data, arrayPath);
