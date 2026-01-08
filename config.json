@@ -114,6 +114,14 @@
     }
   },
   {
+    "id": "afghanistan-demographics-vital-statistics-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Afghanistan",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "extract": "html"
+    }
+  },
+  {
     "id": "albania-demographics-after-wwii-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Albania#After_WWII",
     "match": {
@@ -466,6 +474,14 @@
     }
   },
   {
+    "id": "iceland-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Iceland",
+    "match": {
+      "selector": ".mw-heading:has(#Summary_of_vital_statistics_since_1900) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "india-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_India#Vital_statistics",
     "match": {
@@ -538,6 +554,14 @@
     }
   },
   {
+    "id": "kazakhstan-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Kazakhstan",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "kenya-demographics-vital-statistics-last-2-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Kenya#Vital_statistics",
     "match": {
@@ -550,6 +574,14 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Kuwait",
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "kyrgyzstan-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Kyrgyzstan",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
     }
   },
@@ -938,6 +970,14 @@
     }
   },
   {
+    "id": "tajikistan-demographics-registered-births-deaths-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Tajikistan",
+    "match": {
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "tanzania-demographics-vital-statistics-last-2-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Tanzania#Vital_statistics",
     "match": {
@@ -978,6 +1018,14 @@
     }
   },
   {
+    "id": "turkmenistan-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Turkmenistan",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
+      "extract": "html"
+    }
+  },
+  {
     "id": "uganda-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Uganda#Vital_statistics",
     "match": {
@@ -1014,6 +1062,14 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_the_United_States#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "uzbekistan-demographics-registered-birth-deaths-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Uzbekistan",
+    "match": {
+      "selector": ".mw-heading:has(#Registered_birth_and_deaths) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
     }
   },
