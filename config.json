@@ -402,6 +402,14 @@
     }
   },
   {
+    "id": "pakistan-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Pakistan#Vital_statistics",
+    "match": {
+      "selector": "div.mw-heading:has(#Estimates_from_the_United_Nations_2) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "panama-demographics-registered-births-deaths-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Panama#Registered_births_and_deaths",
     "match": {
