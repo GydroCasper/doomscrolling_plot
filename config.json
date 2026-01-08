@@ -200,6 +200,14 @@
     }
   },
   {
+    "id": "chad-demographics-vital-statistics-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Chad#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2), .mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(3)",
+      "extract": "html"
+    }
+  },
+  {
     "id": "chile-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Chile#Vital_statistics",
     "match": {
@@ -236,6 +244,14 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Cuba#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "sudan-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Sudan#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html"
     }
   },
@@ -376,6 +392,14 @@
     }
   },
   {
+    "id": "lebanon-demographics-registered-births-deaths-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Lebanon#Registered_births_and_deaths",
+    "match": {
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "libya-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Libya#UN_estimates",
     "match": {
@@ -416,6 +440,14 @@
     }
   },
   {
+    "id": "mauritania-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Mauritania#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "mauritius-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Mauritius#Vital_statistics",
     "match": {
@@ -444,6 +476,14 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Montenegro#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "morocco-demographics-vital-statistics-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Morocco#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html"
     }
   },
@@ -626,6 +666,14 @@
   {
     "id": "trinidad-tobago-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Trinidad_and_Tobago#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "tunisia-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Tunisia#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
