@@ -16,13 +16,13 @@ async function main() {
     for (const src of config) {
         try {
             let extracted: string;
-            // if (src.match.extract === 'json') {
-            //     const data = await fetchJson(src.url, src);
-            //     extracted = extractJson(data, src.match.jsonPath!);
-            // } else {
-            const html = await fetchHtml(src.url, src);
-            extracted = extractPart(html, src.match);
-            // }
+            if (src.match.extract === 'json') {
+                const data = await fetchJson(src.url, src);
+                extracted = extractJson(data, src.match.jsonPath!);
+            } else {
+                const html = await fetchHtml(src.url, src);
+                extracted = extractPart(html, src.match);
+            }
 
             const previous = snapshots[src.id];
 

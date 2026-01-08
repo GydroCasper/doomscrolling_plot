@@ -11,9 +11,10 @@ export type SourceConfig = {
 export type MatchConfig = {
     selector: string;           // CSS selector
     extract: ExtractMode;       // what to extract
-    attrName?: string;          // required if extract === "attr"
+    jsonPath?: string;
+    // attrName?: string;          // required if extract === "attr"
 };
 
-export type ExtractMode = "text" | "html" | "attr";
+export type ExtractMode = "text" | "html" | "attr" | "json";
 
 export type SnapshotsFile = Record<string, string>;
