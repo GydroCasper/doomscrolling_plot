@@ -218,6 +218,14 @@
     }
   },
   {
+    "id": "bhutan-demographics-registered-births-deaths-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Bhutan",
+    "match": {
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "bolivia-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Bolivia#Vital_statistics",
     "match": {
@@ -238,6 +246,14 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Brazil#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "brunei-demographics-registered-births-deaths-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Brunei",
+    "match": {
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
     }
   },
@@ -666,6 +682,14 @@
     }
   },
   {
+    "id": "malaysia-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Malaysia",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "mali-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Mali#Vital_statistics",
     "match": {
@@ -738,10 +762,26 @@
     }
   },
   {
+    "id": "myanmar-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Myanmar",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
+      "extract": "html"
+    }
+  },
+  {
     "id": "namibia-demographics-vital-statistics-last-2-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Namibia#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "nepal-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Nepal",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
     }
   },
@@ -838,6 +878,14 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Panama#Registered_births_and_deaths",
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "papua-new-guinea-demographics-un-estimates-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Papua_New_Guinea",
+    "match": {
+      "selector": ".mw-heading:has(#UN_estimates) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
     }
   },
@@ -1018,6 +1066,14 @@
     }
   },
   {
+    "id": "thailand-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Thailand",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "togo-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Togo#Vital_statistics",
     "match": {
@@ -1110,6 +1166,14 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Venezuela#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "vietnam-demographics-registered-births-deaths-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Vietnam",
+    "match": {
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
     }
   },
