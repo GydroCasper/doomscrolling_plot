@@ -120,6 +120,14 @@
     }
   },
   {
+    "id": "angola-demographics-vital-statistics-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Angola#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "extract": "html"
+    }
+  },
+  {
     "id": "argentina-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Argentina#Vital_statistics",
     "match": {
@@ -160,6 +168,14 @@
     }
   },
   {
+    "id": "benin-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Benin#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
+      "extract": "html"
+    }
+  },
+  {
     "id": "bolivia-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Bolivia#Vital_statistics",
     "match": {
@@ -184,6 +200,22 @@
     }
   },
   {
+    "id": "burkina-faso-demographics-vital-statistics-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Burkina_Faso#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "burundi-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Burundi#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
+      "extract": "html"
+    }
+  },
+  {
     "id": "cambodia-demographics-un-estimates-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Cambodia#UN_estimates",
     "match": {
@@ -192,10 +224,26 @@
     }
   },
   {
+    "id": "cameroon-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Cameroon#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
+      "extract": "html"
+    }
+  },
+  {
     "id": "canada-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Canada#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "central-african-republic-demographics-vital-statistics-last-3-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_the_Central_African_Republic#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2), .mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(3), .mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(4)",
       "extract": "html"
     }
   },
@@ -232,6 +280,14 @@
     }
   },
   {
+    "id": "congo-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_the_Republic_of_the_Congo#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
+      "extract": "html"
+    }
+  },
+  {
     "id": "costa-rica-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Costa_Rica#Vital_statistics",
     "match": {
@@ -264,6 +320,14 @@
     }
   },
   {
+    "id": "drc-demographics-vital-statistics-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_the_Democratic_Republic_of_the_Congo#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2), .mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(3)",
+      "extract": "html"
+    }
+  },
+  {
     "id": "denmark-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Denmark#Vital_statistics",
     "match": {
@@ -288,6 +352,14 @@
     }
   },
   {
+    "id": "equatorial-guinea-demographics-vital-statistics-last-3-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Equatorial_Guinea#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2), .mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(3), .mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(4)",
+      "extract": "html"
+    }
+  },
+  {
     "id": "egypt-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Egypt#Vital_statistics",
     "match": {
@@ -304,8 +376,48 @@
     }
   },
   {
+    "id": "ethiopia-demographics-vital-statistics-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Ethiopia#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "gabon-demographics-vital-statistics-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Gabon#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "gambia-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_the_Gambia#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "ghana-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Ghana#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "guatemala-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Guatemala#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "guinea-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Guinea#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
@@ -368,6 +480,14 @@
     }
   },
   {
+    "id": "ivory-coast-demographics-vital-statistics-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Ivory_Coast#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "extract": "html"
+    }
+  },
+  {
     "id": "jamaica-demographics-vital-statistics-last-3-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Jamaica#Vital_statistics",
     "match": {
@@ -384,6 +504,14 @@
     }
   },
   {
+    "id": "kenya-demographics-vital-statistics-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Kenya#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2), .mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(3)",
+      "extract": "html"
+    }
+  },
+  {
     "id": "laos-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Laos#Lao_statistics_bureau_estimates",
     "match": {
@@ -396,6 +524,14 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Lebanon#Registered_births_and_deaths",
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "liberia-demographics-vital-statistics-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Liberia#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2), .mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(3)",
       "extract": "html"
     }
   },
@@ -420,6 +556,14 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Luxembourg#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "madagascar-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Madagascar#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html"
     }
   },
@@ -482,6 +626,22 @@
   {
     "id": "morocco-demographics-vital-statistics-last-2-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Morocco#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "mozambique-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Mozambique#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "namibia-demographics-vital-statistics-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Namibia#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html"
@@ -584,6 +744,14 @@
     }
   },
   {
+    "id": "rwanda-demographics-vital-statistics-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Rwanda#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "extract": "html"
+    }
+  },
+  {
     "id": "salvador-demographics-vital-statistics-last-3-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_El_Salvador#Vital_statistics",
     "match": {
@@ -600,10 +768,26 @@
     }
   },
   {
+    "id": "senegal-demographics-vital-statistics-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Senegal#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "extract": "html"
+    }
+  },
+  {
     "id": "seychelles-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Seychelles#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "sierra-leone-demographics-vital-statistics-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Sierra_Leone#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html"
     }
   },
@@ -626,6 +810,14 @@
   {
     "id": "south-africa-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_South_Africa#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "south-sudan-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_South_Sudan#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
@@ -664,6 +856,22 @@
     }
   },
   {
+    "id": "tanzania-demographics-vital-statistics-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Tanzania#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "togo-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Togo#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
+      "extract": "html"
+    }
+  },
+  {
     "id": "trinidad-tobago-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Trinidad_and_Tobago#Vital_statistics",
     "match": {
@@ -684,6 +892,14 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Turkey#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "uganda-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Uganda#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html"
     }
   },
@@ -716,6 +932,22 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Wales#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "zambia-demographics-vital-statistics-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Zambia#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "zimbabwe-demographics-vital-statistics-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Zimbabwe#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2), .mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(3)",
       "extract": "html"
     }
   },

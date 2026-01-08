@@ -1,0 +1,20 @@
+===================================================================
+--- mortgage-rates-mnd/old
++++ mortgage-rates-mnd/new
+@@ -1,11 +1,11 @@
+ 30 Yr. Fixed
+  
+-6.19%
++6.21%
+ 
+  15 Yr. Fixed
+  
+-5.73%
++5.74%
+ 
+  7/6 SOFR ARM
+  
+-5.70%
+\ No newline at end of file
++5.73%
+\ No newline at end of file
