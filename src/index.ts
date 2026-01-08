@@ -1,7 +1,8 @@
 import {loadConfig, loadSnapshots, saveDiff, saveSnapshots} from "./fileUtils"
 import {fetchHtml, fetchJson} from "./fetch"
-import {extractJson, extractPart} from "./extract"
+import {extractJson, extractMultiple, extractPart} from "./extract"
 import {createTwoFilesPatch} from "diff"
+import {applyTransformer} from "./transformers"
 
 const CONFIG_PATH = "../config.json";
 const SNAPSHOTS_PATH = "../snapshots.json";
@@ -11,14 +12,22 @@ async function main() {
     const config = await loadConfig(CONFIG_PATH);
     const snapshots = await loadSnapshots(SNAPSHOTS_PATH);
 
-    const results: Array<{ id: string; status: string; details?: string }> = [];
-
     for (const src of config) {
         try {
             let extracted: string;
             if (src.match.extract === 'json') {
-                const data = await fetchJson(src.url, src);
-                extracted = extractJson(data, src.match.jsonPath!);
+                if (src.match.transformer) {
+                    const data = await fetchJson(src.url, src);
+                    const jsonData = extractJson(data, src.match.jsonPath!);
+                    extracted = applyTransformer(src.match.transformer, [jsonData]);
+                } else {
+                    const data = await fetchJson(src.url, src);
+                    extracted = extractJson(data, src.match.jsonPath!);
+                }
+            // } else if (src.match.transformer && src.match.selectors) {
+            //     const html = await fetchHtml(src.url, src);
+            //     const values = extractMultiple(html, src.match.selectors, src.match.extract as "text" | "html");
+            //     extracted = applyTransformer(src.match.transformer, values);
             } else {
                 const html = await fetchHtml(src.url, src);
                 extracted = extractPart(html, src.match);
@@ -47,7 +56,6 @@ async function main() {
             snapshots[src.id] = extracted;
         } catch (e: any) {
             console.log(`${src.id}: ERROR. ${e}`);
-            results.push({id: src.id, status: "error", details: e?.message ?? String(e)});
         }
 
         await saveSnapshots(SNAPSHOTS_PATH, snapshots);

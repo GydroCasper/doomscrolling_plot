@@ -74,6 +74,15 @@
     }
   },
   {
+    "id": "usdrub-rate",
+    "url": "https://iss.moex.com/iss/statistics/engines/futures/markets/indicativerates/securities/USD/RUB.json?limit=20&sort_order=DESC&iss.meta=off&iss.json=extended",
+    "match": {
+      "extract": "json",
+      "jsonPath": "[1].securities",
+      "transformer": "percentChangeDifferentDay"
+    }
+  },
+  {
     "id": "albania-demographics-after-wwii-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Albania#After_WWII",
     "match": {

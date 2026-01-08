@@ -8,7 +8,7 @@ export async function loadConfig(path: string): Promise<ConfigFile> {
     // минимальная валидация
     const ids = new Set<string>();
     for (const s of parsed) {
-        if (!s.id || !s.url || (!s.match?.selector && !s.match?.jsonPath) || !s.match?.extract) {
+        if (!s.id || !s.url || (!s.match?.selector && !s.match?.selectors && !s.match?.jsonPath) || !s.match?.extract) {
             throw new Error(`Invalid config entry: ${JSON.stringify(s)}`);
         }
         if (ids.has(s.id)) throw new Error(`Duplicate id in config: ${s.id}`);

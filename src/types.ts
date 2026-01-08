@@ -10,11 +10,14 @@ export type SourceConfig = {
 
 export type MatchConfig = {
     selector: string;           // CSS selector
+    selectors?: string[];       // CSS selectors to extract parameters for transformer
     extract: ExtractMode;       // what to extract
     jsonPath?: string;
-    // attrName?: string;          // required if extract === "attr"
+    transformer?: TransformerType;
 };
 
 export type ExtractMode = "text" | "html" | "attr" | "json";
 
 export type SnapshotsFile = Record<string, string>;
+
+export type TransformerType = "percentChange";

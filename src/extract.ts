@@ -22,12 +22,6 @@ export function extractPart(html: string, match: MatchConfig): string {
             .map((_, el) => $.html(el))
             .get()
             .join("\n");
-    } else if (match.extract === "attr") {
-        // if (!match.attrName) throw new Error(`attrName is required for extract="attr"`);
-        // extracted = nodes
-        //     .map((_, el) => $(el).attr(match.attrName) ?? "")
-        //     .get()
-        //     .join("\n");
     }
 
     return normalize(extracted);
@@ -54,6 +48,18 @@ export function extractJson(data: unknown, jsonPath: string): string {
 
     const result = getByPath(data, jsonPath);
     return typeof result === 'object' ? JSON.stringify(result) : String(result);
+}
+
+export function extractMultiple(html: string, selectors: string[], extract: "text" | "html"): string[] {
+    const $ = cheerio.load(html);
+    return selectors.map(selector => {
+        const node = $(selector).first();
+        if (node.length === 0) {
+            throw new Error(`Selector not found: ${selector}`);
+        }
+        const value = extract === "text" ? node.text() : $.html(node);
+        return normalize(value);
+    });
 }
 
 function getByPath(obj: unknown, path: string): unknown {
