@@ -46,6 +46,7 @@ async function main() {
 
             snapshots[src.id] = extracted;
         } catch (e: any) {
+            console.log(`${src.id}: ERROR. ${e}`);
             results.push({id: src.id, status: "error", details: e?.message ?? String(e)});
         }
 

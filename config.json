@@ -194,6 +194,14 @@
     }
   },
   {
+    "id": "cuba-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Cuba#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "cyprus-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Cyprus#Vital_statistics",
     "match": {
@@ -222,6 +230,30 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_England#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "guatemala-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Guatemala#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "haiti-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Haiti#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "honduras-demographics-vital-statistics-last-3-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Honduras#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(-n+3)",
       "extract": "html"
     }
   },
@@ -362,6 +394,14 @@
     }
   },
   {
+    "id": "nicaragua-demographics-registered-births-deaths",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Nicaragua#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(-n+3)",
+      "extract": "html"
+    }
+  },
+  {
     "id": "niger-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Niger#Vital_statistics",
     "match": {
@@ -422,6 +462,14 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_the_Philippines#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "salvador-demographics-vital-statistics-last-3-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_El_Salvador#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Registered_data) ~ table.wikitable:first tbody tr:nth-last-child(-n+3)",
       "extract": "html"
     }
   },
