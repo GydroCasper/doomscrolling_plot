@@ -28,6 +28,11 @@ export function extractPart(html: string, match: MatchConfig): string {
 }
 
 export function extractJson(data: unknown, jsonPath: string): string {
+    // Handle root-level data
+    if (!jsonPath || jsonPath === '$') {
+        return typeof data === 'object' ? JSON.stringify(data) : String(data);
+    }
+
     if (jsonPath.includes('[*]')) {
         const [arrayPath, fields] = jsonPath.split('[*].');
         const array = getByPath(data, arrayPath);
