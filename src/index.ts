@@ -19,7 +19,7 @@ async function main() {
                 if (src.match.transformer) {
                     const data = await fetchJson(src.url, src);
                     const jsonData = extractJson(data, src.match.jsonPath!);
-                    extracted = applyTransformer(src.match.transformer, [jsonData]);
+                    extracted = applyTransformer(src.match.transformer, [jsonData], src.match.transformerOptions);
                 } else {
                     const data = await fetchJson(src.url, src);
                     extracted = extractJson(data, src.match.jsonPath!);

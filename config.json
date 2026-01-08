@@ -83,6 +83,19 @@
     }
   },
   {
+    "id": "moex-imoex-index",
+    "url": "https://iss.moex.com/iss/history/engines/stock/markets/index/securities/IMOEX.json?limit=10&sort_order=TRADEDATE&sort_order_desc=desc&iss.meta=off&iss.json=extended",
+    "match": {
+      "extract": "json",
+      "jsonPath": "[1].history",
+      "transformer": "percentChangeDifferentDay",
+      "transformerOptions": {
+        "dateField": "TRADEDATE",
+        "valueField": "CLOSE"
+      }
+    }
+  },
+  {
     "id": "albania-demographics-after-wwii-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Albania#After_WWII",
     "match": {

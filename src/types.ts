@@ -14,10 +14,16 @@ export type MatchConfig = {
     extract: ExtractMode;       // what to extract
     jsonPath?: string;
     transformer?: TransformerType;
+    transformerOptions?: TransformerOptions;
 };
 
 export type ExtractMode = "text" | "html" | "attr" | "json";
 
 export type SnapshotsFile = Record<string, string>;
 
-export type TransformerType = "percentChange";
+export type TransformerType = "percentChange" | "percentChangeDifferentDay";
+
+export type TransformerOptions = {
+    dateField?: string;
+    valueField?: string;
+};

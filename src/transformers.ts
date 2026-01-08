@@ -1,7 +1,9 @@
-export function applyTransformer(type: string, values: string[]): string {
+import {TransformerOptions} from "./types"
+
+export function applyTransformer(type: string, values: string[], options?: TransformerOptions): string {
     switch (type) {
         case "percentChangeDifferentDay":
-            return percentChangeDifferentDay(values[0]);
+            return percentChangeDifferentDay(values[0], options);
         case "percentChange":
             return percentChange(values[0], values[1]);
         default:
@@ -22,23 +24,25 @@ function percentChange(newVal: string, oldVal: string): string {
     return `${newNum} (${sign}${change.toFixed(2)}%)`;
 }
 
-function percentChangeDifferentDay(jsonArray: string): string {
-    const securities = JSON.parse(jsonArray);
+function percentChangeDifferentDay(jsonArray: string, options?: TransformerOptions): string {
+    const data = JSON.parse(jsonArray);
 
-    const newest = securities[0];
-    const newestDate = newest.tradedate;
-    const newestRate = newest.rate;
+    const dateField = options?.dateField ?? 'tradedate';
+    const valueField = options?.valueField ?? 'rate';
 
-    // Find first entry from a different day
-    const previousDay = securities.find((s: any) => s.tradedate !== newestDate);
+    const newest = data[0];
+    const newestDate = newest[dateField];
+    const newestValue = newest[valueField];
+
+    const previousDay = data.find((s: any) => s[dateField] !== newestDate);
 
     if (!previousDay) {
-        return `${newestRate} (no previous day data)`;
+        return `${newestValue} (no previous day data)`;
     }
 
-    const oldRate = previousDay.rate;
-    const change = ((newestRate - oldRate) / oldRate) * 100;
-    const sign = change >= 0 ? "+" : "-";
+    const oldValue = previousDay[valueField];
+    const change = ((newestValue - oldValue) / oldValue) * 100;
+    const sign = change >= 0 ? "+" : "";
 
-    return `${newestRate} (${sign}${change.toFixed(2)}%)`;
+    return `${newestValue} (${sign}${change.toFixed(2)}%)`;
 }
