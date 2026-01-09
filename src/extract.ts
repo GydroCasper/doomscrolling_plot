@@ -33,6 +33,15 @@ export function extractJson(data: unknown, jsonPath: string): string {
         return typeof data === 'object' ? JSON.stringify(data) : String(data);
     }
 
+    if (jsonPath.includes(';')) {
+        const paths = jsonPath.split(';').map(p => p.trim());
+        const results = paths.map(p => {
+            const val = getByPath(data, p);
+            return typeof val === 'object' ? JSON.stringify(val) : String(val);
+        });
+        return results.join(' | ');
+    }
+
     // Handle [*][index] - extract specific index from array of arrays
     const arrayIndexMatch = jsonPath.match(/^(\$|\w+(?:\.\w+)*(?:\[\d+\])*)\[\*\]\[(\d+)\]$/);
     if (arrayIndexMatch) {

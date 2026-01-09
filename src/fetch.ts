@@ -53,7 +53,15 @@ export async function fetchJson<T = unknown>(
         if (!res.ok) {
             throw new Error(`HTTP ${res.status} ${res.statusText} for ${url}`);
         }
-        return await res.json() as T;
+
+        let text = await res.text();
+
+        // Strip JSONP prefix like {}&&
+        if (text.startsWith('{}&&')) {
+            text = text.slice(4);
+        }
+
+        return JSON.parse(text);
     } finally {
         clearTimeout(timeout);
     }

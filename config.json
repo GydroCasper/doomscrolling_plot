@@ -114,6 +114,30 @@
     }
   },
   {
+    "id": "acton-ma-median-housing-price",
+    "url": "https://www.redfin.com/stingray/api/graph/2/463/All/regional-housing-market/us_housing_overview",
+    "match": {
+      "extract": "json",
+      "jsonPath": "payload.regionName;payload.metrics[0].aggregateData[0]"
+    }
+  },
+  {
+    "id": "middlesex-county-median-housing-price",
+    "url": "https://www.redfin.com/stingray/api/graph/5/1342/All/regional-housing-market/us_housing_overview",
+    "match": {
+      "extract": "json",
+      "jsonPath": "payload.regionName;payload.metrics[0].aggregateData[0]"
+    }
+  },
+  {
+    "id": "massachusetts-median-housing-price",
+    "url": "https://www.redfin.com/stingray/api/graph/4/45/All/regional-housing-market/us_housing_overview",
+    "match": {
+      "extract": "json",
+      "jsonPath": "payload.regionName;payload.metrics[0].aggregateData[0]"
+    }
+  },
+  {
     "id": "afghanistan-demographics-vital-statistics-last-2-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Afghanistan",
     "match": {
