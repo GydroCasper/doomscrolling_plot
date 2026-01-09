@@ -210,6 +210,14 @@
     }
   },
   {
+    "id": "austria-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Austria#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "azerbaijan-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Azerbaijan#Vital_statistics",
     "match": {
@@ -230,6 +238,14 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Bangladesh#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "belarus-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Belarus#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#After_WW2) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
     }
   },
@@ -266,6 +282,14 @@
     }
   },
   {
+    "id": "bosnia-herzegovina-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Bosnia_and_Herzegovina#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "botswana-demographics-registered-births-deaths-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Botswana#Registered_births_and_deaths",
     "match": {
@@ -286,6 +310,14 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Brunei",
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "bulgaria-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Bulgaria#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics_1900_to_present) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
     }
   },
@@ -386,8 +418,24 @@
     }
   },
   {
+    "id": "croatia-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Croatia#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Births_and_deaths_after_WWII) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "cuba-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Cuba#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "czech-republic-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_the_Czech_Republic#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
@@ -466,6 +514,14 @@
     }
   },
   {
+    "id": "estonia-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Estonia#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Present_Estonia) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "ethiopia-demographics-vital-statistics-last-2-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Ethiopia#Vital_statistics",
     "match": {
@@ -486,6 +542,14 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Fiji",
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "finland-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Finland#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
     }
   },
@@ -514,8 +578,32 @@
     }
   },
   {
+    "id": "germany-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Germany#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "georgia-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Georgia_(country)#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Excluding_Abkhazia_and_South_Ossetia) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "ghana-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Ghana#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "greece-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Greece#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
@@ -540,6 +628,14 @@
   {
     "id": "haiti-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Haiti#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "hungary-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Hungary#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
@@ -618,6 +714,14 @@
     }
   },
   {
+    "id": "italy-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Italy#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "ivory-coast-demographics-vital-statistics-last-2-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Ivory_Coast#Vital_statistics",
     "match": {
@@ -666,6 +770,14 @@
     }
   },
   {
+    "id": "kosovo-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Kosovo#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "kuwait-demographics-registered-births-deaths-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Kuwait",
     "match": {
@@ -686,6 +798,14 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Laos#Lao_statistics_bureau_estimates",
     "match": {
       "selector": ".mw-heading:has(#Lao_statistics_bureau_estimates) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "latvia-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Latvia#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
     }
   },
@@ -718,6 +838,14 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Liechtenstein#Vital_statistics_since_1901",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics_since_1901) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "lithuania-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Lithuania#Vital_statistics",
+    "match": {
+      "selector": "table.wikitable:contains('2026') tbody tr:last-child",
       "extract": "html"
     }
   },
@@ -790,6 +918,14 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Mexico#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "moldova-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Moldova#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Moldova_under_central_government_control) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
     }
   },
@@ -898,6 +1034,14 @@
     }
   },
   {
+    "id": "north-macedonia-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_North_Macedonia#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "northern-ireland-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Northern_Ireland#Vital_statistics",
     "match": {
@@ -986,6 +1130,30 @@
     }
   },
   {
+    "id": "poland-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Poland#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#After_World_War_II) ~ div table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "portugal-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Portugal#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "romania-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Romania#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#After_WWII) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "rwanda-demographics-vital-statistics-last-2-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Rwanda#Vital_statistics",
     "match": {
@@ -1034,6 +1202,14 @@
     }
   },
   {
+    "id": "serbia-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Serbia#Vital_statistics",
+    "match": {
+      "selector": "table.wikitable:contains('2024'):first tbody tr:nth-last-child(2)",
+      "extract": "html"
+    }
+  },
+  {
     "id": "seychelles-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Seychelles#Vital_statistics",
     "match": {
@@ -1052,6 +1228,22 @@
   {
     "id": "singapore-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Singapore#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "slovakia-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Slovakia#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "slovenia-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Slovenia#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
@@ -1084,6 +1276,14 @@
   {
     "id": "south-sudan-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_South_Sudan#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
+    "id": "spain-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Spain#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
@@ -1210,6 +1410,14 @@
     }
   },
   {
+    "id": "uae-demographics-registered-births-deaths-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_the_United_Arab_Emirates",
+    "match": {
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "extract": "html"
+    }
+  },
+  {
     "id": "uganda-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Uganda#Vital_statistics",
     "match": {
@@ -1226,10 +1434,10 @@
     }
   },
   {
-    "id": "uae-demographics-registered-births-deaths-last-2-rows",
-    "url": "https://en.wikipedia.org/wiki/Demographics_of_the_United_Arab_Emirates",
+    "id": "ukraine-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Ukraine",
     "match": {
-      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "selector": ".mw-heading:has(#After_WWII_\\(1945-present\\)) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
     }
   },
