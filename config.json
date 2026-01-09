@@ -109,7 +109,7 @@
     "url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ=F?interval=1d&range=5d",
     "match": {
       "extract": "json",
-      "jsonPath": "chart.result[0].indicators.quote[0].close",
+      "jsonPath": "chart.result[0].indicators.quote[0].open",
       "transformer": "percentChangeLastTwo"
     }
   },
