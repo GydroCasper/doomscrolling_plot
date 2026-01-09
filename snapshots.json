@@ -1,4 +1,5 @@
 {
+  "us-housing-market-migration": "<div class=\"locationSubheader\">Nov 2025</div>\n<span class=\"regionName\">US</span>\n<div class=\"font-weight-bold\">$433,261</div>\n<div class=\"yoyChange font-b1 pct-up\">+0.7%</div>",
   "mortgage-rates-mnd": "30 Yr. Fixed\n \n6.21%\n\n 15 Yr. Fixed\n \n5.74%\n\n 7/6 SOFR ARM\n \n5.73%",
   "boa-mortgage-rates": "Fixed 30 Years: 6.125\nFixed 15 Years: 5.25\nARM Fixed First 5 Years, Then Adjusts Every 6 Months: 5.375",
   "us-inflation-annual-rates-first-row": "<tr>\n<td height=\"17\" align=\"right\"><strong>2025</strong></td>\n<td align=\"center\">3.0</td>\n<td align=\"center\">2.8</td>\n<td align=\"center\">2.4</td>\n<td align=\"center\">2.3</td>\n<td align=\"center\">2.4</td>\n<td align=\"center\">2.7</td>\n<td align=\"center\">2.7</td>\n<td align=\"center\">2.9</td>\n<td align=\"center\">3.0</td>\n<td align=\"center\">– (*)</td>\n<td align=\"center\">2.7</td>\n<td align=\"center\"><em>Avail.<br>Jan. <br>13</em></td>\n<td align=\"center\">&nbsp;</td>\n</tr>\n<tr>\n<td align=\"left\">November 2025</td>\n<td align=\"right\">– (*)</td>\n<td align=\"right\">2.7</td>\n</tr>",
@@ -9,10 +10,11 @@
   "usdrub-rate": "78.2267 (+0.00%)",
   "imoex-index": "2718.62 (-0.97%)",
   "bitcoin-usd": "90984.00 (+0.05%)",
-  "brent-crude-oil-usd": "62.39 (+0.65%)",
+  "brent-crude-oil-usd": "62.34 (+0.56%)",
   "acton-ma-median-housing-price": "01720, MA | {\"date\":\"2025-11-30\",\"value\":\"892500\",\"yoy\":\"+25.7%\"}",
   "middlesex-county-median-housing-price": "Middlesex County, MA | {\"date\":\"2025-11-30\",\"value\":\"810000\",\"yoy\":\"+5.2%\"}",
   "massachusetts-median-housing-price": "Massachusetts, MA | {\"date\":\"2025-11-30\",\"value\":\"654900\",\"yoy\":\"+3.8%\"}",
+  "us-housing-market": "<div class=\"locationSubheader\">Nov 2025</div>\n<span class=\"regionName\">US</span>\n<div class=\"font-weight-bold\">$433,261</div>\n<div class=\"yoyChange font-b1 pct-up\">+0.7%</div>",
   "afghanistan-demographics-vital-statistics-last-2-rows": "<tr>\n<td>2022\n</td>\n<td>41,128,771\n</td>\n<td>\n</td>\n<td>\n</td>\n<td>+2.82%\n</td>\n<td>35.14\n</td>\n<td>6.91\n</td>\n<td>28.23\n</td>\n<td>−3.2\n</td>\n<td>4.52\n</td>\n<td>62.88\n</td>\n<td>44.8\n</td></tr>\n<tr>\n<td>2023\n</td>\n<td>42,239,854\n</td>\n<td>\n</td>\n<td>\n</td>\n<td>\n</td>\n<td>\n</td>\n<td>\n</td>\n<td>\n</td>\n<td>\n</td>\n<td>4.41\n</td>\n<td>64.23\n</td>\n<td>37.7\n</td></tr>",
   "albania-demographics-after-wwii-last-row": "<tr>\n<td>2024\n</td>\n<td style=\"text-align:right;\">2,377,128\n</td>\n<td style=\"color:red;\">23,310\n</td>\n<td style=\"text-align:right;\">22,102\n</td>\n<td style=\"text-align:right; color:;\">1,208\n</td>\n<td style=\"text-align:right;\">9.8\n</td>\n<td style=\"text-align:right;\">9.3\n</td>\n<td style=\"text-align:right; color:;\">0.5\n</td>\n<td style=\"text-align:right;\">1.64\n</td>\n<td style=\"text-align:right;\">499,148\n</td></tr>",
   "algeria-demographics-vital-statistics-last-2-rows": "<tr>\n<td>2024\n</td>\n<td style=\"color:blue\">46,700,000\n</td>\n<td>873,000(e)</td>\n<td></td>\n<td>\n</td>\n<td style=\"color:red\">18.5\n</td>\n<td>\n</td>\n<td>\n</td>\n<td>\n</td>\n<td>\n</td>\n<td>\n</td>\n<td>\n</td></tr>\n<tr>\n<td>2025\n</td>\n<td>\n</td>\n<td></td>\n<td></td>\n<td>\n</td>\n<td>\n</td>\n<td>\n</td>\n<td>\n</td>\n<td>\n</td>\n<td>\n</td>\n<td>\n</td>\n<td>\n</td></tr>",

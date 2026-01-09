@@ -138,6 +138,14 @@
     }
   },
   {
+    "id": "us-housing-market",
+    "url": "https://www.redfin.com/us-housing-market#migration",
+    "match": {
+      "selector": ".locationHeader .locationSubheader:first, .locationEntry:first .regionName, .locationEntry:first .font-weight-bold, .locationEntry:first .yoyChange",
+      "extract": "html"
+    }
+  },
+  {
     "id": "afghanistan-demographics-vital-statistics-last-2-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Afghanistan",
     "match": {
