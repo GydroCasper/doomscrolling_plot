@@ -1490,6 +1490,14 @@
     }
   },
   {
+    "id": "world-demographics-vital-statistics-last-row",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_the_world#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "extract": "html"
+    }
+  },
+  {
     "id": "yemen-demographics-un-estimates-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Yemen",
     "match": {
