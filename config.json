@@ -1544,5 +1544,15 @@
       "selector": "tr[data-mnemonic='PST045224']:first td",
       "extract": "text"
     }
+  },
+  {
+    "id": "birthgauge-pinned-post",
+    "url": "https://x.com/BirthGauge",
+    "match": {
+      "selector": "[data-testid='tweetText']",
+      "extract": "text"
+    },
+    "usePlaywright": true,
+    "waitForSelector": "[data-testid='tweetText']"
   }
 ]

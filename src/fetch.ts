@@ -1,4 +1,5 @@
 import { fetch } from "undici";
+import { chromium } from "playwright";
 
 export async function fetchHtml(
     url: string,
@@ -64,5 +65,24 @@ export async function fetchJson<T = unknown>(
         return JSON.parse(text);
     } finally {
         clearTimeout(timeout);
+    }
+}
+
+export async function fetchWithPlaywright(
+    url: string,
+    waitForSelector?: string,
+    timeoutMs = 30000
+): Promise<string> {
+    const browser = await chromium.launch();
+    const page = await browser.newPage();
+
+    try {
+        await page.goto(url, { timeout: timeoutMs });
+        if (waitForSelector) {
+            await page.waitForSelector(waitForSelector, { timeout: timeoutMs });
+        }
+        return await page.content();
+    } finally {
+        await browser.close();
     }
 }

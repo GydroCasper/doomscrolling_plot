@@ -1,5 +1,5 @@
 import {loadConfig, loadSnapshots, saveDiff, saveSnapshots} from "./fileUtils"
-import {fetchHtml, fetchJson} from "./fetch"
+import {fetchHtml, fetchJson, fetchWithPlaywright} from "./fetch"
 import {extractJson, extractPart} from "./extract"
 import {createTwoFilesPatch} from "diff"
 import {applyTransformer} from "./transformers"
@@ -28,7 +28,11 @@ async function main() {
             //     const html = await fetchHtml(src.url, src);
             //     const values = extractMultiple(html, src.match.selectors, src.match.extract as "text" | "html");
             //     extracted = applyTransformer(src.match.transformer, values);
-            } else {
+            } else if (src.usePlaywright) {
+                const html = await fetchWithPlaywright(src.url, src.waitForSelector, src.timeoutMs);
+                extracted = extractPart(html, src.match);
+            }
+            else {
                 const html = await fetchHtml(src.url, src);
                 extracted = extractPart(html, src.match);
             }

@@ -6,6 +6,8 @@ export type SourceConfig = {
     match: MatchConfig;
     headers?: Record<string, string>;
     timeoutMs?: number;
+    usePlaywright?: boolean;
+    waitForSelector?: string;
 };
 
 export type MatchConfig = {
