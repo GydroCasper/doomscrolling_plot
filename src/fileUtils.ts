@@ -35,3 +35,16 @@ export async function saveDiff(dir: string, id: string, diff: string): Promise<v
     const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
     await fs.writeFile(`${dir}/${timestamp}_${id}.diff`, diff, "utf-8");
 }
+
+export async function loadLastChange(path: string): Promise<Record<string, string>> {
+    try {
+        const text = await fs.readFile(path, "utf-8");
+        return JSON.parse(text);
+    } catch {
+        return {};
+    }
+}
+
+export async function saveLastChange(path: string, data: Record<string, string>): Promise<void> {
+    await fs.writeFile(path, JSON.stringify(data, null, 2));
+}

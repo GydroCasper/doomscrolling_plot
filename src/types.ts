@@ -8,6 +8,7 @@ export type SourceConfig = {
     timeoutMs?: number;
     usePlaywright?: boolean;
     waitForSelector?: string;
+    frequency?: "daily" | "monthly";
 };
 
 export type MatchConfig = {

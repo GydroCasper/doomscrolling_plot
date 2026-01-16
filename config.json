@@ -2,6 +2,7 @@
   {
     "id": "mortgage-rates-mnd",
     "url": "https://www.mortgagenewsdaily.com/mortgage-rates/mnd",
+    "frequency": "daily",
     "match": {
       "selector": "table.mtg-rates tbody tr:contains('30 Yr. Fixed') th, table.mtg-rates tbody tr:contains('30 Yr. Fixed') td:first-of-type, table.mtg-rates tbody tr:contains('15 Yr. Fixed') th, table.mtg-rates tbody tr:contains('15 Yr. Fixed') td:first-of-type, table.mtg-rates tbody tr:contains('SOFR') th, table.mtg-rates tbody tr:contains('SOFR') td:first-of-type",
       "extract": "text"
@@ -10,6 +11,7 @@
   {
     "id": "boa-mortgage-rates",
     "url": "https://www.bankofamerica.com/home-loans-sales/getProductRates",
+    "frequency": "daily",
     "method": "POST",
     "body": {
       "rateInputs": {
@@ -36,6 +38,7 @@
   {
     "id": "us-inflation-annual-rates-first-row",
     "url": "https://www.usinflationcalculator.com/inflation/current-inflation-rates/",
+    "frequency": "monthly",
     "match": {
       "selector": "table:first-of-type tr:nth-child(2)",
       "extract": "html"
@@ -44,6 +47,7 @@
   {
     "id": "us-gdp-growth-first-row",
     "url": "https://tradingeconomics.com/united-states/gdp-growth",
+    "frequency": "monthly",
     "match": {
       "selector": "#calendar tr:nth-child(2)",
       "extract": "html"
@@ -52,6 +56,7 @@
   {
     "id": "russia-gdp-growth-first-row",
     "url": "https://tradingeconomics.com/russia/gdp-growth-annual",
+    "frequency": "monthly",
     "match": {
       "selector": "#calendar tr:nth-child(2)",
       "extract": "html"
@@ -60,6 +65,7 @@
   {
     "id": "us-interest-rate-first-row",
     "url": "https://tradingeconomics.com/united-states/interest-rate",
+    "frequency": "daily",
     "match": {
       "selector": "#calendar tr:contains('Fed Interest Rate Decision'):first",
       "extract": "html"
@@ -68,6 +74,7 @@
   {
     "id": "russia-employed-persons-first-row",
     "url": "https://ru.tradingeconomics.com/russia/employed-persons",
+    "frequency": "monthly",
     "match": {
       "selector": "table.table-hover:first-of-type tr:nth-child(1)",
       "extract": "html"
@@ -76,6 +83,7 @@
   {
     "id": "usdrub-rate",
     "url": "https://iss.moex.com/iss/statistics/engines/futures/markets/indicativerates/securities/USD/RUB.json?limit=20&sort_order=DESC&iss.meta=off&iss.json=extended",
+    "frequency": "daily",
     "match": {
       "extract": "json",
       "jsonPath": "[1].securities",
@@ -85,6 +93,7 @@
   {
     "id": "imoex-index",
     "url": "https://iss.moex.com/iss/history/engines/stock/markets/index/securities/IMOEX.json?limit=10&sort_order=TRADEDATE&sort_order_desc=desc&iss.meta=off&iss.json=extended",
+    "frequency": "daily",
     "match": {
       "extract": "json",
       "jsonPath": "[1].history",
@@ -98,6 +107,7 @@
   {
     "id": "bitcoin-usd",
     "url": "https://api.coingecko.com/api/v3/coins/bitcoin/ohlc?vs_currency=usd&days=7",
+    "frequency": "daily",
     "match": {
       "extract": "json",
       "jsonPath": "$[*][4]",
@@ -107,6 +117,7 @@
   {
     "id": "brent-crude-oil-usd",
     "url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ=F?interval=1d&range=5d",
+    "frequency": "daily",
     "match": {
       "extract": "json",
       "jsonPath": "chart.result[0].indicators.quote[0].open",
@@ -116,6 +127,7 @@
   {
     "id": "acton-ma-median-housing-price",
     "url": "https://www.redfin.com/stingray/api/graph/2/463/All/regional-housing-market/us_housing_overview",
+    "frequency": "monthly",
     "match": {
       "extract": "json",
       "jsonPath": "payload.regionName;payload.metrics[0].aggregateData[0]"
@@ -124,6 +136,7 @@
   {
     "id": "middlesex-county-median-housing-price",
     "url": "https://www.redfin.com/stingray/api/graph/5/1342/All/regional-housing-market/us_housing_overview",
+    "frequency": "monthly",
     "match": {
       "extract": "json",
       "jsonPath": "payload.regionName;payload.metrics[0].aggregateData[0]"
@@ -132,6 +145,7 @@
   {
     "id": "massachusetts-median-housing-price",
     "url": "https://www.redfin.com/stingray/api/graph/4/45/All/regional-housing-market/us_housing_overview",
+    "frequency": "monthly",
     "match": {
       "extract": "json",
       "jsonPath": "payload.regionName;payload.metrics[0].aggregateData[0]"
@@ -140,6 +154,7 @@
   {
     "id": "us-housing-market",
     "url": "https://www.redfin.com/us-housing-market#migration",
+    "frequency": "monthly",
     "match": {
       "selector": ".locationHeader .locationSubheader:first, .locationEntry:first .regionName, .locationEntry:first .font-weight-bold, .locationEntry:first .yoyChange",
       "extract": "html"
@@ -837,7 +852,7 @@
     "id": "liechtenstein-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Liechtenstein#Vital_statistics_since_1901",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics_since_1901) ~ table.wikitable:first tbody tr:last-child",
+      "selector": "table.wikitable tbody tr:last-child",
       "extract": "html"
     }
   },
@@ -1548,6 +1563,7 @@
   {
     "id": "birthgauge-pinned-post",
     "url": "https://x.com/BirthGauge",
+    "frequency": "monthly",
     "match": {
       "selector": "[data-testid='tweetText']",
       "extract": "text"

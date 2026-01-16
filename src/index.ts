@@ -1,4 +1,4 @@
-import {loadConfig, loadSnapshots, saveDiff, saveSnapshots} from "./fileUtils"
+import {loadConfig, loadLastChange, loadSnapshots, saveDiff, saveLastChange, saveSnapshots} from "./fileUtils"
 import {fetchHtml, fetchJson, fetchWithPlaywright} from "./fetch"
 import {extractJson, extractPart} from "./extract"
 import {createTwoFilesPatch} from "diff"
@@ -7,14 +7,31 @@ import {applyTransformer} from "./transformers"
 const CONFIG_PATH = "../config.json";
 const SNAPSHOTS_PATH = "../snapshots.json";
 const DIFFS_DIR = "../diffs";
+const LAST_CHANGE_PATH = "../lastChange.json";
 
 async function main() {
     const config = await loadConfig(CONFIG_PATH);
     const snapshots = await loadSnapshots(SNAPSHOTS_PATH);
+    const lastChange = await loadLastChange(LAST_CHANGE_PATH);
+
+    const today = new Date().toISOString().slice(0, 10);      // "2026-01-16"
+    const thisMonth = new Date().toISOString().slice(0, 7);   // "2026-01"
 
     for (const src of config) {
         try {
             let extracted: string;
+            if(src.frequency){
+                // Skip if already got new data this period
+                if (src.frequency === "daily" && lastChange[src.id] === today) {
+                    console.log(`${src.id}: skipped (already updated today)`);
+                    continue;
+                }
+                if (src.frequency === "monthly" && lastChange[src.id] === thisMonth) {
+                    console.log(`${src.id}: skipped (already updated this month)`);
+                    continue;
+                }
+            }
+
             if (src.match.extract === 'json') {
                 if (src.match.transformer) {
                     const data = await fetchJson(src.url, src);
@@ -58,6 +75,11 @@ async function main() {
             }
 
             snapshots[src.id] = extracted;
+
+            if (previous !== extracted) {
+                lastChange[src.id] = src.frequency === "monthly" ? thisMonth : today;
+                await saveLastChange(LAST_CHANGE_PATH, lastChange);
+            }
         } catch (e: any) {
             console.log(`${src.id}: ERROR. ${e}`);
         }
