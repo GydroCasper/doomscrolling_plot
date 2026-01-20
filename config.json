@@ -404,7 +404,7 @@
     "id": "china-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_China#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Births_and_deaths_as_of_1949) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Births_and_deaths_since_1949) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
     }
   },
@@ -852,7 +852,7 @@
     "id": "liechtenstein-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Liechtenstein#Vital_statistics_since_1901",
     "match": {
-      "selector": "table.wikitable tbody tr:last-child",
+      "selector": "caption:contains('Vital statistics since 1901') ~ tbody tr:last-child",
       "extract": "html"
     }
   },
