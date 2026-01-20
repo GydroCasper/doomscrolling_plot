@@ -17,6 +17,13 @@ async function main() {
     const today = new Date().toISOString().slice(0, 10);      // "2026-01-16"
     const thisMonth = new Date().toISOString().slice(0, 7);   // "2026-01"
 
+    const summary = {
+        unchanged: 0,
+        skipped: 0,
+        failed: 0,
+        changed: [] as string[]
+    };
+
     for (const src of config) {
         try {
             let extracted: string;
@@ -24,10 +31,12 @@ async function main() {
                 // Skip if already got new data this period
                 if (src.frequency === "daily" && lastChange[src.id] === today) {
                     console.log(`${src.id}: skipped (already updated today)`);
+                    summary.skipped++;
                     continue;
                 }
                 if (src.frequency === "monthly" && lastChange[src.id] === thisMonth) {
                     console.log(`${src.id}: skipped (already updated this month)`);
+                    summary.skipped++;
                     continue;
                 }
             }
@@ -58,6 +67,7 @@ async function main() {
 
             if (previous === extracted) {
                 console.log(`${src.id}: unchanged`);
+                summary.unchanged++;
                 continue;
             }
 
@@ -69,6 +79,7 @@ async function main() {
                     extracted
                 );
                 await saveDiff(DIFFS_DIR, src.id, diff);
+                summary.changed.push(src.id);
                 console.log(`${src.id}: CHANGED (diff saved)`);
             } else {
                 console.log(`${src.id}: CREATED`);
@@ -82,10 +93,17 @@ async function main() {
             }
         } catch (e: any) {
             console.log(`${src.id}: ERROR. ${e}`);
+            summary.failed++;
         }
 
         await saveSnapshots(SNAPSHOTS_PATH, snapshots);
     }
+
+    console.log("\n=== Summary ===");
+    console.log(`Unchanged: ${summary.unchanged}`);
+    console.log(`Skipped: ${summary.skipped}`);
+    console.log(`Failed: ${summary.failed}`);
+    console.log(`Changed: ${summary.changed.length > 0 ? summary.changed.join(", ") : "none"}`);
 }
 
 main().catch((e) => {
