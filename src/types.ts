@@ -30,3 +30,10 @@ export type TransformerOptions = {
     dateField?: string;
     valueField?: string;
 };
+
+export type Summary = {
+    unchanged: number;
+    skipped: number;
+    failed: number;
+    changed: string[];
+};
