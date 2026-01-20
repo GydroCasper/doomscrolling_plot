@@ -1,9 +1,9 @@
-import {processSource} from "./processor"
+import {processSources} from "./processor"
 
 
 
 async function main() {
-    await processSource();
+    await processSources();
 }
 
 main().catch((e) => {
