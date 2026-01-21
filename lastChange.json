@@ -2,10 +2,10 @@
   "bitcoin-usd": "2026-01-21",
   "liechtenstein-demographics-vital-statistics-last-row": "2026-01-16",
   "birthgauge-pinned-post": "2026-01",
-  "mortgage-rates-mnd": "2026-01-20",
+  "mortgage-rates-mnd": "2026-01-21",
   "us-demographics-vital-statistics-last-row": "2026-01-21",
   "usdrub-rate": "2026-01-21",
-  "imoex-index": "2026-01-20",
+  "imoex-index": "2026-01-21",
   "brent-crude-oil-usd": "2026-01-21",
   "china-demographics-vital-statistics-last-row": "2026-01-19",
   "germany-demographics-vital-statistics-last-row": "2026-01-19",
@@ -16,10 +16,12 @@
   "taiwan-demographics-vital-statistics-last-row": "2026-01-19",
   "turkey-demographics-vital-statistics-last-row": "2026-01-19",
   "ukraine-demographics-vital-statistics-last-row": "2026-01-20",
-  "boa-mortgage-rates": "2026-01-20",
+  "boa-mortgage-rates": "2026-01-21",
   "india-demographics-vital-statistics-last-row": "2026-01-20",
   "us-housing-market": "2026-01",
   "spain-demographics-vital-statistics-last-row": "2026-01-21",
   "middlesex-county-median-housing-price": "2026-01",
-  "chile-demographics-vital-statistics-last-row": "2026-01-21"
+  "chile-demographics-vital-statistics-last-row": "2026-01-21",
+  "england-demographics-vital-statistics-last-row": "2026-01-21",
+  "wales-demographics-vital-statistics-last-row": "2026-01-21"
 }

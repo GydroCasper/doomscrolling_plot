@@ -83,8 +83,8 @@ async function processSource(src: SourceConfig, lastChange: Record<string, strin
 
     if(previous) {
         const diff = createTwoFilesPatch(
-            `${src.id}/old`,
-            `${src.id}/new`,
+            src.id,
+            src.id,
             previous ?? "",
             extracted
         );
