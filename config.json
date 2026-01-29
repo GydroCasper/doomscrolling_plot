@@ -1554,9 +1554,9 @@
   },
   {
     "id": "us-census-population",
-    "url": "https://www.census.gov/quickfacts/",
+    "url": "https://www.census.gov/quickfacts/fact/table/actontownmiddlesexcountymassachusetts,middlesexcountymassachusetts,MA,US/PST045225",
     "match": {
-      "selector": "tr[data-mnemonic='PST045224']:first td",
+      "selector": "table.type tbody tr.fact.selected",
       "extract": "text"
     }
   },
