@@ -5,6 +5,7 @@ import {applyTransformer} from "./transformers"
 import {createTwoFilesPatch} from "diff"
 import {initSummary, printSummary} from "./summary"
 import {SourceConfig, Summary} from "./types"
+import {getDateStringInEtTz} from "./utils/date"
 
 const CONFIG_PATH = "../config.json";
 const SNAPSHOTS_PATH = "../snapshots.json";
@@ -16,8 +17,9 @@ export async function processSources() {
     const snapshots = await loadSnapshots(SNAPSHOTS_PATH);
     const lastChange = await loadLastChange(LAST_CHANGE_PATH);
 
-    const today = new Date().toISOString().slice(0, 10);      // "2026-01-16"
-    const thisMonth = new Date().toISOString().slice(0, 7);   // "2026-01"
+    const dateString = getDateStringInEtTz();
+    const today = dateString.slice(0, 10);      // "2026-01-16"
+    const thisMonth = dateString.slice(0, 7);   // "2026-01"
 
     const summary = initSummary();
 
