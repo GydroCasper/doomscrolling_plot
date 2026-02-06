@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react"
 import {DiffItem} from "../diff-item/diff-item.tsx"
 import {styles} from "./diff-list.styles.tsx"
+import {fetchDiffs} from "../../services/api.ts"
 
 type DiffEntry = {
     id: string;
@@ -14,9 +15,9 @@ export function DiffList() {
     const [diffs, setDiffs] = useState<DiffEntry[]>([])
 
     useEffect(() => {
-        fetch('http://localhost:3001/api/diffs')
-            .then(res => res.json())
-            .then(setDiffs)
+        fetchDiffs().then(
+            diffs => setDiffs(diffs)
+        )
     }, [])
 
     return (
