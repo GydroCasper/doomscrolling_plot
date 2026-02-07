@@ -13,7 +13,7 @@ const SNAPSHOTS_PATH = "./snapshots.json"
 const DIFFS_DIR = "./diffs"
 const LAST_CHANGE_PATH = "./lastChange.json"
 
-export async function processSources(stream?: (msg: string) => void) {
+export async function processSources() {
     try {
         const config = await loadConfig(CONFIG_PATH)
         const snapshots = await loadSnapshots(SNAPSHOTS_PATH)

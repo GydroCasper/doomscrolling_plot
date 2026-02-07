@@ -62,10 +62,10 @@ createServer(async (req, res) => {
 
         try {
             await processSources()
-            res.write('[DONE]\n')
         } catch (e: any) {
             res.write(`[ERROR] ${e.message}\n`)
         } finally {
+            await new Promise(resolve => setImmediate(resolve))
             removeTransport()
             res.end()
         }

@@ -2,7 +2,7 @@ import winston from 'winston';
 
 export const logger = winston.createLogger({
     level: 'info',
-    format: winston.format.simple(),
+    format: winston.format.printf(({ message }) => String(message)),
     transports: [
         new winston.transports.Console()
     ]
