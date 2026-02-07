@@ -3,11 +3,17 @@ import {startGrabbing} from "../../services/api.ts"
 
 export function Header() {
     const [running, setRunning] = useState(false)
+    const [logs, setLogs] = useState<string[]>([])
+
+    const streaming = (message: string) => {
+        setLogs(prev => [message, ...prev])
+    }
 
     const handleRun = async () => {
         setRunning(true)
+        setLogs([])
         try {
-            await startGrabbing()
+            await startGrabbing(streaming)
         } finally {
             setRunning(false)
         }
@@ -15,9 +21,16 @@ export function Header() {
 
     return (
         <header>
-            <button onClick={handleRun} disabled={running}>
-                {running ? 'Running...' : 'Run Grabber'}
-            </button>
+            <div>
+                <button onClick={handleRun} disabled={running}>
+                    {running ? 'Running...' : 'Run Grabber'}
+                </button>
+            </div>
+            {logs.length > 0 && (
+                <pre>
+                    {logs.join('\n')}
+                </pre>
+                )}
         </header>
     )
 }

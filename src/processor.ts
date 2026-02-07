@@ -6,19 +6,19 @@ import {createTwoFilesPatch} from "diff"
 import {initSummary, printSummary} from "./summary"
 import {SourceConfig, Summary} from "./types"
 import {getDateStringInEtTz} from "./utils/date"
+import {logger} from "./utils/logger"
 
-const CONFIG_PATH = "./config.json";
-const SNAPSHOTS_PATH = "./snapshots.json";
-const DIFFS_DIR = "./diffs";
-const LAST_CHANGE_PATH = "./lastChange.json";
+const CONFIG_PATH = "./config.json"
+const SNAPSHOTS_PATH = "./snapshots.json"
+const DIFFS_DIR = "./diffs"
+const LAST_CHANGE_PATH = "./lastChange.json"
 
-export async function processSources() {
+export async function processSources(stream?: (msg: string) => void) {
     try {
         const config = await loadConfig(CONFIG_PATH)
         const snapshots = await loadSnapshots(SNAPSHOTS_PATH)
         const lastChange = await loadLastChange(LAST_CHANGE_PATH)
 
-        console.log(`Processing ${config.length} sources...`)
         const dateString = getDateStringInEtTz()
         const today = dateString.slice(0, 10)      // "2026-01-16"
         const thisMonth = dateString.slice(0, 7)   // "2026-01"
@@ -29,7 +29,7 @@ export async function processSources() {
             try {
                 await processSource(src, lastChange, today, thisMonth, summary, snapshots)
             } catch (e: any) {
-                console.log(`${src.id}: ERROR. ${e}`)
+                logger.info((`${src.id}: ERROR. ${e}`))
                 summary.failed++
             }
 
@@ -38,7 +38,7 @@ export async function processSources() {
 
         printSummary(summary)
     } catch (ex: any) {
-        console.log(ex)
+        logger.info(ex)
     }
 }
 
@@ -47,12 +47,12 @@ async function processSource(src: SourceConfig, lastChange: Record<string, strin
     if (src.frequency) {
         // Skip if already got new data this period
         if (src.frequency === "daily" && lastChange[src.id] === today) {
-            console.log(`${src.id}: skipped (already updated today)`)
+            logger.info(`${src.id}: skipped (already updated today)`)
             summary.skipped++
             return
         }
         if (src.frequency === "monthly" && lastChange[src.id] === thisMonth) {
-            console.log(`${src.id}: skipped (already updated this month)`)
+            logger.info(`${src.id}: skipped (already updated this month)`)
             summary.skipped++
             return
         }
@@ -83,7 +83,7 @@ async function processSource(src: SourceConfig, lastChange: Record<string, strin
 
     if (previous === extracted) {
         summary.unchanged++
-        console.log(`${src.id}: unchanged`)
+        logger.info(`${src.id}: unchanged`)
         return
     }
 
@@ -96,9 +96,9 @@ async function processSource(src: SourceConfig, lastChange: Record<string, strin
         )
         await saveDiff(DIFFS_DIR, src.id, diff)
         summary.changed.push(src.id)
-        console.log(`${src.id}: CHANGED (diff saved)`)
+        logger.info(`${src.id}: CHANGED (diff saved)`)
     } else {
-        console.log(`${src.id}: CREATED`)
+        logger.info(`${src.id}: CREATED`)
     }
 
     snapshots[src.id] = extracted

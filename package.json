@@ -11,7 +11,8 @@
     "diff": "^8.0.2",
     "fs": "^0.0.1-security",
     "playwright": "^1.57.0",
-    "undici": "^7.18.2"
+    "undici": "^7.18.2",
+    "winston": "^3.19.0"
   },
   "devDependencies": {
     "@types/node": "^25.0.3",

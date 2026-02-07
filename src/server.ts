@@ -2,6 +2,7 @@ import {readdir, readFile} from 'fs/promises'
 import {createServer} from 'http'
 import {join} from 'path'
 import {processSources} from "./processor"
+import {addStreamTransport} from "./utils/logger"
 
 const DIFFS_DIR = './diffs'
 
@@ -44,14 +45,31 @@ createServer(async (req, res) => {
     }
 
     if (req.method === 'POST' && req.url === '/api/run') {
-        console.log('Running grabber...')
-        res.writeHead(200, {'Content-Type': 'application/json'})
+        res.writeHead(200, {
+            'Content-Type': 'text/plain',
+            'Transfer-Encoding': 'chunked',
+            'Access-Control-Allow-Origin': '*'
+        })
+
+        const sseStream = new (require('stream').Writable)({
+            write(chunk: Buffer, _enc: string, cb: () => void) {
+                res.write(chunk.toString())
+                cb()
+            }
+        })
+
+        const removeTransport = addStreamTransport(sseStream)
+
         try {
             await processSources()
-            res.end(JSON.stringify({success: true}))
+            res.write('[DONE]\n')
         } catch (e: any) {
-            res.end(JSON.stringify({success: false, error: e.message}))
+            res.write(`[ERROR] ${e.message}\n`)
+        } finally {
+            removeTransport()
+            res.end()
         }
+
         return
     }
 }).listen(3001)
