@@ -10,10 +10,12 @@ export async function startGrabbing(streamingCallback: (message: string) => void
         const {done, value} = await reader.read()
         if (done) break
 
-        const text = decoder.decode(value)
-        const lines = text.split('\n').filter(line => line.trim())
+        const text = decoder.decode(value).trim()
+        if (!text) continue
+
+        const lines = text.split('\n')
         for (const line of lines) {
-            streamingCallback(line)
+            streamingCallback(line.trim())
         }
     }
 

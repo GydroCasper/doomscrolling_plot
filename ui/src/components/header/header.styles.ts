@@ -6,6 +6,7 @@ export const styles: Record<string, CSSProperties> = {
         overflow: 'auto',
         margin: '0.5rem 0',
         fontSize: '12px',
-        lineHeight: '20px'
+        lineHeight: '20px',
+        padding: '2rem',
     }
 }
