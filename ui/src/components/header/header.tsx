@@ -6,7 +6,7 @@ export function Header() {
     const [logs, setLogs] = useState<string[]>([])
 
     const streaming = (message: string) => {
-        setLogs(prev => [message, ...prev])
+        setLogs(prev => [...prev, message])
     }
 
     const handleRun = async () => {
