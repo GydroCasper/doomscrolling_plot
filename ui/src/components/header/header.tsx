@@ -1,18 +1,11 @@
-import {useEffect, useRef, useState} from "react"
+import {useState} from "react"
 import {startGrabbing} from "../../services/api.ts"
-import {styles} from "./header.styles.ts"
+import {Logs} from "../log/logs.tsx"
 
 export function Header() {
     const [running, setRunning] = useState(false)
     const [logs, setLogs] = useState<string[]>([])
-    const logsRef = useRef<HTMLPreElement>(null)
-
-    // Auto-scroll to bottom when logs update
-    useEffect(() => {
-        if (logsRef.current) {
-            logsRef.current.scrollTop = logsRef.current.scrollHeight
-        }
-    }, [logs])
+    const [logsOpen, setLogsOpen] = useState(true)
 
     const streaming = (message: string) => {
         setLogs(prev => [...prev, message])
@@ -21,6 +14,7 @@ export function Header() {
     const handleRun = async () => {
         setRunning(true)
         setLogs([])
+        setLogsOpen(true)
         try {
             await startGrabbing(streaming)
         } finally {
@@ -35,14 +29,7 @@ export function Header() {
                     {running ? 'Running...' : 'Run Grabber'}
                 </button>
             </div>
-            {logs.length > 0 && (
-                <pre
-                    ref={logsRef}
-                    style={styles.logs}
-                >
-                      {logs.join('\n')}
-                  </pre>
-            )}
+            {logs.length > 0 && <Logs logs={logs} open={logsOpen} setOpen={setLogsOpen}/>}
         </header>
     )
 }
