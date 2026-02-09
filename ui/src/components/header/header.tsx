@@ -1,11 +1,13 @@
 import {useState} from "react"
 import {startGrabbing} from "../../services/api.ts"
 import {Logs} from "../log/logs.tsx"
+import {useDiff} from "../../context/diff-context.tsx"
 
 export function Header() {
     const [running, setRunning] = useState(false)
     const [logs, setLogs] = useState<string[]>([])
     const [logsOpen, setLogsOpen] = useState(true)
+    const {refetch} = useDiff()
 
     const streaming = (message: string) => {
         setLogs(prev => [...prev, message])
@@ -18,6 +20,7 @@ export function Header() {
         try {
             await startGrabbing(streaming)
         } finally {
+            refetch()
             setRunning(false)
         }
     }
