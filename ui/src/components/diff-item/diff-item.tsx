@@ -2,6 +2,7 @@ import {html, parse} from 'diff2html'
 import 'diff2html/bundles/css/diff2html.min.css'
 import {ColorSchemeType} from "diff2html/lib/types"
 import {styles} from "./diff-item.styles.ts"
+import {formatDate} from "../../utils/date.ts"
 
 type Props = {
     diffText: string;
@@ -21,7 +22,7 @@ export function DiffItem({diffText, title, date}: Props) {
     return (
         <div style={styles.container}>
             <h3 style={styles.title}>
-                {title} <small style={styles.date}>{date}</small>
+                {title} <small style={styles.date}>{formatDate(date)}</small>
             </h3>
             <div dangerouslySetInnerHTML={{__html: diffHtml}}/>
         </div>
