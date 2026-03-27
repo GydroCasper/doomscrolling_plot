@@ -172,7 +172,7 @@
     "id": "albania-demographics-after-wwii-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Albania#After_WWII",
     "match": {
-      "selector": ".mw-heading:has(#After_WWII) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#After_WWII) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html"
     }
   },
@@ -372,7 +372,7 @@
     "id": "canada-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Canada#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html"
     }
   },
@@ -412,7 +412,7 @@
     "id": "colombia-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Colombia#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html"
     }
   },
@@ -484,7 +484,7 @@
     "id": "denmark-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Denmark#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html"
     }
   },
@@ -1300,7 +1300,7 @@
     "id": "spain-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Spain#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html"
     }
   },
@@ -1356,7 +1356,7 @@
     "id": "tajikistan-demographics-registered-births-deaths-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Tajikistan",
     "match": {
-      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html"
     }
   },

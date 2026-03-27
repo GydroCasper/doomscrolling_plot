@@ -26,13 +26,21 @@ npm run build
 
 ## Usage
 
-```bash
-node dist/index.js
-```
-
-Or with tsx:
+**Run scraper once:**
 ```bash
 npx tsx src/index.ts
+```
+
+**Launch API server** (port 3001):
+```bash
+npx tsx src/server.ts
+```
+
+**Launch frontend** (Vite dev server):
+```bash
+cd ui
+npm install   # first time only
+npm run dev
 ```
 
 ## Configuration
