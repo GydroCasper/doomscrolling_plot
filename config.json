@@ -1570,5 +1570,13 @@
     },
     "usePlaywright": true,
     "waitForSelector": "[data-testid='tweetText']"
+  },
+  {
+    "id": "psfc-mit-events",
+    "url": "http://www-new.psfc.mit.edu/events",
+    "match": {
+      "selector": "#divattachedviews1",
+      "extract": "html"
+    }
   }
 ]
