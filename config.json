@@ -860,7 +860,7 @@
     "id": "lithuania-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Lithuania#Vital_statistics",
     "match": {
-      "selector": "table.wikitable:contains('2026') tbody tr:last-child",
+      "selector": "table.sort-under:eq(1) tbody tr:nth-last-child(2)",
       "extract": "html"
     }
   },
