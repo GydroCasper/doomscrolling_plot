@@ -8,11 +8,12 @@ type Props = {
     diffText: string;
     title: string;
     date: string;
+    sourceUrl?: string;
     hasSiblings?: boolean;
     onKeepOnly?: () => void;
 };
 
-export function DiffItem({diffText, title, date, hasSiblings, onKeepOnly}: Props) {
+export function DiffItem({diffText, title, date, sourceUrl, hasSiblings, onKeepOnly}: Props) {
     if (!diffText) return null
 
     const diffHtml = html(parse(diffText), {
@@ -31,6 +32,11 @@ export function DiffItem({diffText, title, date, hasSiblings, onKeepOnly}: Props
                     </button>
                 )}
             </h3>
+            {sourceUrl && (
+                <div style={styles.sourceUrl}>
+                    <a href={sourceUrl} target="_blank" rel="noreferrer" style={styles.sourceLink}>{sourceUrl}</a>
+                </div>
+            )}
             <div dangerouslySetInnerHTML={{__html: diffHtml}}/>
         </div>
     )

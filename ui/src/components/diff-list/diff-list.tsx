@@ -30,6 +30,7 @@ export function DiffList() {
                     title={d.id}
                     date={d.date}
                     diffText={d.diffText}
+                    sourceUrl={d.sourceUrl}
                     hasSiblings={(idCounts[d.id] ?? 0) > 1}
                     onKeepOnly={() => handleKeepOnly(d)}
                 />

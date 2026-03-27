@@ -22,5 +22,14 @@ export const styles: Record<string, CSSProperties> = {
         color: '#fca5a5',
         verticalAlign: 'middle',
         fontWeight: 'bold'
+    },
+    sourceUrl: {
+        marginBottom: '0.5rem',
+        fontSize: '0.8rem'
+    },
+    sourceLink: {
+        color: '#60a5fa',
+        textDecoration: 'none',
+        wordBreak: 'break-all'
     }
 }

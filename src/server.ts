@@ -3,11 +3,17 @@ import {createServer} from 'http'
 import {join} from 'path'
 import {processSources} from "./processor"
 import {addStreamTransport} from "./utils/logger"
+import {loadConfig} from "./fileUtils"
 
 const DIFFS_DIR = './diffs'
+const CONFIG_PATH = './config.json'
 
 async function getDiffs() {
-    const files = await readdir(DIFFS_DIR)
+    const [files, config] = await Promise.all([
+        readdir(DIFFS_DIR),
+        loadConfig(CONFIG_PATH).catch(() => [] as any[])
+    ])
+    const urlById = Object.fromEntries(config.map((s: any) => [s.id, s.url]))
     const diffs = []
 
     for (const file of files) {
@@ -20,7 +26,8 @@ async function getDiffs() {
         diffs.push({
             id,
             date,
-            diffText: content
+            diffText: content,
+            sourceUrl: urlById[id]
         })
     }
 
