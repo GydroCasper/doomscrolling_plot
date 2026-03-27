@@ -4,7 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "dev": "npx tsx src/server.ts & cd ui && npm run dev"
   },
   "dependencies": {
     "cheerio": "^1.1.2",

@@ -31,6 +31,11 @@ npm run build
 npx tsx src/index.ts
 ```
 
+**Launch frontend + API server together:**
+```bash
+npm run dev
+```
+
 **Launch API server** (port 3001):
 ```bash
 npx tsx src/server.ts
