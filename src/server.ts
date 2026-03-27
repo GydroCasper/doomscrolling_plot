@@ -1,4 +1,4 @@
-import {readdir, readFile} from 'fs/promises'
+import {readdir, readFile, unlink} from 'fs/promises'
 import {createServer} from 'http'
 import {join} from 'path'
 import {processSources} from "./processor"
@@ -29,7 +29,7 @@ async function getDiffs() {
 
 createServer(async (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*')
-    res.setHeader('Access-Control-Allow-Methods', 'GET')
+    res.setHeader('Access-Control-Allow-Methods', 'GET, DELETE')
 
     if (req.method === 'OPTIONS') {
         res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
@@ -41,6 +41,17 @@ createServer(async (req, res) => {
     if (req.url === '/api/diffs') {
         res.writeHead(200, {'Content-Type': 'application/json'})
         res.end(JSON.stringify(await getDiffs()))
+        return
+    }
+
+    const deleteMatch = req.method === 'DELETE' && req.url?.match(/^\/api\/diffs\/(.+)$/)
+    if (deleteMatch) {
+        const sourceId = decodeURIComponent(deleteMatch[1])
+        const files = await readdir(DIFFS_DIR)
+        const toDelete = files.filter(f => f.endsWith('.diff') && f.replace('.diff', '').split('_').slice(1).join('_') === sourceId)
+        await Promise.all(toDelete.map(f => unlink(join(DIFFS_DIR, f))))
+        res.writeHead(200, {'Content-Type': 'application/json'})
+        res.end(JSON.stringify({deleted: toDelete.length}))
         return
     }
 

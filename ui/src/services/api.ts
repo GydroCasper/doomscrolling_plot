@@ -26,3 +26,7 @@ export async function fetchDiffs() {
     const response = await fetch(baseUrl + '/api/diffs')
     return response.json()
 }
+
+export async function deleteDiffsBySourceId(sourceId: string) {
+    await fetch(`${baseUrl}/api/diffs/${encodeURIComponent(sourceId)}`, {method: 'DELETE'})
+}

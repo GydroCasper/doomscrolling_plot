@@ -8,9 +8,11 @@ type Props = {
     diffText: string;
     title: string;
     date: string;
+    hasSiblings?: boolean;
+    onKeepOnly?: () => void;
 };
 
-export function DiffItem({diffText, title, date}: Props) {
+export function DiffItem({diffText, title, date, hasSiblings, onKeepOnly}: Props) {
     if (!diffText) return null
 
     const diffHtml = html(parse(diffText), {
@@ -23,6 +25,11 @@ export function DiffItem({diffText, title, date}: Props) {
         <div style={styles.container}>
             <h3 style={styles.title}>
                 {title} <small style={styles.date}>{formatDate(date)}</small>
+                {hasSiblings && (
+                    <button onClick={onKeepOnly} style={styles.keepOnlyButton}>
+                        keep only this
+                    </button>
+                )}
             </h3>
             <div dangerouslySetInnerHTML={{__html: diffHtml}}/>
         </div>
