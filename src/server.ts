@@ -1,12 +1,17 @@
 import {readdir, readFile, unlink} from 'fs/promises'
-import {createServer} from 'http'
 import {join} from 'path'
-import {processSources} from "./processor"
-import {addStreamTransport} from "./utils/logger"
-import {loadConfig} from "./fileUtils"
+import {Hono} from 'hono'
+import {serve} from '@hono/node-server'
+import {cors} from 'hono/cors'
+import {streamText} from 'hono/streaming'
+import {Writable} from 'stream'
+import {processSources} from './processor'
+import {addStreamTransport} from './utils/logger'
+import {loadConfig} from './fileUtils'
 
 const DIFFS_DIR = './diffs'
 const CONFIG_PATH = './config.json'
+const PORT = 3001
 
 async function getDiffs() {
     const [files, config] = await Promise.all([
@@ -23,71 +28,54 @@ async function getDiffs() {
         const [date, ...idParts] = file.replace('.diff', '').split('_')
         const id = idParts.join('_')
 
-        diffs.push({
-            id,
-            date,
-            diffText: content,
-            sourceUrl: urlById[id]
-        })
+        diffs.push({id, date, diffText: content, sourceUrl: urlById[id]})
     }
 
     return diffs.sort((a, b) => b.date.localeCompare(a.date))
 }
 
-createServer(async (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*')
-    res.setHeader('Access-Control-Allow-Methods', 'GET, DELETE')
+const app = new Hono()
 
-    if (req.method === 'OPTIONS') {
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
-        res.writeHead(204)
-        res.end()
-        return
-    }
+app.use('*', cors())
 
-    if (req.url === '/api/diffs') {
-        res.writeHead(200, {'Content-Type': 'application/json'})
-        res.end(JSON.stringify(await getDiffs()))
-        return
-    }
+app.get('/api/diffs', async (c) => {
+    return c.json(await getDiffs())
+})
 
-    const deleteMatch = req.method === 'DELETE' && req.url?.match(/^\/api\/diffs\/(.+)$/)
-    if (deleteMatch) {
-        const sourceId = decodeURIComponent(deleteMatch[1])
-        const files = await readdir(DIFFS_DIR)
-        const toDelete = files.filter(f => f.endsWith('.diff') && f.replace('.diff', '').split('_').slice(1).join('_') === sourceId)
-        await Promise.all(toDelete.map(f => unlink(join(DIFFS_DIR, f))))
-        res.writeHead(200, {'Content-Type': 'application/json'})
-        res.end(JSON.stringify({deleted: toDelete.length}))
-        return
-    }
+app.delete('/api/diffs/:sourceId', async (c) => {
+    const sourceId = c.req.param('sourceId')
+    const files = await readdir(DIFFS_DIR)
+    const toDelete = files.filter(f => f.endsWith('.diff') && f.replace('.diff', '').split('_').slice(1).join('_') === sourceId)
+    await Promise.all(toDelete.map(f => unlink(join(DIFFS_DIR, f))))
+    return c.json({deleted: toDelete.length})
+})
 
-    if (req.method === 'POST' && req.url === '/api/run') {
-        res.writeHead(200, {
-            'Content-Type': 'text/plain',
-            'Transfer-Encoding': 'chunked',
-            'Access-Control-Allow-Origin': '*'
-        })
+app.delete('/api/diff/:filename', async (c) => {
+    const filename = c.req.param('filename')
+    await unlink(join(DIFFS_DIR, `${filename}.diff`))
+    return c.json({deleted: 1})
+})
 
-        const sseStream = new (require('stream').Writable)({
+app.post('/api/run', (c) => {
+    return streamText(c, async (stream) => {
+        const writable = new Writable({
             write(chunk: Buffer, _enc: string, cb: () => void) {
-                res.write(chunk.toString())
+                stream.writeln(chunk.toString())
                 cb()
             }
         })
 
-        const removeTransport = addStreamTransport(sseStream)
+        const removeTransport = addStreamTransport(writable)
 
         try {
             await processSources()
         } catch (e: any) {
-            res.write(`[ERROR] ${e.message}\n`)
+            await stream.writeln(`[ERROR] ${e.message}`)
         } finally {
             await new Promise(resolve => setImmediate(resolve))
             removeTransport()
-            res.end()
         }
+    })
+})
 
-        return
-    }
-}).listen(3001)
+serve({fetch: app.fetch, port: PORT})

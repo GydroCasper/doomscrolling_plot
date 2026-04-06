@@ -11,9 +11,10 @@ type Props = {
     sourceUrl?: string;
     hasSiblings?: boolean;
     onKeepOnly?: () => void;
+    onDelete?: () => void;
 };
 
-export function DiffItem({diffText, title, date, sourceUrl, hasSiblings, onKeepOnly}: Props) {
+export function DiffItem({diffText, title, date, sourceUrl, hasSiblings, onKeepOnly, onDelete}: Props) {
     if (!diffText) return null
 
     const diffHtml = html(parse(diffText), {
@@ -26,6 +27,9 @@ export function DiffItem({diffText, title, date, sourceUrl, hasSiblings, onKeepO
         <div style={styles.container}>
             <h3 style={styles.title}>
                 {title} <small style={styles.date}>{formatDate(date)}</small>
+                <button onClick={onDelete} style={styles.deleteButton}>
+                    delete
+                </button>
                 {hasSiblings && (
                     <button onClick={onKeepOnly} style={styles.keepOnlyButton}>
                         keep only this

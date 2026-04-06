@@ -8,9 +8,11 @@
     "dev": "npx tsx src/server.ts & cd ui && npm run dev"
   },
   "dependencies": {
+    "@hono/node-server": "^1.19.12",
     "cheerio": "^1.1.2",
     "diff": "^8.0.2",
     "fs": "^0.0.1-security",
+    "hono": "^4.12.11",
     "playwright": "^1.57.0",
     "undici": "^7.18.2",
     "winston": "^3.19.0"

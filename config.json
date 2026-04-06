@@ -732,7 +732,7 @@
     "id": "italy-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Italy#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html"
     }
   },
@@ -932,7 +932,7 @@
     "id": "mexico-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Mexico#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html"
     }
   },
@@ -1404,7 +1404,7 @@
     "id": "tunisia-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Tunisia#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html"
     }
   },
@@ -1468,7 +1468,7 @@
     "id": "us-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_the_United_States#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html"
     }
   },
@@ -1492,7 +1492,7 @@
     "id": "vietnam-demographics-registered-births-deaths-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Vietnam",
     "match": {
-      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#General_Statistics_Office_of_Vietnam) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html"
     }
   },
@@ -1570,13 +1570,5 @@
     },
     "usePlaywright": true,
     "waitForSelector": "[data-testid='tweetText']"
-  },
-  {
-    "id": "psfc-mit-events",
-    "url": "http://www-new.psfc.mit.edu/events",
-    "match": {
-      "selector": "#divattachedviews1",
-      "extract": "html"
-    }
   }
 ]

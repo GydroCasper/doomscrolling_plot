@@ -11,6 +11,18 @@ export const styles: Record<string, CSSProperties> = {
     date: {
         color: '#888'
     },
+    deleteButton: {
+        marginLeft: '0.75rem',
+        fontSize: '0.75rem',
+        padding: '2px 8px',
+        cursor: 'pointer',
+        background: '#1c1917',
+        border: '1px solid #78716c',
+        borderRadius: '4px',
+        color: '#a8a29e',
+        verticalAlign: 'middle',
+        fontWeight: 'bold'
+    },
     keepOnlyButton: {
         marginLeft: '0.75rem',
         fontSize: '0.75rem',

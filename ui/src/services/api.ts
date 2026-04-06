@@ -30,3 +30,7 @@ export async function fetchDiffs() {
 export async function deleteDiffsBySourceId(sourceId: string) {
     await fetch(`${baseUrl}/api/diffs/${encodeURIComponent(sourceId)}`, {method: 'DELETE'})
 }
+
+export async function deleteDiff(id: string, date: string) {
+    await fetch(`${baseUrl}/api/diff/${encodeURIComponent(`${date}_${id}`)}`, {method: 'DELETE'})
+}

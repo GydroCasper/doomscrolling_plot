@@ -2,7 +2,7 @@ import {useState} from "react"
 import {DiffItem} from "../diff-item/diff-item.tsx"
 import {styles} from "./diff-list.styles.tsx"
 import {useDiff} from "../../context/diff-context.tsx"
-import {deleteDiffsBySourceId} from "../../services/api.ts"
+import {deleteDiff, deleteDiffsBySourceId} from "../../services/api.ts"
 import type {DiffEntry} from "../../types/diff-entry.ts"
 
 export function DiffList() {
@@ -15,6 +15,11 @@ export function DiffList() {
         acc[d.id] = (acc[d.id] ?? 0) + 1
         return acc
     }, {})
+
+    const handleDelete = async (entry: DiffEntry) => {
+        setDisplayed(list.filter(d => !(d.id === entry.id && d.date === entry.date)))
+        await deleteDiff(entry.id, entry.date)
+    }
 
     const handleKeepOnly = async (entry: DiffEntry) => {
         setDisplayed(list.filter(d => d.id !== entry.id || (d.id === entry.id && d.date === entry.date)))
@@ -32,6 +37,7 @@ export function DiffList() {
                     diffText={d.diffText}
                     sourceUrl={d.sourceUrl}
                     hasSiblings={(idCounts[d.id] ?? 0) > 1}
+                    onDelete={() => handleDelete(d)}
                     onKeepOnly={() => handleKeepOnly(d)}
                 />
             ))}
