@@ -1,5 +1,6 @@
 import {ConfigFile, SnapshotsFile} from "./types"
 import { promises as fs } from "node:fs";
+import {dirname, join} from "node:path";
 
 export async function loadConfig(path: string): Promise<ConfigFile> {
     const raw = await fs.readFile(path, "utf-8");
@@ -21,13 +22,16 @@ export async function loadSnapshots(path: string): Promise<SnapshotsFile> {
     try {
         const raw = await fs.readFile(path, "utf-8");
         return JSON.parse(raw) as SnapshotsFile;
-    } catch {
-        return {};
+    } catch (error: any) {
+        if (error?.code === "ENOENT") {
+            return {};
+        }
+        throw new Error(`Failed to load snapshots from ${path}: ${error?.message ?? error}`);
     }
 }
 
 export async function saveSnapshots(path: string, data: SnapshotsFile): Promise<void> {
-    await fs.writeFile(path, JSON.stringify(data, null, 2), "utf-8");
+    await writeJsonAtomic(path, data);
 }
 
 export async function saveDiff(dir: string, id: string, diff: string): Promise<void> {
@@ -40,11 +44,25 @@ export async function loadLastChange(path: string): Promise<Record<string, strin
     try {
         const text = await fs.readFile(path, "utf-8");
         return JSON.parse(text);
-    } catch {
-        return {};
+    } catch (error: any) {
+        if (error?.code === "ENOENT") {
+            return {};
+        }
+        throw new Error(`Failed to load last-change data from ${path}: ${error?.message ?? error}`);
     }
 }
 
 export async function saveLastChange(path: string, data: Record<string, string>): Promise<void> {
-    await fs.writeFile(path, JSON.stringify(data, null, 2));
+    await writeJsonAtomic(path, data);
+}
+
+async function writeJsonAtomic(path: string, data: unknown): Promise<void> {
+    const dir = dirname(path);
+    const tempPath = join(
+        dir,
+        `.${process.pid}.${Date.now()}.${Math.random().toString(16).slice(2)}.${path.split('/').pop()}`
+    );
+
+    await fs.writeFile(tempPath, JSON.stringify(data, null, 2), "utf-8");
+    await fs.rename(tempPath, path);
 }

@@ -7,13 +7,17 @@ import {initSummary, printSummary} from "./summary"
 import {SourceConfig, Summary} from "./types"
 import {getDateStringInEtTz} from "./utils/date"
 import {logger} from "./utils/logger"
+import {promises as fs} from "node:fs"
 
 const CONFIG_PATH = "./config.json"
 const SNAPSHOTS_PATH = "./snapshots.json"
 const DIFFS_DIR = "./diffs"
 const LAST_CHANGE_PATH = "./lastChange.json"
+const RUN_LOCK_PATH = "./grabber.lock"
 
 export async function processSources() {
+    const releaseLock = await acquireRunLock()
+
     try {
         const config = await loadConfig(CONFIG_PATH)
         const snapshots = await loadSnapshots(SNAPSHOTS_PATH)
@@ -39,6 +43,8 @@ export async function processSources() {
         printSummary(summary)
     } catch (ex: any) {
         logger.info(ex)
+    } finally {
+        await releaseLock()
     }
 }
 
@@ -106,5 +112,26 @@ async function processSource(src: SourceConfig, lastChange: Record<string, strin
     if (previous !== extracted) {
         lastChange[src.id] = src.frequency === "monthly" ? thisMonth : today
         await saveLastChange(LAST_CHANGE_PATH, lastChange)
+    }
+}
+
+async function acquireRunLock(): Promise<() => Promise<void>> {
+    try {
+        await fs.writeFile(RUN_LOCK_PATH, String(process.pid), {flag: "wx"});
+    } catch (error: any) {
+        if (error?.code === "EEXIST") {
+            throw new Error(`Grabber is already running (${RUN_LOCK_PATH} exists)`);
+        }
+        throw error;
+    }
+
+    return async () => {
+        try {
+            await fs.unlink(RUN_LOCK_PATH)
+        } catch (error: any) {
+            if (error?.code !== "ENOENT") {
+                throw error
+            }
+        }
     }
 }
