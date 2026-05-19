@@ -257,6 +257,14 @@
     }
   },
   {
+    "id": "barbados-demographics-vital-statistics-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Barbados#Vital_statistics",
+    "match": {
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "extract": "html"
+    }
+  },
+  {
     "id": "belarus-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Belarus#Vital_statistics",
     "match": {
@@ -668,7 +676,7 @@
     "id": "hong-kong-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Hong_Kong",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html"
     }
   },
@@ -700,7 +708,7 @@
     "id": "iran-demographics-registered-births-deaths-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Iran#Registered_births_and_deaths",
     "match": {
-      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html"
     }
   },
@@ -796,7 +804,7 @@
     "id": "kuwait-demographics-registered-births-deaths-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Kuwait",
     "match": {
-      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html"
     }
   },
@@ -828,7 +836,7 @@
     "id": "lebanon-demographics-registered-births-deaths-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Lebanon#Registered_births_and_deaths",
     "match": {
-      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html"
     }
   },
@@ -876,11 +884,11 @@
     "id": "macau-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Macau",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html"
     }
   },
-  {
+{
     "id": "madagascar-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Madagascar#Vital_statistics",
     "match": {
@@ -1132,7 +1140,7 @@
     "id": "philippines-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_the_Philippines#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html"
     }
   },
@@ -1162,9 +1170,9 @@
   },
   {
     "id": "romania-demographics-vital-statistics-last-row",
-    "url": "https://en.wikipedia.org/wiki/Demographics_of_Romania#Vital_statistics",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Romania#After_World_War_II",
     "match": {
-      "selector": ".mw-heading:has(#After_WWII) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#After_World_War_II) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html"
     }
   },
@@ -1492,7 +1500,7 @@
     "id": "vietnam-demographics-registered-births-deaths-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Vietnam",
     "match": {
-      "selector": ".mw-heading:has(#General_Statistics_Office_of_Vietnam) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html"
     }
   },
