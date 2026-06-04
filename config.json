@@ -540,7 +540,7 @@
     "id": "estonia-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Estonia#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Present_Estonia) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Present_Estonia) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html"
     }
   },
@@ -820,7 +820,7 @@
     "id": "laos-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Laos#Lao_statistics_bureau_estimates",
     "match": {
-      "selector": ".mw-heading:has(#Lao_statistics_bureau_estimates) ~ table.wikitable:first tbody tr:last-child",
+      "selector": "table.wikitable:contains('Population'):contains('Natural increase') tbody tr:last-child",
       "extract": "html"
     }
   },
@@ -1567,16 +1567,5 @@
       "selector": "table.type tbody tr.fact.selected",
       "extract": "text"
     }
-  },
-  {
-    "id": "birthgauge-pinned-post",
-    "url": "https://x.com/BirthGauge",
-    "frequency": "monthly",
-    "match": {
-      "selector": "[data-testid='tweetText']",
-      "extract": "text"
-    },
-    "usePlaywright": true,
-    "waitForSelector": "[data-testid='tweetText']"
   }
 ]
