@@ -1,5 +1,6 @@
 import { fetch } from "undici";
 import { chromium } from "playwright";
+import {PlaywrightOptions} from "./types";
 
 export async function fetchHtml(
     url: string,
@@ -70,10 +71,14 @@ export async function fetchJson<T = unknown>(
 
 export async function fetchWithPlaywright(
     url: string,
-    waitForSelector?: string,
-    timeoutMs = 30000
+    options: PlaywrightOptions = {}
 ): Promise<string> {
-    const browser = await chromium.launch();
+    const {
+        headless = true,
+        waitForSelector,
+        timeoutMs = 30000
+    } = options;
+    const browser = await chromium.launch({headless});
     const page = await browser.newPage();
 
     try {

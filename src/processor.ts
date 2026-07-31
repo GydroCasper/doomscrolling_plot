@@ -77,8 +77,8 @@ async function processSource(src: SourceConfig, lastChange: Record<string, strin
         //     const html = await fetchHtml(src.url, src);
         //     const values = extractMultiple(html, src.match.selectors, src.match.extract as "text" | "html");
         //     extracted = applyTransformer(src.match.transformer, values);
-    } else if (src.usePlaywright) {
-        const html = await fetchWithPlaywright(src.url, src.waitForSelector, src.timeoutMs)
+    } else if (src.playwright) {
+        const html = await fetchWithPlaywright(src.url, src.playwright)
         extracted = extractPart(html, src.match)
     } else {
         const html = await fetchHtml(src.url, src)

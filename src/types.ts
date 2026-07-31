@@ -5,10 +5,14 @@ export type SourceConfig = {
     url: string;
     match: MatchConfig;
     headers?: Record<string, string>;
-    timeoutMs?: number;
-    usePlaywright?: boolean;
-    waitForSelector?: string;
+    playwright?: PlaywrightOptions;
     frequency?: "daily" | "monthly";
+};
+
+export type PlaywrightOptions = {
+    headless?: boolean;
+    waitForSelector?: string;
+    timeoutMs?: number;
 };
 
 export type MatchConfig = {
