@@ -1,5 +1,5 @@
 import * as cheerio from "cheerio";
-import { MatchConfig } from "./types.js";
+import { HtmlFilterType, MatchConfig } from "./types.js";
 
 export function extractPart(html: string, match: MatchConfig): string {
     const $ = cheerio.load(html);
@@ -9,6 +9,8 @@ export function extractPart(html: string, match: MatchConfig): string {
         // лучше явно сигналить, чем молча писать пустоту.
         throw new Error(`Selector not found: ${match.selector}`);
     }
+
+    applyHtmlFilters($, nodes, match.filters ?? []);
 
     let extracted = "";
 
@@ -25,6 +27,23 @@ export function extractPart(html: string, match: MatchConfig): string {
     }
 
     return normalize(extracted);
+}
+
+function applyHtmlFilters(
+    $: cheerio.CheerioAPI,
+    nodes: cheerio.Cheerio<any>,
+    filters: HtmlFilterType[]
+): void {
+    for (const filter of filters) {
+        switch (filter) {
+            case "removeTdId":
+                nodes.filter("td").removeAttr("id");
+                nodes.find("td").removeAttr("id");
+                break;
+            default:
+                throw new Error(`Unknown HTML filter: ${filter}`);
+        }
+    }
 }
 
 export function extractJson(data: unknown, jsonPath: string): string {

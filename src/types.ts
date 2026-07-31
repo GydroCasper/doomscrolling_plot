@@ -15,12 +15,15 @@ export type MatchConfig = {
     selector: string;           // CSS selector
     selectors?: string[];       // CSS selectors to extract parameters for transformer
     extract: ExtractMode;       // what to extract
+    filters?: HtmlFilterType[];
     jsonPath?: string;
     transformer?: TransformerType;
     transformerOptions?: TransformerOptions;
 };
 
 export type ExtractMode = "text" | "html" | "attr" | "json";
+
+export type HtmlFilterType = "removeTdId";
 
 export type SnapshotsFile = Record<string, string>;
 

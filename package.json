@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
+    "test": "tsx --test tests/**/*.test.ts",
     "dev": "npx tsx src/server.ts & cd ui && npm run dev"
   },
   "dependencies": {

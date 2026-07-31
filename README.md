@@ -68,6 +68,7 @@ Edit `config.json` to add/modify data sources:
 **HTML extraction:**
 - `selector` - CSS/jQuery selector
 - `extract` - `"html"` or `"text"`
+- `filters` - Optional HTML cleanup filters, such as `["removeTdId"]`
 
 **JSON extraction:**
 - `extract` - `"json"`
