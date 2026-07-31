@@ -1,5 +1,6 @@
 import {loadConfig, loadLastChange, loadSnapshots, saveDiff, saveLastChange, saveSnapshots} from "./fileUtils"
-import {fetchHtml, fetchJson, fetchWithPlaywright} from "./fetch"
+import {fetchJson, fetchWithPlaywright} from "./fetch"
+import {fetchSourceHtml} from "./sourceFetch"
 import {extractJson, extractPart} from "./extract"
 import {applyTransformer} from "./transformers"
 import {createTwoFilesPatch} from "diff"
@@ -81,7 +82,7 @@ async function processSource(src: SourceConfig, lastChange: Record<string, strin
         const html = await fetchWithPlaywright(src.url, src.playwright)
         extracted = extractPart(html, src.match)
     } else {
-        const html = await fetchHtml(src.url, src)
+        const html = await fetchSourceHtml(src.url, src)
         extracted = extractPart(html, src.match)
     }
 
