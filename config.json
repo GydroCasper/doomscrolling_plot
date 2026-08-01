@@ -166,7 +166,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -175,7 +175,7 @@
     "match": {
       "selector": ".mw-heading:has(#After_WWII) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -184,7 +184,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -193,7 +193,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -202,7 +202,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -211,7 +211,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -220,7 +220,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -229,7 +229,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -238,7 +238,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -247,7 +247,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -256,7 +256,7 @@
     "match": {
       "selector": ".mw-heading:has(#Registered_data) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -265,7 +265,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -274,7 +274,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -283,7 +283,7 @@
     "match": {
       "selector": ".mw-heading:has(#After_WW2) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -292,7 +292,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -301,7 +301,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -310,7 +310,7 @@
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -319,7 +319,7 @@
     "match": {
       "selector": ".mw-heading:has(#Births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -328,7 +328,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -337,7 +337,7 @@
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -346,7 +346,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -355,7 +355,7 @@
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -364,7 +364,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics_1900_to_present) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -373,7 +373,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -382,7 +382,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -391,7 +391,7 @@
     "match": {
       "selector": ".mw-heading:has(#UN_estimates) ~ table.wikitable:first tbody tr:contains('2025')",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -400,7 +400,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -409,7 +409,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -418,7 +418,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2), .mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(3), .mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(4)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -427,7 +427,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2), .mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(3)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -436,7 +436,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -445,7 +445,7 @@
     "match": {
       "selector": ".mw-heading:has(#Births_and_deaths_since_1949) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -454,7 +454,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -463,7 +463,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -472,7 +472,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -481,7 +481,7 @@
     "match": {
       "selector": ".mw-heading:has(#Births_and_deaths_after_WWII) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -490,7 +490,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -499,7 +499,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -508,7 +508,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -517,7 +517,7 @@
     "match": {
       "selector": "table.wikitable:contains('Average population'):first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -526,7 +526,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2), .mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(3)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -535,7 +535,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -544,7 +544,7 @@
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -553,7 +553,7 @@
     "match": {
       "selector": ".mw-heading:has(#Births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(-n+3)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -562,7 +562,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -571,7 +571,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -580,7 +580,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2), .mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(3), .mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(4)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -589,7 +589,7 @@
     "match": {
       "selector": ".mw-heading:has(#Present_Estonia) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -598,7 +598,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -607,7 +607,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -616,7 +616,7 @@
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -625,7 +625,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -634,7 +634,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ div table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -643,7 +643,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -652,7 +652,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -661,7 +661,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -670,7 +670,7 @@
     "match": {
       "selector": ".mw-heading:has(#Excluding_Abkhazia_and_South_Ossetia) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -679,7 +679,7 @@
     "match": {
       "selector": "section[aria-labelledby='United_Nations_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -688,7 +688,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -697,7 +697,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -706,7 +706,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -715,7 +715,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -724,7 +724,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -733,7 +733,7 @@
     "match": {
       "selector": ".mw-heading:has(#Births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(-n+3)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -742,7 +742,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -751,7 +751,7 @@
     "match": {
       "selector": ".mw-heading:has(#Summary_of_vital_statistics_since_1900) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -760,7 +760,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -769,7 +769,7 @@
     "match": {
       "selector": ".mw-heading:has(#United_Nations_estimates) ~ table.wikitable:first tbody tr:contains('2025')",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -778,7 +778,7 @@
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -787,7 +787,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -796,7 +796,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -805,7 +805,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -814,7 +814,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -823,7 +823,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -832,7 +832,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(-n+3)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -841,7 +841,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -850,7 +850,7 @@
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -859,7 +859,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -868,7 +868,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(2), section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(3)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -877,7 +877,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -886,7 +886,7 @@
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -895,7 +895,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -904,7 +904,7 @@
     "match": {
       "selector": "table.wikitable:contains('Population'):contains('Natural increase') tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -913,7 +913,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -922,7 +922,7 @@
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -931,7 +931,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2), .mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(3)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -940,7 +940,7 @@
     "match": {
       "selector": ".mw-heading:has(#UN_estimates) ~ table.wikitable:first tbody tr:contains('2025')",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -949,7 +949,7 @@
     "match": {
       "selector": "caption:contains('Vital statistics since 1901') ~ tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -958,7 +958,7 @@
     "match": {
       "selector": "table.sort-under:eq(1) tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -967,7 +967,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -976,7 +976,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
 {
@@ -985,7 +985,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -994,7 +994,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1003,7 +1003,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1012,7 +1012,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1021,7 +1021,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1030,7 +1030,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1039,7 +1039,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1048,7 +1048,7 @@
     "match": {
       "selector": ".mw-heading:has(#Moldova_under_central_government_control) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1057,7 +1057,7 @@
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1066,7 +1066,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1075,7 +1075,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1084,7 +1084,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1093,7 +1093,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1102,7 +1102,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1111,7 +1111,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1120,7 +1120,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1129,7 +1129,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1138,7 +1138,7 @@
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(-n+3)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1147,7 +1147,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1156,7 +1156,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2), .mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(3)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1165,7 +1165,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1174,7 +1174,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1183,7 +1183,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1192,7 +1192,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1201,7 +1201,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1210,7 +1210,7 @@
     "match": {
       "selector": "div.mw-heading:has(#Estimates_from_the_United_Nations_2) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1219,7 +1219,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1228,7 +1228,7 @@
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1237,7 +1237,7 @@
     "match": {
       "selector": ".mw-heading:has(#UN_estimates) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1246,7 +1246,7 @@
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1255,7 +1255,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1264,7 +1264,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1273,7 +1273,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:eq(2) tbody tr:nth-last-child(2), section[aria-labelledby='Vital_statistics'] table.wikitable:eq(2) tbody tr:nth-last-child(3)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1282,7 +1282,7 @@
     "match": {
       "selector": ".mw-heading:has(#After_World_War_II) ~ div table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1291,7 +1291,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1300,7 +1300,7 @@
     "match": {
       "selector": ".mw-heading:has(#After_World_War_II) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1309,7 +1309,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1318,7 +1318,7 @@
     "match": {
       "selector": ".mw-heading:has(#Registered_data) ~ table.wikitable:first tbody tr:nth-last-child(-n+3)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1327,7 +1327,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1336,7 +1336,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1345,7 +1345,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1354,7 +1354,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1363,7 +1363,7 @@
     "match": {
       "selector": "table.wikitable:contains('2024'):first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1372,7 +1372,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1381,7 +1381,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1390,7 +1390,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1399,7 +1399,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1408,7 +1408,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1417,7 +1417,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1426,7 +1426,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1435,7 +1435,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1444,7 +1444,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1453,7 +1453,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1462,7 +1462,7 @@
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1471,7 +1471,7 @@
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1480,7 +1480,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1489,7 +1489,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1498,7 +1498,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(-n+3)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1507,7 +1507,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1516,7 +1516,7 @@
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1525,7 +1525,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1534,7 +1534,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1543,7 +1543,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1552,7 +1552,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1561,7 +1561,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1570,7 +1570,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1579,7 +1579,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1588,7 +1588,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1597,7 +1597,7 @@
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1606,7 +1606,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1615,7 +1615,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1624,7 +1624,7 @@
     "match": {
       "selector": ".mw-heading:has(#After_WWII_\\(1945-present\\)) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1633,7 +1633,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1642,7 +1642,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1651,7 +1651,7 @@
     "match": {
       "selector": ".mw-heading:has(#Registered_birth_and_deaths) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1660,7 +1660,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1669,7 +1669,7 @@
     "match": {
       "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1678,7 +1678,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1687,7 +1687,7 @@
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1696,7 +1696,7 @@
     "match": {
       "selector": ".mw-heading:has(#UN_estimates) ~ table.wikitable:first tbody tr:nth-last-child(2)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1705,7 +1705,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(2), section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(3)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {
@@ -1714,7 +1714,7 @@
     "match": {
       "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(2), section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(3)",
       "extract": "html",
-      "filters": ["removeTdId"]
+      "filters": ["removeTableIds"]
     }
   },
   {

@@ -27,7 +27,7 @@ export type MatchConfig = {
 
 export type ExtractMode = "text" | "html" | "attr" | "json";
 
-export type HtmlFilterType = "removeTdId";
+export type HtmlFilterType = "removeTableIds";
 
 export type SnapshotsFile = Record<string, string>;
 
