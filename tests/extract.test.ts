@@ -36,3 +36,27 @@ test("removeTableIds also works when td is the selected element", () => {
 
     assert.equal(extracted, "<td>Value</td>");
 });
+
+test("last two non-empty rows ignore a trailing MediaWiki row", () => {
+    const html = `
+        <div class="mw-heading"><h2 id="Vital_statistics">Vital statistics</h2></div>
+        <table class="wikitable">
+            <tbody>
+                <tr><td>2023</td></tr>
+                <tr><td>2024</td></tr>
+                <tr><td>2025</td></tr>
+                <tr class="mw-empty-elt"></tr>
+            </tbody>
+        </table>
+    `;
+
+    const extracted = extractPart(html, {
+        selector: ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-3)",
+        extract: "html"
+    });
+
+    assert.doesNotMatch(extracted, /2023/);
+    assert.match(extracted, /2024/);
+    assert.match(extracted, /2025/);
+    assert.doesNotMatch(extracted, /mw-empty-elt/);
+});

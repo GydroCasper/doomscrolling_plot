@@ -173,7 +173,7 @@
     "id": "albania-demographics-after-wwii-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Albania#After_WWII",
     "match": {
-      "selector": ".mw-heading:has(#After_WWII) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "selector": ".mw-heading:has(#After_WWII) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -200,7 +200,7 @@
     "id": "angola-demographics-vital-statistics-last-2-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Angola#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-3)",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -224,10 +224,10 @@
     }
   },
   {
-    "id": "australia-demographics-vital-statistics-last-row",
+    "id": "australia-demographics-vital-statistics-last-2-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Australia#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-3)",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -317,7 +317,7 @@
     "id": "bolivia-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Bolivia#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Births_and_deaths) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -371,7 +371,7 @@
     "id": "burkina-faso-demographics-vital-statistics-last-2-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Burkina_Faso#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-3)",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -443,7 +443,7 @@
     "id": "china-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_China#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Births_and_deaths_since_1949) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Births_and_deaths_since_1949) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -479,7 +479,7 @@
     "id": "croatia-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Croatia#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Births_and_deaths_after_WWII) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Births_and_deaths_after_WWII) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -560,7 +560,7 @@
     "id": "egypt-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Egypt#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -641,7 +641,7 @@
     "id": "gabon-demographics-vital-statistics-last-2-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Gabon#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-3)",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -650,7 +650,7 @@
     "id": "gambia-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_the_Gambia#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -704,7 +704,7 @@
     "id": "guinea-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Guinea#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -749,7 +749,7 @@
     "id": "iceland-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Iceland",
     "match": {
-      "selector": ".mw-heading:has(#Summary_of_vital_statistics_since_1900) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Summary_of_vital_statistics_since_1900) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -803,7 +803,7 @@
     "id": "israel-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Israel",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -821,7 +821,7 @@
     "id": "ivory-coast-demographics-vital-statistics-last-2-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Ivory_Coast#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-3)",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -848,7 +848,7 @@
     "id": "jordan-demographics-registered-births-deaths-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Jordan#Registered_births_and_deaths",
     "match": {
-      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -875,7 +875,7 @@
     "id": "kosovo-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Kosovo#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -902,7 +902,7 @@
     "id": "laos-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Laos#Lao_statistics_bureau_estimates",
     "match": {
-      "selector": "table.wikitable:contains('Population'):contains('Natural increase') tbody tr:last-child",
+      "selector": "table.wikitable:contains('Population'):contains('Natural increase') tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -1001,7 +1001,7 @@
     "id": "mali-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Mali#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -1019,7 +1019,7 @@
     "id": "mauritania-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Mauritania#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -1028,7 +1028,7 @@
     "id": "mauritius-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Mauritius#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -1064,7 +1064,7 @@
     "id": "montenegro-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Montenegro#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -1082,7 +1082,7 @@
     "id": "mozambique-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Mozambique#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -1145,7 +1145,7 @@
     "id": "niger-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Niger#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -1172,7 +1172,7 @@
     "id": "north-macedonia-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_North_Macedonia#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -1226,7 +1226,7 @@
     "id": "panama-demographics-registered-births-deaths-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Panama#Registered_births_and_deaths",
     "match": {
-      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -1235,16 +1235,16 @@
     "id": "papua-new-guinea-demographics-un-estimates-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Papua_New_Guinea",
     "match": {
-      "selector": ".mw-heading:has(#UN_estimates) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#UN_estimates) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
   },
   {
-    "id": "paraguay-demographics-registered-births-deaths-last-row",
+    "id": "paraguay-demographics-registered-births-deaths-last-2-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Paraguay#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-3)",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -1298,7 +1298,7 @@
     "id": "romania-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Romania#After_World_War_II",
     "match": {
-      "selector": ".mw-heading:has(#After_World_War_II) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#After_World_War_II) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -1307,7 +1307,7 @@
     "id": "rwanda-demographics-vital-statistics-last-2-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Rwanda#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-3)",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -1316,7 +1316,7 @@
     "id": "salvador-demographics-vital-statistics-last-3-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_El_Salvador#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Registered_data) ~ table.wikitable:first tbody tr:nth-last-child(-n+3)",
+      "selector": ".mw-heading:has(#Registered_data) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-4)",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -1352,7 +1352,7 @@
     "id": "senegal-demographics-vital-statistics-last-2-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Senegal#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-3)",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -1397,7 +1397,7 @@
     "id": "slovakia-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Slovakia#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -1442,7 +1442,7 @@
     "id": "south-sudan-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_South_Sudan#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -1460,7 +1460,7 @@
     "id": "sri-lanka-demographics-registered-births-deaths-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Sri_Lanka#Registered_births_and_deaths",
     "match": {
-      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -1469,7 +1469,7 @@
     "id": "suriname-demographics-registered-births-deaths-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Suriname",
     "match": {
-      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -1523,7 +1523,7 @@
     "id": "tanzania-demographics-vital-statistics-last-2-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Tanzania#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-3)",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
@@ -1595,7 +1595,7 @@
     "id": "uae-demographics-registered-births-deaths-last-2-rows",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_the_United_Arab_Emirates",
     "match": {
-      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-3)",
       "extract": "html",
       "filters": ["removeTableIds"]
     }
