@@ -1,4 +1,4 @@
-import {loadConfig, loadLastChange, loadSnapshots, saveDiff, saveLastChange, saveSnapshots} from "./fileUtils"
+import {loadConfig, loadLastChange, saveDiff, saveLastChange} from "./fileUtils"
 import {fetchJson, fetchWithPlaywright} from "./fetch"
 import {fetchSourceHtml} from "./sourceFetch"
 import {extractJson, extractPart} from "./extract"
@@ -9,9 +9,9 @@ import {SourceConfig, Summary} from "./types"
 import {getDateStringInEtTz} from "./utils/date"
 import {logger} from "./utils/logger"
 import {promises as fs} from "node:fs"
+import {loadSnapshots, saveSnapshot} from "./snapshotStore"
 
 const CONFIG_PATH = "./config.json"
-const SNAPSHOTS_PATH = "./snapshots.json"
 const DIFFS_DIR = "./diffs"
 const LAST_CHANGE_PATH = "./lastChange.json"
 const RUN_LOCK_PATH = "./grabber.lock"
@@ -21,7 +21,7 @@ export async function processSources() {
 
     try {
         const config = await loadConfig(CONFIG_PATH)
-        const snapshots = await loadSnapshots(SNAPSHOTS_PATH)
+        const snapshots = await loadSnapshots()
         const lastChange = await loadLastChange(LAST_CHANGE_PATH)
 
         const dateString = getDateStringInEtTz()
@@ -37,8 +37,6 @@ export async function processSources() {
                 logger.info((`${src.id}: ERROR. ${e}`))
                 summary.failed++
             }
-
-            await saveSnapshots(SNAPSHOTS_PATH, snapshots)
         }
 
         printSummary(summary)
@@ -109,6 +107,7 @@ async function processSource(src: SourceConfig, lastChange: Record<string, strin
     }
 
     snapshots[src.id] = extracted
+    await saveSnapshot(src.id, extracted)
 
     if (previous !== extracted) {
         lastChange[src.id] = src.frequency === "monthly" ? thisMonth : today

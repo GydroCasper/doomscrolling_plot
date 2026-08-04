@@ -6,7 +6,7 @@ Web scraper that monitors changes across multiple data sources and generates dif
 
 1. Fetches data from configured URLs (HTML pages or JSON APIs)
 2. Extracts specific content using CSS selectors or JSON paths
-3. Compares against previous snapshots
+3. Compares against previous snapshots stored in Cloud Firestore
 4. Saves diffs when changes are detected
 
 ## Data sources
@@ -23,6 +23,30 @@ Currently tracking:
 npm install
 npm run build
 ```
+
+### Firestore snapshots
+
+Create a Cloud Firestore database in your Firebase project, then authenticate the
+backend with Application Default Credentials. For local development, set these
+environment variables before running the scraper or API server:
+
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS="/absolute/path/to/service-account.json"
+export FIREBASE_PROJECT_ID="your-firebase-project-id"
+```
+
+The service-account file is a secret and should stay outside this repository.
+Snapshots are stored in the `snapshots` collection with one document per source.
+The document is overwritten only when that source changes.
+
+Before the first Firestore-backed run, import the existing local baseline once:
+
+```bash
+npm run migrate:snapshots
+```
+
+After a successful import, `snapshots.json` is no longer read or written by the
+application. Keep or remove that old file as a backup according to your needs.
 
 ## Usage
 
@@ -68,7 +92,7 @@ Edit `config.json` to add/modify data sources:
 **HTML extraction:**
 - `selector` - CSS/jQuery selector
 - `extract` - `"html"` or `"text"`
-- `filters` - Optional HTML cleanup filters, such as `["removeTableIds"]`
+- `filters` - Optional HTML cleanup filters. `cleanWikipediaMarkup` removes generated `id` attributes, inline `style` attributes, and superscript elements from selected Wikipedia content.
 
 **JSON extraction:**
 - `extract` - `"json"`
@@ -80,7 +104,7 @@ Edit `config.json` to add/modify data sources:
 
 ## Output
 
-- `snapshots.json` - Current state of all data sources
+- Firestore `snapshots` collection - Current state of all data sources
 - `diffs/` - Timestamped diff files when changes are detected
 
 ## Dependencies

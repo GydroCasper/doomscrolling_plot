@@ -13,3 +13,7 @@ yarn-error.log*
 /.idea
 /diffs
 /dist
+
+# Local Firebase credentials must never be committed.
+*-firebase-adminsdk-*.json
+service-account*.json

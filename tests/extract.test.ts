@@ -2,13 +2,13 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {extractPart} from "../src/extract";
 
-test("removeTableIds removes id attributes from tr and td elements only", () => {
+test("cleanWikipediaMarkup removes generated ids, inline styles, and superscript citations", () => {
     const html = `
         <table>
             <tbody>
-                <tr id="row-id">
-                    <td id="cell-id"><span id="content-id">Value</span></td>
-                    <td class="plain-cell">Other</td>
+                <tr id="row-id" style="text-align:right;">
+                    <td id="cell-id" style="color:red"><span id="content-id" style="font-weight:bold">Value</span><sup id="cite_ref-36"><a href="#cite_note-36">[36]</a></sup></td>
+                    <td class="plain-cell" style="text-align:right;">Other</td>
                 </tr>
             </tbody>
         </table>
@@ -17,21 +17,23 @@ test("removeTableIds removes id attributes from tr and td elements only", () => 
     const extracted = extractPart(html, {
         selector: "tr",
         extract: "html",
-        filters: ["removeTableIds"]
+        filters: ["cleanWikipediaMarkup"]
     });
 
     assert.match(extracted, /<tr>/);
-    assert.match(extracted, /<td><span id="content-id">Value<\/span><\/td>/);
+    assert.match(extracted, /<td><span>Value<\/span><\/td>/);
     assert.match(extracted, /<td class="plain-cell">Other<\/td>/);
-    assert.doesNotMatch(extracted, /<tr[^>]*\sid=/);
-    assert.doesNotMatch(extracted, /<td[^>]*\sid=/);
+    assert.doesNotMatch(extracted, /\sid=/);
+    assert.doesNotMatch(extracted, /\sstyle=/);
+    assert.doesNotMatch(extracted, /<sup/);
+    assert.doesNotMatch(extracted, /\[36\]/);
 });
 
-test("removeTableIds also works when td is the selected element", () => {
+test("cleanWikipediaMarkup also works when td is the selected element", () => {
     const extracted = extractPart("<table><tbody><tr><td id=\"cell-id\">Value</td></tr></tbody></table>", {
         selector: "td",
         extract: "html",
-        filters: ["removeTableIds"]
+        filters: ["cleanWikipediaMarkup"]
     });
 
     assert.equal(extracted, "<td>Value</td>");

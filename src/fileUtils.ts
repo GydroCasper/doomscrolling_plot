@@ -1,4 +1,4 @@
-import {ConfigFile, SnapshotsFile} from "./types"
+import {ConfigFile} from "./types"
 import { promises as fs } from "node:fs";
 import {dirname, join} from "node:path";
 
@@ -16,22 +16,6 @@ export async function loadConfig(path: string): Promise<ConfigFile> {
         ids.add(s.id);
     }
     return parsed;
-}
-
-export async function loadSnapshots(path: string): Promise<SnapshotsFile> {
-    try {
-        const raw = await fs.readFile(path, "utf-8");
-        return JSON.parse(raw) as SnapshotsFile;
-    } catch (error: any) {
-        if (error?.code === "ENOENT") {
-            return {};
-        }
-        throw new Error(`Failed to load snapshots from ${path}: ${error?.message ?? error}`);
-    }
-}
-
-export async function saveSnapshots(path: string, data: SnapshotsFile): Promise<void> {
-    await writeJsonAtomic(path, data);
 }
 
 export async function saveDiff(dir: string, id: string, diff: string): Promise<void> {
