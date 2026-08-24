@@ -1,6 +1,7 @@
 import {promises as fs} from "node:fs"
 import {SnapshotsFile} from "./types"
 import {importSnapshots} from "./snapshotStore"
+import {areStrings} from "./utils/typeGuards"
 
 const SNAPSHOTS_PATH = "./snapshots.json"
 
@@ -9,7 +10,7 @@ async function main() {
     const snapshots = JSON.parse(raw) as SnapshotsFile
 
     for (const [sourceId, value] of Object.entries(snapshots)) {
-        if (typeof value !== "string") {
+        if (!areStrings(value)) {
             throw new Error(`Invalid local snapshot: ${sourceId}`)
         }
     }

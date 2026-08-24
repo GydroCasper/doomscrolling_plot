@@ -27,10 +27,10 @@ export async function fetchDiffs() {
     return response.json()
 }
 
-export async function deleteDiffsBySourceId(sourceId: string) {
-    await fetch(`${baseUrl}/api/diffs/${encodeURIComponent(sourceId)}`, {method: 'DELETE'})
+export async function deleteOtherDiffs(sourceId: string, keepDiffId: string) {
+    await fetch(`${baseUrl}/api/diffs/${encodeURIComponent(sourceId)}/except/${encodeURIComponent(keepDiffId)}`, {method: 'DELETE'})
 }
 
-export async function deleteDiff(id: string, date: string) {
-    await fetch(`${baseUrl}/api/diff/${encodeURIComponent(`${date}_${id}`)}`, {method: 'DELETE'})
+export async function deleteDiff(diffId: string) {
+    await fetch(`${baseUrl}/api/diff/${encodeURIComponent(diffId)}`, {method: 'DELETE'})
 }

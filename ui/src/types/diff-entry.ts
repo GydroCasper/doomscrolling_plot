@@ -1,5 +1,6 @@
 export type DiffEntry = {
-    id: string
+    diffId: string
+    sourceId: string
     date: string
     diffText: string
     sourceUrl?: string

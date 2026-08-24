@@ -7,7 +7,7 @@ Web scraper that monitors changes across multiple data sources and generates dif
 1. Fetches data from configured URLs (HTML pages or JSON APIs)
 2. Extracts specific content using CSS selectors or JSON paths
 3. Compares against previous snapshots stored in Cloud Firestore
-4. Saves diffs when changes are detected
+4. Saves diffs to Cloud Firestore when changes are detected
 
 ## Data sources
 
@@ -24,7 +24,7 @@ npm install
 npm run build
 ```
 
-### Firestore snapshots
+### Firestore storage
 
 Create a Cloud Firestore database in your Firebase project, then authenticate the
 backend with Application Default Credentials. For local development, set these
@@ -39,14 +39,21 @@ The service-account file is a secret and should stay outside this repository.
 Snapshots are stored in the `snapshots` collection with one document per source.
 The document is overwritten only when that source changes.
 
+Diffs are stored in the `diffs` collection. Each document contains the source ID,
+the generated timestamp, and the unified diff text. The API reads and deletes
+diffs directly in Firestore, so it does not depend on local disk persistence.
+
 Before the first Firestore-backed run, import the existing local baseline once:
 
 ```bash
 npm run migrate:snapshots
+npm run migrate:diffs
 ```
 
-After a successful import, `snapshots.json` is no longer read or written by the
-application. Keep or remove that old file as a backup according to your needs.
+After a successful import, `snapshots.json` and `diffs/` are no longer read or
+written by the application. Keep or remove the old local data as a backup
+according to your needs. Both migration commands are safe to run again: existing
+Firestore documents are overwritten using deterministic IDs.
 
 ## Usage
 
@@ -105,7 +112,7 @@ Edit `config.json` to add/modify data sources:
 ## Output
 
 - Firestore `snapshots` collection - Current state of all data sources
-- `diffs/` - Timestamped diff files when changes are detected
+- Firestore `diffs` collection - Timestamped diffs when changes are detected
 
 ## Dependencies
 

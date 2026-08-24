@@ -18,12 +18,6 @@ export async function loadConfig(path: string): Promise<ConfigFile> {
     return parsed;
 }
 
-export async function saveDiff(dir: string, id: string, diff: string): Promise<void> {
-    await fs.mkdir(dir, { recursive: true });
-    const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
-    await fs.writeFile(`${dir}/${timestamp}_${id}.diff`, diff, "utf-8");
-}
-
 export async function loadLastChange(path: string): Promise<Record<string, string>> {
     try {
         const text = await fs.readFile(path, "utf-8");
