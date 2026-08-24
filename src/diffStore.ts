@@ -1,5 +1,6 @@
 import {FieldValue} from "firebase-admin/firestore"
 import {FIRESTORE_BATCH_SIZE, firestore} from "./firestore"
+import {areStrings} from "./utils/typeGuards"
 
 const DIFFS_COLLECTION = "diffs"
 
@@ -39,7 +40,7 @@ export async function loadDiffs(): Promise<StoredDiff[]> {
     const diffs = documents.docs.map((document): StoredDiff => {
         const data = document.data()
 
-        if (typeof data.sourceId !== "string" || typeof data.date !== "string" || typeof data.diffText !== "string") {
+        if (!areStrings(data.sourceId, data.date, data.diffText)) {
             throw new Error(`Invalid diff document: ${document.id}`)
         }
 

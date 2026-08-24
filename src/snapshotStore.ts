@@ -1,6 +1,7 @@
 import {FieldValue} from "firebase-admin/firestore"
 import {SnapshotsFile} from "./types"
 import {FIRESTORE_BATCH_SIZE, firestore} from "./firestore"
+import {areStrings} from "./utils/typeGuards"
 
 const SNAPSHOTS_COLLECTION = "snapshots"
 
@@ -10,7 +11,7 @@ export async function loadSnapshots(): Promise<SnapshotsFile> {
 
     for (const document of documents.docs) {
         const data = document.data()
-        if (typeof data.sourceId !== "string" || typeof data.value !== "string") {
+        if (!areStrings(data.sourceId, data.value)) {
             throw new Error(`Invalid snapshot document: ${document.id}`)
         }
         result[data.sourceId] = data.value
