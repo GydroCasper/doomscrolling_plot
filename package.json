@@ -7,7 +7,8 @@
     "build": "tsc",
     "test": "tsx --test tests/**/*.test.ts",
     "migrate:snapshots": "tsx src/migrateSnapshots.ts",
-    "dev": "npx tsx src/server.ts & cd ui && npm run dev"
+    "migrate:diffs": "tsx src/migrateDiffs.ts",
+    "dev": "tsx src/server.ts & server_pid=$!; trap 'kill \"$server_pid\" 2>/dev/null; wait \"$server_pid\" 2>/dev/null' EXIT INT TERM; npm --prefix ui run dev"
   },
   "dependencies": {
     "@hono/node-server": "^1.19.12",

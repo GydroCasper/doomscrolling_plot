@@ -1,4 +1,4 @@
-import {loadConfig, loadLastChange, saveDiff, saveLastChange} from "./fileUtils"
+import {loadConfig, loadLastChange, saveLastChange} from "./fileUtils"
 import {fetchJson, fetchWithPlaywright} from "./fetch"
 import {fetchSourceHtml} from "./sourceFetch"
 import {extractJson, extractPart} from "./extract"
@@ -10,9 +10,9 @@ import {getDateStringInEtTz} from "./utils/date"
 import {logger} from "./utils/logger"
 import {promises as fs} from "node:fs"
 import {loadSnapshots, saveSnapshot} from "./snapshotStore"
+import {saveDiff} from "./diffStore"
 
 const CONFIG_PATH = "./config.json"
-const DIFFS_DIR = "./diffs"
 const LAST_CHANGE_PATH = "./lastChange.json"
 const RUN_LOCK_PATH = "./grabber.lock"
 
@@ -99,7 +99,7 @@ async function processSource(src: SourceConfig, lastChange: Record<string, strin
             previous ?? "",
             extracted
         )
-        await saveDiff(DIFFS_DIR, src.id, diff)
+        await saveDiff(src.id, diff)
         summary.changed.push(src.id)
         logger.info(`${src.id}: CHANGED (diff saved)`)
     } else {

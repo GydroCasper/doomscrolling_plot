@@ -2,7 +2,7 @@ import {useState} from "react"
 import {DiffItem} from "../diff-item/diff-item.tsx"
 import {styles} from "./diff-list.styles.tsx"
 import {useDiff} from "../../context/diff-context.tsx"
-import {deleteDiff, deleteDiffsBySourceId} from "../../services/api.ts"
+import {deleteDiff, deleteOtherDiffs} from "../../services/api.ts"
 import type {DiffEntry} from "../../types/diff-entry.ts"
 
 export function DiffList() {
@@ -12,18 +12,18 @@ export function DiffList() {
     const list = displayed ?? diffs
 
     const idCounts = list.reduce<Record<string, number>>((acc, d) => {
-        acc[d.id] = (acc[d.id] ?? 0) + 1
+        acc[d.sourceId] = (acc[d.sourceId] ?? 0) + 1
         return acc
     }, {})
 
     const handleDelete = async (entry: DiffEntry) => {
-        setDisplayed(list.filter(d => !(d.id === entry.id && d.date === entry.date)))
-        await deleteDiff(entry.id, entry.date)
+        setDisplayed(list.filter(d => d.diffId !== entry.diffId))
+        await deleteDiff(entry.diffId)
     }
 
     const handleKeepOnly = async (entry: DiffEntry) => {
-        setDisplayed(list.filter(d => d.id !== entry.id || (d.id === entry.id && d.date === entry.date)))
-        await deleteDiffsBySourceId(entry.id)
+        setDisplayed(list.filter(d => d.sourceId !== entry.sourceId || d.diffId === entry.diffId))
+        await deleteOtherDiffs(entry.sourceId, entry.diffId)
     }
 
     return (
@@ -31,12 +31,12 @@ export function DiffList() {
             <h1 style={styles.title}>Last changes</h1>
             {list.map(d => (
                 <DiffItem
-                    key={`${d.id}-${d.date}`}
-                    title={d.id}
+                    key={d.diffId}
+                    title={d.sourceId}
                     date={d.date}
                     diffText={d.diffText}
                     sourceUrl={d.sourceUrl}
-                    hasSiblings={(idCounts[d.id] ?? 0) > 1}
+                    hasSiblings={(idCounts[d.sourceId] ?? 0) > 1}
                     onDelete={() => handleDelete(d)}
                     onKeepOnly={() => handleKeepOnly(d)}
                 />

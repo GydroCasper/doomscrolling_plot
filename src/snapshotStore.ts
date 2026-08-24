@@ -1,19 +1,8 @@
-import {applicationDefault, getApps, initializeApp} from "firebase-admin/app"
-import {FieldValue, getFirestore} from "firebase-admin/firestore"
+import {FieldValue} from "firebase-admin/firestore"
 import {SnapshotsFile} from "./types"
+import {FIRESTORE_BATCH_SIZE, firestore} from "./firestore"
 
 const SNAPSHOTS_COLLECTION = "snapshots"
-
-function firestore() {
-    if (getApps().length === 0) {
-        initializeApp({
-            credential: applicationDefault(),
-            projectId: process.env.FIREBASE_PROJECT_ID
-        })
-    }
-
-    return getFirestore()
-}
 
 export async function loadSnapshots(): Promise<SnapshotsFile> {
     const result: SnapshotsFile = {}
@@ -45,10 +34,10 @@ export async function importSnapshots(snapshots: SnapshotsFile): Promise<number>
     const entries = Object.entries(snapshots)
     const database = firestore()
 
-    for (let start = 0; start < entries.length; start += 500) {
+    for (let start = 0; start < entries.length; start += FIRESTORE_BATCH_SIZE) {
         const batch = database.batch()
 
-        for (const [sourceId, value] of entries.slice(start, start + 500)) {
+        for (const [sourceId, value] of entries.slice(start, start + FIRESTORE_BATCH_SIZE)) {
             batch.set(database.collection(SNAPSHOTS_COLLECTION).doc(sourceId), {
                 sourceId,
                 value,
