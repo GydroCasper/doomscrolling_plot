@@ -12,15 +12,7 @@ export function DiffProvider({children}: { children: ReactNode }) {
     }
 
     useEffect(() => {
-        let cancelled = false
-
-        fetchDiffs().then(data => {
-            if (!cancelled) setDiffs(data)
-        })
-
-        return () => {
-            cancelled = true
-        }
+        fetchDiffs().then(setDiffs)
     }, [])
 
     return (
