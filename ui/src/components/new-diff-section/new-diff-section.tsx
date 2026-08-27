@@ -25,7 +25,7 @@ export function NewDiffSection({diffIds, onReviewAll, children}: Props) {
     }
 
     return (
-        <section style={styles.container}>
+        <section style={diffIds.length === 0 ? styles.emptyContainer : styles.container}>
             {diffIds.length === 0 ? (
                 <div style={styles.empty}>No new changes</div>
             ) : (
