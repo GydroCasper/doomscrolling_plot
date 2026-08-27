@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
-  "scripts": {
-    "build": "tsc",
-    "test": "tsx --test tests/**/*.test.ts",
-    "migrate:snapshots": "tsx src/migrateSnapshots.ts",
+    "scripts": {
+        "build": "tsc",
+        "test": "tsx --test tests/**/*.test.ts",
+        "crawler:local": "npm run build && node --env-file=.env.local dist/index.js",
+        "migrate:snapshots": "tsx src/migrateSnapshots.ts",
     "migrate:diffs": "tsx src/migrateDiffs.ts",
     "migrate:reviewed-diffs": "tsx src/migrateReviewedDiffs.ts",
     "dev": "tsx src/server.ts & server_pid=$!; trap 'kill \"$server_pid\" 2>/dev/null; wait \"$server_pid\" 2>/dev/null' EXIT INT TERM; npm --prefix ui run dev"

@@ -130,7 +130,10 @@ export async function fetchWithPlaywright(
     const page = await browser.newPage();
 
     try {
-        await page.goto(url, { timeout: timeoutMs });
+        await page.goto(url, {
+            timeout: timeoutMs,
+            waitUntil: "domcontentloaded"
+        });
         if (waitForSelector) {
             await page.waitForSelector(waitForSelector, { timeout: timeoutMs });
         }

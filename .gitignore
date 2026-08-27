@@ -14,6 +14,15 @@ yarn-error.log*
 /diffs
 /dist
 
+# Local environment and credential paths must never be committed.
+.env
+.env.*
+!.env.example
+
+# Local crawler logs written by launchd.
+.crawler-stdout.log
+.crawler-stderr.log
+
 # Local Firebase credentials must never be committed.
 *-firebase-adminsdk-*.json
 service-account*.json

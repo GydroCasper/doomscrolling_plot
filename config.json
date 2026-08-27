@@ -1739,7 +1739,7 @@
     "playwright": {
       "headless": false,
       "waitForSelector": "table.type tbody tr.fact.selected",
-      "timeoutMs": 5000
+      "timeoutMs": 10000
     },
     "match": {
       "selector": "table.type tbody tr.fact.selected",
