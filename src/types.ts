@@ -5,6 +5,8 @@ export type SourceConfig = {
     url: string;
     match: MatchConfig;
     headers?: Record<string, string>;
+    method?: "GET" | "POST";
+    body?: object;
     playwright?: PlaywrightOptions;
     frequency?: "daily" | "monthly";
 };
