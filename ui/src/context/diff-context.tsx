@@ -1,13 +1,7 @@
-import {createContext, useContext, useState, type ReactNode, useEffect} from "react"
-import type {DiffEntry} from "../types/diff-entry.ts"
+import {useState, type ReactNode, useEffect} from "react"
 import {fetchDiffs} from "../services/api.ts"
-
-interface DiffContextType {
-    diffs: DiffEntry[]
-    refetch: () => Promise<void>
-}
-
-const DiffContext = createContext<DiffContextType | null>(null)
+import {DiffContext} from "./diff-state.ts"
+import type {DiffEntry} from "../types/diff-entry.ts"
 
 export function DiffProvider({children}: { children: ReactNode }) {
     const [diffs, setDiffs] = useState<DiffEntry[]>([])
@@ -18,7 +12,15 @@ export function DiffProvider({children}: { children: ReactNode }) {
     }
 
     useEffect(() => {
-        refetch()
+        let cancelled = false
+
+        fetchDiffs().then(data => {
+            if (!cancelled) setDiffs(data)
+        })
+
+        return () => {
+            cancelled = true
+        }
     }, [])
 
     return (
@@ -26,10 +28,4 @@ export function DiffProvider({children}: { children: ReactNode }) {
             {children}
         </DiffContext.Provider>
     )
-}
-
-export function useDiff() {
-    const context = useContext(DiffContext)
-    if (!context) throw new Error("useDiff must be used within DiffProvider")
-    return context
 }

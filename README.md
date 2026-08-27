@@ -55,6 +55,14 @@ written by the application. Keep or remove the old local data as a backup
 according to your needs. Both migration commands are safe to run again: existing
 Firestore documents are overwritten using deterministic IDs.
 
+After deploying the reviewed/unreviewed diff grouping, mark pre-existing Firestore diffs as reviewed once:
+
+```bash
+npm run migrate:reviewed-diffs
+```
+
+The migration only updates documents that do not have a `reviewedAt` field, so it is safe to run again. It records the review time as August 26, 2026 at midnight in `America/New_York` (`2026-08-26T04:00:00Z`). New diffs are stored with `reviewedAt: null` until they are explicitly marked as reviewed in the UI.
+
 ## Usage
 
 **Run scraper once:**

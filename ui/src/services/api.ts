@@ -27,6 +27,18 @@ export async function fetchDiffs() {
     return response.json()
 }
 
+export async function markDiffsReviewed(diffIds: string[]) {
+    const response = await fetch(baseUrl + '/api/diffs/reviewed', {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({diffIds})
+    })
+
+    if (!response.ok) {
+        throw new Error('Failed to mark diffs as reviewed')
+    }
+}
+
 export async function deleteOtherDiffs(sourceId: string, keepDiffId: string) {
     await fetch(`${baseUrl}/api/diffs/${encodeURIComponent(sourceId)}/except/${encodeURIComponent(keepDiffId)}`, {method: 'DELETE'})
 }
