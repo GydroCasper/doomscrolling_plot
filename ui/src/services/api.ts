@@ -12,6 +12,7 @@ import {
 } from "firebase/firestore"
 import {db} from "../firebase.ts"
 import type {DiffEntry} from "../types/diff-entry.ts"
+import {areStrings} from "../../../src/utils/typeGuards.ts"
 
 const DIFFS_COLLECTION = "diffs"
 const BATCH_SIZE = 500
@@ -43,7 +44,7 @@ export async function fetchDiffs(): Promise<DiffEntry[]> {
     return snapshot.docs.map(document => {
         const data = document.data()
 
-        if (typeof data.sourceId !== "string" || typeof data.date !== "string" || typeof data.diffText !== "string") {
+        if (!areStrings(data.sourceId, data.date, data.diffText)) {
             throw new Error(`Invalid diff document: ${document.id}`)
         }
 
