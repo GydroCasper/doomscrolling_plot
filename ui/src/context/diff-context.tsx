@@ -1,5 +1,5 @@
 import {useState, type ReactNode, useEffect} from "react"
-import {fetchDiffs} from "../services/api.ts"
+import {fetchDiffs} from "../services/diff-query-service.ts"
 import {DiffContext} from "./diff-state.ts"
 import type {DiffEntry} from "../types/diff-entry.ts"
 

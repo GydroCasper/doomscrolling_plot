@@ -70,6 +70,12 @@ The migration only updates documents that do not have a `reviewedAt` field, so i
 npx tsx src/index.ts
 ```
 
+To build the scraper, load the local `.env.local` file, and run it once:
+
+```bash
+npm run crawler:local
+```
+
 **Launch frontend + API server together:**
 ```bash
 npm run dev
@@ -86,6 +92,71 @@ cd ui
 npm install   # first time only
 npm run dev
 ```
+
+## Scheduled runs on macOS
+
+The repository includes a user LaunchAgent template at
+`launchd/com.gydrocasper.doomscrolling-plot-crawler.plist`. It runs the complete
+crawler at these times in the current macOS time zone:
+
+- 07:00
+- 09:00
+- 11:00
+- 13:00
+- 16:00
+- 18:00
+- 21:00
+- 22:00
+
+Before installing it, create `.env.local` from `.env.example` and set the local
+Firebase project ID and credential-file path. Keep the credential file outside
+the repository. A dedicated directory under the user's home directory is
+preferable to macOS privacy-protected directories such as Downloads, Documents,
+or Desktop, which a background LaunchAgent might not be allowed to read.
+
+The plist contains absolute paths. Update its `WorkingDirectory`, npm path, and
+log paths if the repository or Node.js installation is located elsewhere.
+
+Install and register the LaunchAgent:
+
+```bash
+mkdir -p "$HOME/Library/LaunchAgents"
+cp launchd/com.gydrocasper.doomscrolling-plot-crawler.plist \
+  "$HOME/Library/LaunchAgents/"
+launchctl bootstrap \
+  "gui/$(id -u)" \
+  "$HOME/Library/LaunchAgents/com.gydrocasper.doomscrolling-plot-crawler.plist"
+```
+
+Inspect the installed schedule:
+
+```bash
+/usr/libexec/PlistBuddy \
+  -c "Print :StartCalendarInterval" \
+  "$HOME/Library/LaunchAgents/com.gydrocasper.doomscrolling-plot-crawler.plist"
+```
+
+Inspect the registered job state:
+
+```bash
+launchctl print \
+  "gui/$(id -u)/com.gydrocasper.doomscrolling-plot-crawler" \
+  | grep -E "state =|runs =|last exit code"
+```
+
+Trigger a run manually through `launchd`:
+
+```bash
+launchctl kickstart \
+  "gui/$(id -u)/com.gydrocasper.doomscrolling-plot-crawler"
+```
+
+The LaunchAgent writes output to `.crawler-stdout.log` and errors to
+`.crawler-stderr.log` in the project directory. Both files are ignored by Git.
+
+If the Mac is asleep at a scheduled time, macOS normally runs the calendar job
+after the computer wakes. Runs missed while the Mac is powered off are not
+replayed individually.
 
 ## Configuration
 

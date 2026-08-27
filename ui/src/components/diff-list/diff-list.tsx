@@ -2,7 +2,7 @@ import {DiffItem} from "../diff-item/diff-item.tsx"
 import {NewDiffSection} from "../new-diff-section/new-diff-section.tsx"
 import {styles} from "./diff-list.styles.tsx"
 import {useDiff} from "../../context/diff-state.ts"
-import {deleteDiff, deleteOtherDiffs, markDiffsReviewed} from "../../services/api.ts"
+import {deleteDiff, deleteOtherDiffs, markDiffsReviewed} from "../../services/diff-command-service.ts"
 import type {DiffEntry} from "../../types/diff-entry.ts"
 
 export function DiffList() {
