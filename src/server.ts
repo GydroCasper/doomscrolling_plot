@@ -5,8 +5,9 @@ import {streamText} from 'hono/streaming'
 import {Writable} from 'stream'
 import {processSources} from './processor'
 import {addStreamTransport} from './utils/logger'
+import {areStrings} from './utils/typeGuards'
 import {loadConfig} from './fileUtils'
-import {deleteDiff, deleteOtherDiffs, loadDiffs} from './diffStore'
+import {deleteDiff, deleteOtherDiffs, loadDiffs, markDiffsReviewed} from './diffStore'
 
 const CONFIG_PATH = './config.json'
 const PORT = 3001
@@ -26,6 +27,17 @@ app.use('*', cors())
 
 app.get('/api/diffs', async (c) => {
     return c.json(await getDiffs())
+})
+
+app.patch('/api/diffs/reviewed', async (c) => {
+    const body = await c.req.json().catch(() => null)
+    const diffIds = body?.diffIds
+
+    if (!Array.isArray(diffIds) || !areStrings(...diffIds)) {
+        return c.json({error: 'diffIds must be an array of strings'}, 400)
+    }
+
+    return c.json({reviewed: await markDiffsReviewed(diffIds)})
 })
 
 app.delete('/api/diffs/:sourceId/except/:diffId', async (c) => {

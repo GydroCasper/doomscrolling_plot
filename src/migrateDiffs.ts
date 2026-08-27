@@ -3,6 +3,7 @@ import {join} from "node:path"
 import {saveDiffAt} from "./diffStore"
 
 const DIFFS_DIR = "./diffs"
+const REVIEWED_AT = new Date("2026-08-26T00:00:00-04:00")
 
 async function main() {
     const files = (await fs.readdir(DIFFS_DIR)).filter(file => file.endsWith(".diff"))
@@ -17,7 +18,7 @@ async function main() {
         const date = name.slice(0, separator)
         const sourceId = name.slice(separator + 1)
         const diffText = await fs.readFile(join(DIFFS_DIR, file), "utf-8")
-        await saveDiffAt(sourceId, date, diffText)
+        await saveDiffAt(sourceId, date, diffText, REVIEWED_AT)
     }
 
     console.log(`Imported ${files.length} diffs into Firestore.`)

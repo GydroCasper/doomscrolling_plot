@@ -1,7 +1,7 @@
 import {useState} from "react"
 import {startGrabbing} from "../../services/api.ts"
 import {Logs} from "../log/logs.tsx"
-import {useDiff} from "../../context/diff-context.tsx"
+import {useDiff} from "../../context/diff-state.ts"
 
 export function Header() {
     const [running, setRunning] = useState(false)
