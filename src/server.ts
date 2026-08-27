@@ -6,16 +6,15 @@ import {Writable} from 'stream'
 import {processSources} from './processor'
 import {addStreamTransport} from './utils/logger'
 import {areStrings} from './utils/typeGuards'
-import {loadConfig} from './fileUtils'
 import {deleteDiff, deleteOtherDiffs, loadDiffs, markDiffsReviewed} from './diffStore'
+import {loadSourceConfigs} from './sourceConfigStore'
 
-const CONFIG_PATH = './config.json'
 const PORT = 3001
 
 async function getDiffs() {
     const [diffs, config] = await Promise.all([
         loadDiffs(),
-        loadConfig(CONFIG_PATH).catch(() => [] as any[])
+        loadSourceConfigs().catch(() => [] as any[])
     ])
     const urlById = Object.fromEntries(config.map((s: any) => [s.id, s.url]))
     return diffs.map(diff => ({...diff, sourceUrl: urlById[diff.sourceId]}))

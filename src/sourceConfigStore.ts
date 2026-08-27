@@ -1,24 +1,45 @@
-import {FieldValue} from "firebase-admin/firestore"
-import {ConfigFile} from "./types"
-import {FIRESTORE_BATCH_SIZE, firestore} from "./firestore"
+import {ConfigFile, SourceConfig} from "./types"
+import {firestore} from "./firestore"
 
 const SOURCES_COLLECTION = "sources"
 
-export async function importSourceConfigs(sources: ConfigFile): Promise<number> {
-    const database = firestore()
-
-    for (let start = 0; start < sources.length; start += FIRESTORE_BATCH_SIZE) {
-        const batch = database.batch()
-
-        for (const source of sources.slice(start, start + FIRESTORE_BATCH_SIZE)) {
-            batch.set(database.collection(SOURCES_COLLECTION).doc(source.id), {
-                ...source,
-                updatedAt: FieldValue.serverTimestamp()
-            })
+export async function loadSourceConfigs(): Promise<ConfigFile> {
+    const documents = await firestore().collection(SOURCES_COLLECTION).get()
+    const sources = documents.docs.map(document => {
+        const source = {
+            ...document.data(),
+            id: document.id
         }
 
-        await batch.commit()
+        if (!isSourceConfig(source)) {
+            throw new Error(`Invalid source configuration: ${document.id}`)
+        }
+
+        return source
+    })
+    const ids = new Set<string>()
+
+    for (const source of sources) {
+        if (ids.has(source.id)) {
+            throw new Error(`Duplicate source id: ${source.id}`)
+        }
+        ids.add(source.id)
     }
 
-    return sources.length
+    return sources
+}
+
+function isSourceConfig(value: Record<string, unknown>): value is SourceConfig {
+    const match = value.match
+
+    return typeof value.id === "string"
+        && typeof value.url === "string"
+        && typeof match === "object"
+        && match !== null
+        && typeof (match as Record<string, unknown>).extract === "string"
+        && (
+            typeof (match as Record<string, unknown>).selector === "string"
+            || Array.isArray((match as Record<string, unknown>).selectors)
+            || typeof (match as Record<string, unknown>).jsonPath === "string"
+        )
 }

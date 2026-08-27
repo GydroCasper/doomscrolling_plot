@@ -1,4 +1,4 @@
-import {loadConfig, loadLastChange, saveLastChange} from "./fileUtils"
+import {loadLastChange, saveLastChange} from "./fileUtils"
 import {fetchJson, fetchWithPlaywright} from "./fetch"
 import {fetchSourceHtml} from "./sourceFetch"
 import {extractJson, extractPart} from "./extract"
@@ -11,8 +11,8 @@ import {logger} from "./utils/logger"
 import {promises as fs} from "node:fs"
 import {loadSnapshots, saveSnapshot} from "./snapshotStore"
 import {saveDiff} from "./diffStore"
+import {loadSourceConfigs} from "./sourceConfigStore"
 
-const CONFIG_PATH = "./config.json"
 const LAST_CHANGE_PATH = "./lastChange.json"
 const RUN_LOCK_PATH = "./grabber.lock"
 
@@ -20,7 +20,7 @@ export async function processSources() {
     const releaseLock = await acquireRunLock()
 
     try {
-        const config = await loadConfig(CONFIG_PATH)
+        const config = await loadSourceConfigs()
         const snapshots = await loadSnapshots()
         const lastChange = await loadLastChange(LAST_CHANGE_PATH)
 

@@ -1,13 +1,13 @@
-import {diffRepository} from "../repositories/diff-repository.ts"
+import {dataRepository} from "../repositories/firestore-repository.ts"
 
 export async function markDiffsReviewed(diffIds: string[]): Promise<void> {
-    await diffRepository.markReviewed(diffIds)
+    await dataRepository.markReviewed(diffIds)
 }
 
 export async function deleteOtherDiffs(sourceId: string, keepDiffId: string): Promise<void> {
-    await diffRepository.deleteOthers(sourceId, keepDiffId)
+    await dataRepository.deleteOthers(sourceId, keepDiffId)
 }
 
 export async function deleteDiff(diffId: string): Promise<void> {
-    await diffRepository.deleteById(diffId)
+    await dataRepository.deleteById(diffId)
 }
