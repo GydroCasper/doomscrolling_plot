@@ -5,6 +5,7 @@ import {streamText} from 'hono/streaming'
 import {Writable} from 'stream'
 import {processSources} from './processor'
 import {addStreamTransport} from './utils/logger'
+import {areStrings} from './utils/typeGuards'
 import {loadConfig} from './fileUtils'
 import {deleteDiff, deleteOtherDiffs, loadDiffs, markDiffsReviewed} from './diffStore'
 
@@ -32,7 +33,7 @@ app.patch('/api/diffs/reviewed', async (c) => {
     const body = await c.req.json().catch(() => null)
     const diffIds = body?.diffIds
 
-    if (!Array.isArray(diffIds) || !diffIds.every(diffId => typeof diffId === 'string')) {
+    if (!Array.isArray(diffIds) || !areStrings(...diffIds)) {
         return c.json({error: 'diffIds must be an array of strings'}, 400)
     }
 

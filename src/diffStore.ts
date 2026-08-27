@@ -66,7 +66,7 @@ export async function markDiffsReviewed(diffIds: string[]): Promise<number> {
             .slice(start, start + FIRESTORE_BATCH_SIZE)
             .map(diffId => database.collection(DIFFS_COLLECTION).doc(diffId))
         const documents = await database.getAll(...references)
-        const toReview = documents.filter(document => document.exists && document.data()?.reviewedAt == null)
+        const toReview = documents.filter(document => document.exists && document.data()?.reviewedAt === null)
 
         if (toReview.length === 0) continue
 
