@@ -7,7 +7,7 @@ const BATCH_SIZE = 500
 const DIFFS_COLLECTION = "diffs"
 const SNAPSHOTS_COLLECTION = "snapshots"
 const SOURCES_COLLECTION = "sources"
-const SOURCE_STATES_COLLECTION = "sourceStates"
+const LAST_CHANGES_COLLECTION = "lastChanges"
 
 export type StoredDiff = {
     diffId: string
@@ -41,7 +41,7 @@ class FirestoreRepository implements DatabaseRepository {
             const batch = database.batch()
 
             for (const [sourceId, lastChange] of entries.slice(start, start + BATCH_SIZE)) {
-                batch.set(database.collection(SOURCE_STATES_COLLECTION).doc(sourceId), {
+                batch.set(database.collection(LAST_CHANGES_COLLECTION).doc(sourceId), {
                     sourceId,
                     lastChange,
                     updatedAt: FieldValue.serverTimestamp()

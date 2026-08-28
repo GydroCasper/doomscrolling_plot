@@ -14,7 +14,7 @@ async function main() {
     }
 
     const imported = await databaseRepository.importLastChanges(lastChanges)
-    console.log(`Imported ${imported} source states into Firestore.`)
+    console.log(`Imported ${imported} last-change entries into Firestore.`)
 }
 
 main().catch(error => {
