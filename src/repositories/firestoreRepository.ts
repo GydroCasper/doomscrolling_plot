@@ -227,15 +227,17 @@ class FirestoreRepository implements DatabaseRepository {
 function isSourceConfig(value: Record<string, unknown>): value is SourceConfig {
     const match = value.match
 
-    return typeof value.id === "string"
-        && typeof value.url === "string"
-        && typeof match === "object"
-        && match !== null
-        && typeof (match as Record<string, unknown>).extract === "string"
+    if (!areStrings(value.id, value.url) || typeof match !== "object" || match === null) {
+        return false
+    }
+
+    const matchDefinition = match as Record<string, unknown>
+
+    return areStrings(matchDefinition.extract)
         && (
-            typeof (match as Record<string, unknown>).selector === "string"
-            || Array.isArray((match as Record<string, unknown>).selectors)
-            || typeof (match as Record<string, unknown>).jsonPath === "string"
+            areStrings(matchDefinition.selector)
+            || Array.isArray(matchDefinition.selectors)
+            || areStrings(matchDefinition.jsonPath)
         )
 }
 
