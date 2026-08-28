@@ -39,6 +39,10 @@ The service-account file is a secret and should stay outside this repository.
 Snapshots are stored in the `snapshots` collection with one document per source.
 The document is overwritten only when that source changes.
 
+Source configurations are stored in the `sources` collection. The document ID
+is the source ID; the document fields contain `url`, `match`, and any optional
+fetch settings used by the crawler.
+
 Diffs are stored in the `diffs` collection. Each document contains the source ID,
 the generated timestamp, and the unified diff text. The API reads and deletes
 diffs directly in Firestore, so it does not depend on local disk persistence.
@@ -160,11 +164,11 @@ replayed individually.
 
 ## Configuration
 
-Edit `config.json` to add/modify data sources:
+Add or modify documents in the Firestore `sources` collection. Use the unique
+source ID as the document ID. A minimal source document contains:
 
 ```json
 {
-  "id": "unique-id",
   "url": "https://example.com/data",
   "match": {
     "selector": "table tr:last-child",
@@ -190,6 +194,7 @@ Edit `config.json` to add/modify data sources:
 
 ## Output
 
+- Firestore `sources` collection - Crawler source configuration
 - Firestore `snapshots` collection - Current state of all data sources
 - Firestore `diffs` collection - Timestamped diffs when changes are detected
 

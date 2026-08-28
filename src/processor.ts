@@ -1,4 +1,4 @@
-import {loadConfig, loadLastChange, saveLastChange} from "./fileUtils"
+import {loadLastChange, saveLastChange} from "./fileUtils"
 import {fetchJson, fetchWithPlaywright} from "./fetch"
 import {fetchSourceHtml} from "./sourceFetch"
 import {extractJson, extractPart} from "./extract"
@@ -9,10 +9,8 @@ import {SourceConfig, Summary} from "./types"
 import {getDateStringInEtTz} from "./utils/date"
 import {logger} from "./utils/logger"
 import {promises as fs} from "node:fs"
-import {loadSnapshots, saveSnapshot} from "./snapshotStore"
-import {saveDiff} from "./diffStore"
+import {databaseRepository} from "./repositories/firestoreRepository"
 
-const CONFIG_PATH = "./config.json"
 const LAST_CHANGE_PATH = "./lastChange.json"
 const RUN_LOCK_PATH = "./grabber.lock"
 
@@ -20,8 +18,8 @@ export async function processSources() {
     const releaseLock = await acquireRunLock()
 
     try {
-        const config = await loadConfig(CONFIG_PATH)
-        const snapshots = await loadSnapshots()
+        const config = await databaseRepository.loadSourceConfigs()
+        const snapshots = await databaseRepository.loadSnapshots()
         const lastChange = await loadLastChange(LAST_CHANGE_PATH)
 
         const dateString = getDateStringInEtTz()
@@ -99,7 +97,7 @@ async function processSource(src: SourceConfig, lastChange: Record<string, strin
             previous ?? "",
             extracted
         )
-        await saveDiff(src.id, diff)
+        await databaseRepository.saveDiff(src.id, diff)
         summary.changed.push(src.id)
         logger.info(`${src.id}: CHANGED (diff saved)`)
     } else {
@@ -107,7 +105,7 @@ async function processSource(src: SourceConfig, lastChange: Record<string, strin
     }
 
     snapshots[src.id] = extracted
-    await saveSnapshot(src.id, extracted)
+    await databaseRepository.saveSnapshot(src.id, extracted)
 
     if (previous !== extracted) {
         lastChange[src.id] = src.frequency === "monthly" ? thisMonth : today

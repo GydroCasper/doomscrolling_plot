@@ -16,18 +16,20 @@ import {db} from "../firebase.ts"
 import type {DiffEntry} from "../types/diff-entry.ts"
 
 const DIFFS_COLLECTION = "diffs"
+const SOURCES_COLLECTION = "sources"
 const BATCH_SIZE = 500
 
 export type StoredDiff = Omit<DiffEntry, "sourceUrl">
 
-export interface DiffRepository {
+export interface DataRepository {
     findAll(): Promise<StoredDiff[]>
+    findSourceUrlMap(): Promise<Record<string, string>>
     markReviewed(diffIds: string[]): Promise<void>
     deleteOthers(sourceId: string, keepDiffId: string): Promise<void>
     deleteById(diffId: string): Promise<void>
 }
 
-class FirestoreDiffRepository implements DiffRepository {
+class FirestoreRepository implements DataRepository {
     async findAll(): Promise<StoredDiff[]> {
         const snapshot = await getDocs(query(
             collection(db, DIFFS_COLLECTION),
@@ -55,6 +57,20 @@ class FirestoreDiffRepository implements DiffRepository {
                 reviewedAt
             }
         })
+    }
+
+    async findSourceUrlMap(): Promise<Record<string, string>> {
+        const snapshot = await getDocs(collection(db, SOURCES_COLLECTION))
+
+        return Object.fromEntries(snapshot.docs.map(document => {
+            const data = document.data()
+
+            if (!areStrings(data.url)) {
+                throw new Error(`Invalid source document: ${document.id}`)
+            }
+
+            return [document.id, data.url]
+        }))
     }
 
     async markReviewed(diffIds: string[]): Promise<void> {
@@ -96,4 +112,4 @@ class FirestoreDiffRepository implements DiffRepository {
     }
 }
 
-export const diffRepository: DiffRepository = new FirestoreDiffRepository()
+export const dataRepository: DataRepository = new FirestoreRepository()
