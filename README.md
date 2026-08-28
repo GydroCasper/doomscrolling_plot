@@ -63,17 +63,6 @@ written by the application. Keep or remove the old local data as a backup
 according to your needs. Both migration commands are safe to run again: existing
 Firestore documents are overwritten using deterministic IDs.
 
-To replace the legacy browser-driven Census QuickFacts source with the static
-Population Estimates release-directory monitor, run this once with the Firebase
-environment configured:
-
-```bash
-npm run migrate:census-source
-```
-
-The migration only overwrites the `us-census-population` source document and is
-safe to run again.
-
 After deploying the reviewed/unreviewed diff grouping, mark pre-existing Firestore diffs as reviewed once:
 
 ```bash
