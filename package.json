@@ -7,6 +7,7 @@
         "build": "tsc",
         "test": "tsx --test tests/**/*.test.ts",
         "crawler:local": "npm run build && node --env-file=.env.local dist/index.js",
+        "hosting:deploy": "npm --prefix ui run build && firebase deploy --only hosting",
         "migrate:snapshots": "tsx src/migrateSnapshots.ts",
     "migrate:diffs": "tsx src/migrateDiffs.ts",
     "migrate:reviewed-diffs": "tsx src/migrateReviewedDiffs.ts",

@@ -101,6 +101,20 @@ npm install   # first time only
 npm run dev
 ```
 
+### Firebase Hosting
+
+The static authenticated UI is deployed from `ui/dist` to the Firebase project
+configured in `.firebaserc`. Build and deploy it with:
+
+```bash
+npm run hosting:deploy
+```
+
+The UI build reads its Firebase Web configuration from `ui/.env.local`. Keep
+that file local; it is ignored by Git. Firebase Hosting serves the static app,
+while access to Firestore data remains controlled by Firebase Authentication
+and Firestore Security Rules.
+
 ## Scheduled runs on macOS
 
 The repository includes a user LaunchAgent template at
