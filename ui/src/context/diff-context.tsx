@@ -1,22 +1,19 @@
 import {useState, type ReactNode, useEffect} from "react"
-import {fetchDiffs} from "../services/diff-query-service.ts"
+import {subscribeToDiffs} from "../services/diff-query-service.ts"
 import {DiffContext} from "./diff-state.ts"
 import type {DiffEntry} from "../types/diff-entry.ts"
 
 export function DiffProvider({children}: { children: ReactNode }) {
     const [diffs, setDiffs] = useState<DiffEntry[]>([])
 
-    const refetch = async () => {
-        const data = await fetchDiffs()
-        setDiffs(data)
-    }
-
     useEffect(() => {
-        fetchDiffs().then(setDiffs)
+        return subscribeToDiffs(setDiffs, error => {
+            console.error("Failed to subscribe to diffs", error)
+        })
     }, [])
 
     return (
-        <DiffContext.Provider value={{diffs, refetch}}>
+        <DiffContext.Provider value={{diffs}}>
             {children}
         </DiffContext.Provider>
     )

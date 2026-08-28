@@ -6,7 +6,7 @@ import {deleteDiff, deleteOtherDiffs, markDiffsReviewed} from "../../services/di
 import type {DiffEntry} from "../../types/diff-entry.ts"
 
 export function DiffList() {
-    const {diffs, refetch} = useDiff()
+    const {diffs} = useDiff()
     const newDiffs = diffs.filter(diff => diff.reviewedAt === null)
     const reviewedDiffs = diffs.filter(diff => diff.reviewedAt !== null)
 
@@ -17,17 +17,14 @@ export function DiffList() {
 
     const handleDelete = async (entry: DiffEntry) => {
         await deleteDiff(entry.diffId)
-        await refetch()
     }
 
     const handleKeepOnly = async (entry: DiffEntry) => {
         await deleteOtherDiffs(entry.sourceId, entry.diffId)
-        await refetch()
     }
 
     const handleReviewAll = async (diffIds: string[]) => {
         await markDiffsReviewed(diffIds)
-        await refetch()
     }
 
     const renderDiff = (diff: DiffEntry) => (
