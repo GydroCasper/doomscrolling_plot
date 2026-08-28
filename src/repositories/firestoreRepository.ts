@@ -7,6 +7,7 @@ const BATCH_SIZE = 500
 const DIFFS_COLLECTION = "diffs"
 const SNAPSHOTS_COLLECTION = "snapshots"
 const SOURCES_COLLECTION = "sources"
+const SOURCE_STATES_COLLECTION = "sourceStates"
 
 export type StoredDiff = {
     diffId: string
@@ -17,6 +18,7 @@ export type StoredDiff = {
 }
 
 export interface DatabaseRepository {
+    importLastChanges(lastChanges: Record<string, string>): Promise<number>
     loadSourceConfigs(): Promise<ConfigFile>
     loadSnapshots(): Promise<SnapshotsFile>
     saveSnapshot(sourceId: string, value: string): Promise<void>
@@ -31,6 +33,27 @@ export interface DatabaseRepository {
 }
 
 class FirestoreRepository implements DatabaseRepository {
+    async importLastChanges(lastChanges: Record<string, string>): Promise<number> {
+        const entries = Object.entries(lastChanges)
+        const database = this.database()
+
+        for (let start = 0; start < entries.length; start += BATCH_SIZE) {
+            const batch = database.batch()
+
+            for (const [sourceId, lastChange] of entries.slice(start, start + BATCH_SIZE)) {
+                batch.set(database.collection(SOURCE_STATES_COLLECTION).doc(sourceId), {
+                    sourceId,
+                    lastChange,
+                    updatedAt: FieldValue.serverTimestamp()
+                })
+            }
+
+            await batch.commit()
+        }
+
+        return entries.length
+    }
+
     async loadSourceConfigs(): Promise<ConfigFile> {
         const documents = await this.database().collection(SOURCES_COLLECTION).get()
         const sources = documents.docs.map(document => {
