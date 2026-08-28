@@ -7,6 +7,7 @@ const BATCH_SIZE = 500
 const DIFFS_COLLECTION = "diffs"
 const SNAPSHOTS_COLLECTION = "snapshots"
 const SOURCES_COLLECTION = "sources"
+const LAST_CHANGES_COLLECTION = "lastChanges"
 
 export type StoredDiff = {
     diffId: string
@@ -17,6 +18,8 @@ export type StoredDiff = {
 }
 
 export interface DatabaseRepository {
+    loadLastChanges(): Promise<Record<string, string>>
+    saveLastChange(sourceId: string, lastChange: string): Promise<void>
     loadSourceConfigs(): Promise<ConfigFile>
     loadSnapshots(): Promise<SnapshotsFile>
     saveSnapshot(sourceId: string, value: string): Promise<void>
@@ -31,6 +34,32 @@ export interface DatabaseRepository {
 }
 
 class FirestoreRepository implements DatabaseRepository {
+    async loadLastChanges(): Promise<Record<string, string>> {
+        const result: Record<string, string> = {}
+        const documents = await this.database().collection(LAST_CHANGES_COLLECTION).get()
+
+        for (const document of documents.docs) {
+            const data = document.data()
+            if (!areStrings(data.sourceId, data.lastChange)) {
+                throw new Error(`Invalid last-change document: ${document.id}`)
+            }
+            result[data.sourceId] = data.lastChange
+        }
+
+        return result
+    }
+
+    async saveLastChange(sourceId: string, lastChange: string): Promise<void> {
+        await this.database()
+            .collection(LAST_CHANGES_COLLECTION)
+            .doc(sourceId)
+            .set({
+                sourceId,
+                lastChange,
+                updatedAt: FieldValue.serverTimestamp()
+            })
+    }
+
     async loadSourceConfigs(): Promise<ConfigFile> {
         const documents = await this.database().collection(SOURCES_COLLECTION).get()
         const sources = documents.docs.map(document => {

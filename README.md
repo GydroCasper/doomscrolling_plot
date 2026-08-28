@@ -43,6 +43,10 @@ Source configurations are stored in the `sources` collection. The document ID
 is the source ID; the document fields contain `url`, `match`, and any optional
 fetch settings used by the crawler.
 
+Update-period markers are stored in the `lastChanges` collection with one
+document per source. They prevent daily and monthly sources from being fetched
+again after they have already changed during the current period.
+
 Diffs are stored in the `diffs` collection. Each document contains the source ID,
 the generated timestamp, and the unified diff text. The API reads and deletes
 diffs directly in Firestore, so it does not depend on local disk persistence.
@@ -195,6 +199,7 @@ source ID as the document ID. A minimal source document contains:
 ## Output
 
 - Firestore `sources` collection - Crawler source configuration
+- Firestore `lastChanges` collection - Last detected change period per source
 - Firestore `snapshots` collection - Current state of all data sources
 - Firestore `diffs` collection - Timestamped diffs when changes are detected
 
