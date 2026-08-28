@@ -6,15 +6,14 @@ import {Writable} from 'stream'
 import {processSources} from './processor'
 import {addStreamTransport} from './utils/logger'
 import {areStrings} from './utils/typeGuards'
-import {deleteDiff, deleteOtherDiffs, loadDiffs, markDiffsReviewed} from './diffStore'
-import {loadSourceConfigs} from './sourceConfigStore'
+import {databaseRepository} from './repositories/firestoreRepository'
 
 const PORT = 3001
 
 async function getDiffs() {
     const [diffs, config] = await Promise.all([
-        loadDiffs(),
-        loadSourceConfigs().catch(() => [] as any[])
+        databaseRepository.loadDiffs(),
+        databaseRepository.loadSourceConfigs().catch(() => [] as any[])
     ])
     const urlById = Object.fromEntries(config.map((s: any) => [s.id, s.url]))
     return diffs.map(diff => ({...diff, sourceUrl: urlById[diff.sourceId]}))
@@ -36,13 +35,13 @@ app.patch('/api/diffs/reviewed', async (c) => {
         return c.json({error: 'diffIds must be an array of strings'}, 400)
     }
 
-    return c.json({reviewed: await markDiffsReviewed(diffIds)})
+    return c.json({reviewed: await databaseRepository.markDiffsReviewed(diffIds)})
 })
 
 app.delete('/api/diffs/:sourceId/except/:diffId', async (c) => {
     const sourceId = c.req.param('sourceId')
     const diffId = c.req.param('diffId')
-    const deleted = await deleteOtherDiffs(sourceId, diffId)
+    const deleted = await databaseRepository.deleteOtherDiffs(sourceId, diffId)
     if (deleted === null) {
         return c.json({error: 'Diff to keep was not found for this source'}, 404)
     }
@@ -50,7 +49,7 @@ app.delete('/api/diffs/:sourceId/except/:diffId', async (c) => {
 })
 
 app.delete('/api/diff/:diffId', async (c) => {
-    return c.json({deleted: await deleteDiff(c.req.param('diffId'))})
+    return c.json({deleted: await databaseRepository.deleteDiff(c.req.param('diffId'))})
 })
 
 app.post('/api/run', (c) => {

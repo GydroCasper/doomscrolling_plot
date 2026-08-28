@@ -1,6 +1,6 @@
 import {promises as fs} from "node:fs"
 import {SnapshotsFile} from "./types"
-import {importSnapshots} from "./snapshotStore"
+import {databaseRepository} from "./repositories/firestoreRepository"
 import {areStrings} from "./utils/typeGuards"
 
 const SNAPSHOTS_PATH = "./snapshots.json"
@@ -15,7 +15,7 @@ async function main() {
         }
     }
 
-    const imported = await importSnapshots(snapshots)
+    const imported = await databaseRepository.importSnapshots(snapshots)
     console.log(`Imported ${imported} snapshots into Firestore.`)
 }
 
