@@ -1,5 +1,5 @@
 import {fetch, type Response} from "undici";
-import { chromium } from "playwright";
+import {chromium} from "playwright";
 import {PlaywrightOptions} from "./types";
 
 export type RetryPolicy = {
@@ -135,7 +135,7 @@ export async function fetchWithPlaywright(
             waitUntil: "domcontentloaded"
         });
         if (waitForSelector) {
-            await page.waitForSelector(waitForSelector, { timeout: timeoutMs });
+            await page.waitForSelector(waitForSelector, {timeout: timeoutMs});
         }
         return await page.content();
     } finally {
