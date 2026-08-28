@@ -11,7 +11,6 @@
     "migrate:snapshots": "tsx src/migrateSnapshots.ts",
     "migrate:diffs": "tsx src/migrateDiffs.ts",
     "migrate:reviewed-diffs": "tsx src/migrateReviewedDiffs.ts",
-    "migrate:census-source": "tsx src/migrateCensusSource.ts",
     "dev": "tsx src/server.ts & server_pid=$!; trap 'kill \"$server_pid\" 2>/dev/null; wait \"$server_pid\" 2>/dev/null' EXIT INT TERM; npm --prefix ui run dev"
   },
   "dependencies": {

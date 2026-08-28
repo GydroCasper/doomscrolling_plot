@@ -21,7 +21,6 @@ export interface DatabaseRepository {
     loadLastChanges(): Promise<Record<string, string>>
     saveLastChange(sourceId: string, lastChange: string): Promise<void>
     loadSourceConfigs(): Promise<ConfigFile>
-    saveSourceConfig(source: SourceConfig): Promise<void>
     loadSnapshots(): Promise<SnapshotsFile>
     saveSnapshot(sourceId: string, value: string): Promise<void>
     importSnapshots(snapshots: SnapshotsFile): Promise<number>
@@ -77,11 +76,6 @@ class FirestoreRepository implements DatabaseRepository {
         })
 
         return sources
-    }
-
-    async saveSourceConfig(source: SourceConfig): Promise<void> {
-        const {id, ...data} = source
-        await this.database().collection(SOURCES_COLLECTION).doc(id).set(data)
     }
 
     async loadSnapshots(): Promise<SnapshotsFile> {
