@@ -20,6 +20,7 @@
     "firebase-admin": "^14.2.0",
     "fs": "^0.0.1-security",
     "hono": "^4.12.11",
+    "playwright": "^1.57.0",
     "undici": "^7.18.2",
     "winston": "^3.19.0"
   },

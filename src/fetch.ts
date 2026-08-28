@@ -1,4 +1,6 @@
 import {fetch, type Response} from "undici";
+import {chromium} from "playwright";
+import {PlaywrightOptions} from "./types";
 
 export type RetryPolicy = {
     maxAttempts: number;
@@ -113,4 +115,30 @@ export async function fetchJson<T = unknown>(
     }
 
     return JSON.parse(text);
+}
+
+export async function fetchWithPlaywright(
+    url: string,
+    options: PlaywrightOptions = {}
+): Promise<string> {
+    const {
+        headless = true,
+        waitForSelector,
+        timeoutMs = 30000
+    } = options;
+    const browser = await chromium.launch({headless});
+    const page = await browser.newPage();
+
+    try {
+        await page.goto(url, {
+            timeout: timeoutMs,
+            waitUntil: "domcontentloaded"
+        });
+        if (waitForSelector) {
+            await page.waitForSelector(waitForSelector, {timeout: timeoutMs});
+        }
+        return await page.content();
+    } finally {
+        await browser.close();
+    }
 }
