@@ -7,14 +7,7 @@ export type SourceConfig = {
     headers?: Record<string, string>;
     method?: "GET" | "POST";
     body?: object;
-    playwright?: PlaywrightOptions;
     frequency?: "daily" | "monthly";
-};
-
-export type PlaywrightOptions = {
-    headless?: boolean;
-    waitForSelector?: string;
-    timeoutMs?: number;
 };
 
 export type MatchConfig = {

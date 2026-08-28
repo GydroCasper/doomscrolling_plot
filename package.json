@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
-    "scripts": {
-        "build": "tsc",
-        "test": "tsx --test tests/**/*.test.ts",
-        "crawler:local": "npm run build && node --env-file=.env.local dist/index.js",
-        "hosting:deploy": "npm --prefix ui run build && firebase deploy --only hosting",
-        "migrate:snapshots": "tsx src/migrateSnapshots.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "tsx --test tests/**/*.test.ts",
+    "crawler:local": "npm run build && node --env-file=.env.local dist/index.js",
+    "hosting:deploy": "npm --prefix ui run build && firebase deploy --only hosting",
+    "migrate:snapshots": "tsx src/migrateSnapshots.ts",
     "migrate:diffs": "tsx src/migrateDiffs.ts",
     "migrate:reviewed-diffs": "tsx src/migrateReviewedDiffs.ts",
+    "migrate:census-source": "tsx src/migrateCensusSource.ts",
     "dev": "tsx src/server.ts & server_pid=$!; trap 'kill \"$server_pid\" 2>/dev/null; wait \"$server_pid\" 2>/dev/null' EXIT INT TERM; npm --prefix ui run dev"
   },
   "dependencies": {
@@ -20,7 +21,6 @@
     "firebase-admin": "^14.2.0",
     "fs": "^0.0.1-security",
     "hono": "^4.12.11",
-    "playwright": "^1.57.0",
     "undici": "^7.18.2",
     "winston": "^3.19.0"
   },
