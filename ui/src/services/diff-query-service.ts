@@ -12,3 +12,30 @@ export async function fetchDiffs(): Promise<DiffEntry[]> {
         sourceUrl: sourceUrls[diff.sourceId]
     }))
 }
+
+export function subscribeToDiffs(
+    onChange: (diffs: DiffEntry[]) => void,
+    onError: (error: Error) => void
+): () => void {
+    let active = true
+    let unsubscribe: (() => void) | undefined
+
+    void dataRepository.findSourceUrlMap()
+        .then(sourceUrls => {
+            if (!active) return
+
+            unsubscribe = dataRepository.subscribeToDiffs(
+                diffs => onChange(diffs.map(diff => ({
+                    ...diff,
+                    sourceUrl: sourceUrls[diff.sourceId]
+                }))),
+                onError
+            )
+        })
+        .catch(onError)
+
+    return () => {
+        active = false
+        unsubscribe?.()
+    }
+}

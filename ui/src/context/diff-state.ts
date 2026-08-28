@@ -3,7 +3,6 @@ import type {DiffEntry} from "../types/diff-entry.ts"
 
 type DiffContextType = {
     diffs: DiffEntry[]
-    refetch: () => Promise<void>
 }
 
 export const DiffContext = createContext<DiffContextType | null>(null)

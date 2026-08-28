@@ -3,6 +3,7 @@ import {
     deleteDoc,
     doc,
     getDocs,
+    onSnapshot,
     orderBy,
     query,
     serverTimestamp,
@@ -23,6 +24,10 @@ export type StoredDiff = Omit<DiffEntry, "sourceUrl">
 
 export interface DataRepository {
     findAll(): Promise<StoredDiff[]>
+    subscribeToDiffs(
+        onChange: (diffs: StoredDiff[]) => void,
+        onError: (error: Error) => void
+    ): () => void
     findSourceUrlMap(): Promise<Record<string, string>>
     markReviewed(diffIds: string[]): Promise<void>
     deleteOthers(sourceId: string, keepDiffId: string): Promise<void>
@@ -36,27 +41,20 @@ class FirestoreRepository implements DataRepository {
             orderBy("date", "desc")
         ))
 
-        return snapshot.docs.map(document => {
-            const data = document.data()
+        return snapshot.docs.map(document => this.toStoredDiff(document.id, document.data()))
+    }
 
-            if (!areStrings(data.sourceId, data.date, data.diffText)) {
-                throw new Error(`Invalid diff document: ${document.id}`)
-            }
-
-            const reviewedAt = data.reviewedAt === null || data.reviewedAt === undefined
-                ? null
-                : data.reviewedAt instanceof Timestamp
-                    ? data.reviewedAt.toDate().toISOString()
-                    : null
-
-            return {
-                diffId: document.id,
-                sourceId: data.sourceId,
-                date: data.date,
-                diffText: data.diffText,
-                reviewedAt
-            }
-        })
+    subscribeToDiffs(
+        onChange: (diffs: StoredDiff[]) => void,
+        onError: (error: Error) => void
+    ): () => void {
+        return onSnapshot(
+            query(collection(db, DIFFS_COLLECTION), orderBy("date", "desc")),
+            snapshot => onChange(
+                snapshot.docs.map(document => this.toStoredDiff(document.id, document.data()))
+            ),
+            onError
+        )
     }
 
     async findSourceUrlMap(): Promise<Record<string, string>> {
@@ -108,6 +106,32 @@ class FirestoreRepository implements DataRepository {
                 batch.delete(reference)
             }
             await batch.commit()
+        }
+    }
+
+    private toStoredDiff(diffId: string, data: Record<string, unknown>): StoredDiff {
+        const {sourceId, date, diffText} = data
+
+        if (
+            typeof sourceId !== "string"
+            || typeof date !== "string"
+            || typeof diffText !== "string"
+        ) {
+            throw new Error(`Invalid diff document: ${diffId}`)
+        }
+
+        const reviewedAt = data.reviewedAt === null || data.reviewedAt === undefined
+            ? null
+            : data.reviewedAt instanceof Timestamp
+                ? data.reviewedAt.toDate().toISOString()
+                : null
+
+        return {
+            diffId,
+            sourceId,
+            date,
+            diffText,
+            reviewedAt
         }
     }
 }
