@@ -18,7 +18,8 @@ export type StoredDiff = {
 }
 
 export interface DatabaseRepository {
-    importLastChanges(lastChanges: Record<string, string>): Promise<number>
+    loadLastChanges(): Promise<Record<string, string>>
+    saveLastChange(sourceId: string, lastChange: string): Promise<void>
     loadSourceConfigs(): Promise<ConfigFile>
     loadSnapshots(): Promise<SnapshotsFile>
     saveSnapshot(sourceId: string, value: string): Promise<void>
@@ -33,25 +34,30 @@ export interface DatabaseRepository {
 }
 
 class FirestoreRepository implements DatabaseRepository {
-    async importLastChanges(lastChanges: Record<string, string>): Promise<number> {
-        const entries = Object.entries(lastChanges)
-        const database = this.database()
+    async loadLastChanges(): Promise<Record<string, string>> {
+        const result: Record<string, string> = {}
+        const documents = await this.database().collection(LAST_CHANGES_COLLECTION).get()
 
-        for (let start = 0; start < entries.length; start += BATCH_SIZE) {
-            const batch = database.batch()
-
-            for (const [sourceId, lastChange] of entries.slice(start, start + BATCH_SIZE)) {
-                batch.set(database.collection(LAST_CHANGES_COLLECTION).doc(sourceId), {
-                    sourceId,
-                    lastChange,
-                    updatedAt: FieldValue.serverTimestamp()
-                })
+        for (const document of documents.docs) {
+            const data = document.data()
+            if (!areStrings(data.sourceId, data.lastChange)) {
+                throw new Error(`Invalid last-change document: ${document.id}`)
             }
-
-            await batch.commit()
+            result[data.sourceId] = data.lastChange
         }
 
-        return entries.length
+        return result
+    }
+
+    async saveLastChange(sourceId: string, lastChange: string): Promise<void> {
+        await this.database()
+            .collection(LAST_CHANGES_COLLECTION)
+            .doc(sourceId)
+            .set({
+                sourceId,
+                lastChange,
+                updatedAt: FieldValue.serverTimestamp()
+            })
     }
 
     async loadSourceConfigs(): Promise<ConfigFile> {

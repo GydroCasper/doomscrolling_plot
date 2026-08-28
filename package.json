@@ -7,7 +7,6 @@
         "build": "tsc",
         "test": "tsx --test tests/**/*.test.ts",
         "crawler:local": "npm run build && node --env-file=.env.local dist/index.js",
-        "migrate:last-change": "node --env-file=.env.local --import tsx src/migrateLastChanges.ts",
         "migrate:snapshots": "tsx src/migrateSnapshots.ts",
     "migrate:diffs": "tsx src/migrateDiffs.ts",
     "migrate:reviewed-diffs": "tsx src/migrateReviewedDiffs.ts",

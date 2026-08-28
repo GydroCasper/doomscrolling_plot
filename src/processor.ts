@@ -1,4 +1,3 @@
-import {loadLastChange, saveLastChange} from "./fileUtils"
 import {fetchJson, fetchWithPlaywright} from "./fetch"
 import {fetchSourceHtml} from "./sourceFetch"
 import {extractJson, extractPart} from "./extract"
@@ -11,7 +10,6 @@ import {logger} from "./utils/logger"
 import {promises as fs} from "node:fs"
 import {databaseRepository} from "./repositories/firestoreRepository"
 
-const LAST_CHANGE_PATH = "./lastChange.json"
 const RUN_LOCK_PATH = "./grabber.lock"
 
 export async function processSources() {
@@ -20,7 +18,7 @@ export async function processSources() {
     try {
         const config = await databaseRepository.loadSourceConfigs()
         const snapshots = await databaseRepository.loadSnapshots()
-        const lastChange = await loadLastChange(LAST_CHANGE_PATH)
+        const lastChange = await databaseRepository.loadLastChanges()
 
         const dateString = getDateStringInEtTz()
         const today = dateString.slice(0, 10)      // "2026-01-16"
@@ -108,8 +106,9 @@ async function processSource(src: SourceConfig, lastChange: Record<string, strin
     await databaseRepository.saveSnapshot(src.id, extracted)
 
     if (previous !== extracted) {
-        lastChange[src.id] = src.frequency === "monthly" ? thisMonth : today
-        await saveLastChange(LAST_CHANGE_PATH, lastChange)
+        const changedAt = src.frequency === "monthly" ? thisMonth : today
+        lastChange[src.id] = changedAt
+        await databaseRepository.saveLastChange(src.id, changedAt)
     }
 }
 
