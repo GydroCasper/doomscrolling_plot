@@ -8,6 +8,8 @@ const DIFFS_COLLECTION = "diffs"
 const SNAPSHOTS_COLLECTION = "snapshots"
 const SOURCES_COLLECTION = "sources"
 const LAST_CHANGES_COLLECTION = "lastChanges"
+const CRAWLER_METADATA_COLLECTION = "crawlerMetadata"
+const CRAWLER_STATUS_DOCUMENT = "status"
 
 export type StoredDiff = {
     diffId: string
@@ -20,6 +22,7 @@ export type StoredDiff = {
 export interface DatabaseRepository {
     loadLastChanges(): Promise<Record<string, string>>
     saveLastChange(sourceId: string, lastChange: string): Promise<void>
+    saveLastRunCompletedAt(): Promise<void>
     loadSourceConfigs(): Promise<ConfigFile>
     loadSnapshots(): Promise<SnapshotsFile>
     saveSnapshot(sourceId: string, value: string): Promise<void>
@@ -58,6 +61,13 @@ class FirestoreRepository implements DatabaseRepository {
                 lastChange,
                 updatedAt: FieldValue.serverTimestamp()
             })
+    }
+
+    async saveLastRunCompletedAt(): Promise<void> {
+        await this.database()
+            .collection(CRAWLER_METADATA_COLLECTION)
+            .doc(CRAWLER_STATUS_DOCUMENT)
+            .set({completedAt: FieldValue.serverTimestamp()}, {merge: true})
     }
 
     async loadSourceConfigs(): Promise<ConfigFile> {

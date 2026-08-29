@@ -39,6 +39,11 @@ export async function processSources() {
     } catch (ex: any) {
         logger.info(ex)
     } finally {
+        try {
+            await databaseRepository.saveLastRunCompletedAt()
+        } catch (error: any) {
+            logger.info(`Failed to save crawler completion time: ${error}`)
+        }
         await releaseLock()
     }
 }

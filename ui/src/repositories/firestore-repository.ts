@@ -18,6 +18,8 @@ import type {DiffEntry} from "../types/diff-entry.ts"
 
 const DIFFS_COLLECTION = "diffs"
 const SOURCES_COLLECTION = "sources"
+const CRAWLER_METADATA_COLLECTION = "crawlerMetadata"
+const CRAWLER_STATUS_DOCUMENT = "status"
 const BATCH_SIZE = 500
 
 export type StoredDiff = Omit<DiffEntry, "sourceUrl">
@@ -29,6 +31,10 @@ export interface DataRepository {
         onError: (error: Error) => void
     ): () => void
     findSourceUrlMap(): Promise<Record<string, string>>
+    subscribeToLastRun(
+        onChange: (completedAt: string | null) => void,
+        onError: (error: Error) => void
+    ): () => void
     markReviewed(diffIds: string[]): Promise<void>
     deleteOthers(sourceId: string, keepDiffId: string): Promise<void>
     deleteById(diffId: string): Promise<void>
@@ -69,6 +75,20 @@ class FirestoreRepository implements DataRepository {
 
             return [document.id, data.url]
         }))
+    }
+
+    subscribeToLastRun(
+        onChange: (completedAt: string | null) => void,
+        onError: (error: Error) => void
+    ): () => void {
+        return onSnapshot(
+            doc(db, CRAWLER_METADATA_COLLECTION, CRAWLER_STATUS_DOCUMENT),
+            snapshot => {
+                const completedAt = snapshot.data()?.completedAt
+                onChange(completedAt instanceof Timestamp ? completedAt.toDate().toISOString() : null)
+            },
+            onError
+        )
     }
 
     async markReviewed(diffIds: string[]): Promise<void> {

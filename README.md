@@ -51,6 +51,9 @@ Diffs are stored in the `diffs` collection. Each document contains the source ID
 the generated timestamp, and the unified diff text. The API reads and deletes
 diffs directly in Firestore, so it does not depend on local disk persistence.
 
+The completion time of the latest crawler run is stored in the
+`crawlerMetadata/status` document and shown in the UI header.
+
 Before the first Firestore-backed run, import the existing local baseline once:
 
 ```bash
