@@ -39,3 +39,10 @@ export function subscribeToDiffs(
         unsubscribe?.()
     }
 }
+
+export function subscribeToLastRun(
+    onChange: (completedAt: string | null) => void,
+    onError: (error: Error) => void
+): () => void {
+    return dataRepository.subscribeToLastRun(onChange, onError)
+}

@@ -3,6 +3,7 @@ import type {DiffEntry} from "../types/diff-entry.ts"
 
 type DiffContextType = {
     diffs: DiffEntry[]
+    lastRunAt: string | null | undefined
 }
 
 export const DiffContext = createContext<DiffContextType | null>(null)
