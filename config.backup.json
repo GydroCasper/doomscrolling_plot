@@ -1172,7 +1172,7 @@
     "id": "north-macedonia-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_North_Macedonia#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-3)",
       "extract": "html",
       "filters": ["cleanWikipediaMarkup"]
     }
