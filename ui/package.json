@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:deploy": "BUILD_REQUIRE_CLEAN=1 npm run build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
