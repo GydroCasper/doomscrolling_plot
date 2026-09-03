@@ -113,6 +113,13 @@ configured in `.firebaserc`. Build and deploy it with:
 npm run hosting:deploy
 ```
 
+The deploy build is tied to the exact Git commit from which it was produced.
+The command refuses to deploy while the Git working tree has uncommitted changes.
+The build information is logged in the browser console, and the full hash is
+available from `/version.json` on the deployed Hosting site. Compare it with the
+local checkout using `git rev-parse HEAD`. Regular local builds are still allowed
+from a dirty working tree and are explicitly labeled `dirty`.
+
 The UI build reads its Firebase Web configuration from `ui/.env.local`. Keep
 that file local; it is ignored by Git. Firebase Hosting serves the static app,
 while access to Firestore data remains controlled by Firebase Authentication
