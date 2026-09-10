@@ -13,6 +13,7 @@ yarn-error.log*
 /.idea
 /diffs
 /dist
+/.firebase
 
 # Local environment and credential paths must never be committed.
 .env
