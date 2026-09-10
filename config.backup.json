@@ -794,7 +794,7 @@
     "id": "ireland-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_the_Republic_of_Ireland#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": "section[aria-labelledby='Table'] table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-3)",
       "extract": "html",
       "filters": ["cleanWikipediaMarkup"]
     }
@@ -1002,6 +1002,15 @@
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Mali#Vital_statistics",
     "match": {
       "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
+      "extract": "html",
+      "filters": ["cleanWikipediaMarkup"]
+    }
+  },
+  {
+    "id": "maldives-demographics-registered-births-deaths-last-2-rows",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_the_Maldives#Registered_births_and_deaths",
+    "match": {
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-3)",
       "extract": "html",
       "filters": ["cleanWikipediaMarkup"]
     }
@@ -1442,7 +1451,7 @@
     "id": "south-sudan-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_South_Sudan#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
+      "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-3)",
       "extract": "html",
       "filters": ["cleanWikipediaMarkup"]
     }
