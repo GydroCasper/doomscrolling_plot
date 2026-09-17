@@ -68,7 +68,8 @@
     "frequency": "daily",
     "match": {
       "selector": "#calendar tr:contains('Fed Interest Rate Decision'):first",
-      "extract": "html"
+      "extract": "html",
+      "filters": ["removeDataId"]
     }
   },
   {

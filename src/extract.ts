@@ -36,10 +36,14 @@ function applyHtmlFilters(
 ): void {
     for (const filter of filters) {
         switch (filter) {
+            case "removeDataId":
+                nodes.removeAttr("data-id");
+                nodes.find("[data-id]").removeAttr("data-id");
+                break;
             case "cleanWikipediaMarkup":
                 nodes.find("sup").remove();
-                nodes.removeAttr("id").removeAttr("style");
-                nodes.find("[id], [style]").removeAttr("id").removeAttr("style");
+                nodes.removeAttr("id").removeAttr("style").removeAttr("about");
+                nodes.find("[id], [style], [about]").removeAttr("id").removeAttr("style").removeAttr("about");
                 break;
             default:
                 throw new Error(`Unknown HTML filter: ${filter}`);

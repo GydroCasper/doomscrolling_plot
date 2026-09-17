@@ -29,7 +29,7 @@ export type MatchConfig = {
 
 export type ExtractMode = "text" | "html" | "attr" | "json";
 
-export type HtmlFilterType = "cleanWikipediaMarkup";
+export type HtmlFilterType = "cleanWikipediaMarkup" | "removeDataId";
 
 export type SnapshotsFile = Record<string, string>;
 
