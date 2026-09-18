@@ -1,8 +1,10 @@
 import {applicationDefault, getApps, initializeApp} from "firebase-admin/app"
-import {FieldValue, getFirestore} from "firebase-admin/firestore"
+import {FieldValue, getFirestore, Timestamp} from "firebase-admin/firestore"
 import {ConfigFile, SnapshotsFile, SourceConfig} from "../types"
 import {areStrings} from "../utils/typeGuards"
+import {randomUUID} from "node:crypto"
 
+const RUN_LOCK_DURATION_MS = 60 * 60 * 1000
 const BATCH_SIZE = 500
 const DIFFS_COLLECTION = "diffs"
 const SNAPSHOTS_COLLECTION = "snapshots"
@@ -20,6 +22,7 @@ export type StoredDiff = {
 }
 
 export interface DatabaseRepository {
+    acquireRunLock(): Promise<() => Promise<void>>
     loadLastChanges(): Promise<Record<string, string>>
     saveLastChange(sourceId: string, lastChange: string): Promise<void>
     saveLastRunCompletedAt(): Promise<void>
@@ -37,6 +40,40 @@ export interface DatabaseRepository {
 }
 
 class FirestoreRepository implements DatabaseRepository {
+    async acquireRunLock(): Promise<() => Promise<void>> {
+        const database = this.database()
+        const reference = database.collection(CRAWLER_METADATA_COLLECTION).doc("runLock")
+        const ownerId = randomUUID()
+
+        await database.runTransaction(async transaction => {
+            const document = await transaction.get(reference)
+            // Use Firestore's clock so machines with different local times agree.
+            const now = document.readTime.toMillis()
+            const expiresAt = document.data()?.expiresAt
+            if (document.exists && !(expiresAt instanceof Timestamp)) {
+                throw new Error("Invalid crawler run lock: expiresAt must be a timestamp")
+            }
+            if (expiresAt instanceof Timestamp && expiresAt.toMillis() > now) {
+                throw new Error(`Grabber is already running (lock expires at ${expiresAt.toDate().toISOString()})`)
+            }
+            transaction.set(reference, {
+                ownerId,
+                acquiredAt: document.readTime,
+                expiresAt: Timestamp.fromMillis(now + RUN_LOCK_DURATION_MS)
+            })
+        })
+
+        return async () => {
+            await database.runTransaction(async transaction => {
+                const document = await transaction.get(reference)
+                // An expired owner must never remove a newer run's lock.
+                if (document.data()?.ownerId === ownerId) {
+                    transaction.delete(reference)
+                }
+            })
+        }
+    }
+
     async loadLastChanges(): Promise<Record<string, string>> {
         const result: Record<string, string> = {}
         const documents = await this.database().collection(LAST_CHANGES_COLLECTION).get()

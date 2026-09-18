@@ -9,6 +9,15 @@ Web scraper that monitors changes across multiple data sources and generates dif
 3. Compares against previous snapshots stored in Cloud Firestore
 4. Saves diffs to Cloud Firestore when changes are detected
 
+## Run lock
+
+Crawler runs acquire `crawlerMetadata/runLock` in a Firestore transaction.
+The lock expires one hour after acquisition, using Firestore's clock. A new run
+can replace an expired lock immediately; no Firestore TTL policy is needed.
+Normal completion releases the lock only if it still belongs to that run.
+The old `grabber.lock` file is no longer used and can be deleted.
+The lease is not renewed: a run lasting longer than an hour may overlap a new run.
+
 ## Data sources
 
 Currently tracking:

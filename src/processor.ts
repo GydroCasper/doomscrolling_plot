@@ -7,13 +7,10 @@ import {initSummary, printSummary} from "./summary"
 import {SourceConfig, Summary} from "./types"
 import {getDateStringInEtTz} from "./utils/date"
 import {logger} from "./utils/logger"
-import {promises as fs} from "node:fs"
 import {databaseRepository} from "./repositories/firestoreRepository"
 
-const RUN_LOCK_PATH = "./grabber.lock"
-
 export async function processSources() {
-    const releaseLock = await acquireRunLock()
+    const releaseLock = await databaseRepository.acquireRunLock()
 
     try {
         const config = await databaseRepository.loadSourceConfigs()
@@ -114,26 +111,5 @@ async function processSource(src: SourceConfig, lastChange: Record<string, strin
         const changedAt = src.frequency === "monthly" ? thisMonth : today
         lastChange[src.id] = changedAt
         await databaseRepository.saveLastChange(src.id, changedAt)
-    }
-}
-
-async function acquireRunLock(): Promise<() => Promise<void>> {
-    try {
-        await fs.writeFile(RUN_LOCK_PATH, String(process.pid), {flag: "wx"});
-    } catch (error: any) {
-        if (error?.code === "EEXIST") {
-            throw new Error(`Grabber is already running (${RUN_LOCK_PATH} exists)`);
-        }
-        throw error;
-    }
-
-    return async () => {
-        try {
-            await fs.unlink(RUN_LOCK_PATH)
-        } catch (error: any) {
-            if (error?.code !== "ENOENT") {
-                throw error
-            }
-        }
     }
 }
