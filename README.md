@@ -18,6 +18,14 @@ Normal completion releases the lock only if it still belongs to that run.
 The old `grabber.lock` file is no longer used and can be deleted.
 The lease is not renewed: a run lasting longer than an hour may overlap a new run.
 
+The standalone crawler has a 45-minute overall timeout, including Firestore
+operations and shutdown. If it remains alive beyond that deadline, it logs a
+timestamped error and exits with code 124 so it cannot block later scheduled
+runs. The timeout does not wait for network cleanup; any remaining Firestore
+lock expires at its original one-hour deadline. Normal runs exit without waiting
+for the timer. This timeout is enforced while Node's event loop is responsive;
+time spent with the Mac asleep can delay its execution until wake.
+
 ## Data sources
 
 Currently tracking:

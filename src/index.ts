@@ -1,6 +1,7 @@
 import {processSources} from "./processor"
+import {startRunTimeout} from "./utils/runTimeout"
 
-
+startRunTimeout()
 
 async function main() {
     await processSources();
@@ -8,4 +9,5 @@ async function main() {
 
 main().catch((e) => {
     console.error(e);
+    process.exitCode = 1;
 });
