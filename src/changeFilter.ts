@@ -4,12 +4,8 @@ export function isChangeFilter(value: unknown): value is ChangeFilter {
     if (typeof value !== "object" || value === null) return false
     const filter = value as Record<string, unknown>
     return filter.type === "numericThreshold"
-        && typeof filter.minChange === "number"
-        && Number.isFinite(filter.minChange) && filter.minChange > 0
-        && (filter.roundTo === undefined || (
-            typeof filter.roundTo === "number"
-            && Number.isFinite(filter.roundTo) && filter.roundTo > 0
-        ))
+        && typeof filter.step === "number"
+        && Number.isFinite(filter.step) && filter.step > 0
 }
 
 // Accept a plain number or the existing transformers' "value (change%)" output.
@@ -27,10 +23,15 @@ export function isInsignificantChange(previous: string, next: string, filter?: C
     const before = numericValue(previous)
     const after = numericValue(next)
     if (before === undefined || after === undefined) return false
-    const round = (value: number) => filter.roundTo === undefined
-        ? value : Math.floor(value / filter.roundTo) * filter.roundTo
-    const difference = Math.abs(round(after) - round(before))
-    // Avoid suppressing exact decimal thresholds because of floating point error.
-    const tolerance = Number.EPSILON * Math.max(1, Math.abs(before), Math.abs(after)) * 4
-    return difference < filter.minChange && filter.minChange - difference > tolerance
+    const bucket = (value: number) => {
+        const quotient = value / filter.step
+        // Correct division noise at decimal boundaries, e.g. 1.2 / 0.1.
+        const nearest = Math.round(quotient)
+        const tolerance = Number.EPSILON * Math.max(1, Math.abs(quotient))
+        return Math.floor(Math.abs(quotient - nearest) <= tolerance ? nearest : quotient)
+    }
+    const beforeBucket = bucket(before)
+    const afterBucket = bucket(after)
+    return Number.isFinite(beforeBucket) && Number.isFinite(afterBucket)
+        && beforeBucket === afterBucket
 }

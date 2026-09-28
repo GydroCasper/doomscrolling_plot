@@ -2,7 +2,7 @@ import assert from "node:assert/strict"
 import test from "node:test"
 import {isChangeFilter, isInsignificantChange} from "../src/changeFilter"
 
-const rubles = {type: "numericThreshold", minChange: 1, roundTo: 1} as const
+const rubles = {type: "numericThreshold", step: 1} as const
 
 test("compares rates rounded down and ignores accompanying percentage changes", () => {
     assert.equal(isInsignificantChange("90.10 (+1.00%)", "90.40 (-2.00%)", rubles), true)
@@ -16,14 +16,14 @@ test("compares rates rounded down and ignores accompanying percentage changes", 
 })
 
 test("Bitcoin rounds down to thousands", () => {
-    const filter = {...rubles, minChange: 1000, roundTo: 1000} as const
+    const filter = {...rubles, step: 1000} as const
     assert.equal(isInsignificantChange("95400", "95900", filter), true)
     assert.equal(isInsignificantChange("95900", "96000", filter), false)
     assert.equal(isInsignificantChange("96000", "95999", filter), false)
 })
 
 test("IMOEX rounds down to hundreds", () => {
-    const filter = {...rubles, minChange: 100, roundTo: 100} as const
+    const filter = {...rubles, step: 100} as const
     assert.equal(isInsignificantChange("3210", "3240", filter), true)
     assert.equal(isInsignificantChange("3240", "3250", filter), true)
     assert.equal(isInsignificantChange("3299.99", "3300", filter), false)
@@ -31,12 +31,14 @@ test("IMOEX rounds down to hundreds", () => {
 })
 
 test("supports source-specific thresholds and accumulated movement from the baseline", () => {
-    const filter = {type: "numericThreshold", minChange: 2} as const
+    const filter = {type: "numericThreshold", step: 2} as const
     assert.equal(isInsignificantChange("90", "91", filter), true)
     assert.equal(isInsignificantChange("90", "91.9", filter), true)
     assert.equal(isInsignificantChange("90", "92", filter), false)
     assert.equal(isInsignificantChange("90", "88", filter), false)
-    assert.equal(isInsignificantChange("1.1", "1.2", {...filter, minChange: 0.1}), false)
+    assert.equal(isInsignificantChange("1.1", "1.2", {...filter, step: 0.1}), false)
+    assert.equal(isInsignificantChange("1.19", "1.2", {...filter, step: 0.1}), false)
+    assert.equal(isInsignificantChange("1.2", "1.29", {...filter, step: 0.1}), true)
 })
 
 test("unconfigured sources and unrecognized numeric formats remain visible", () => {
@@ -47,12 +49,12 @@ test("unconfigured sources and unrecognized numeric formats remain visible", () 
     }
 })
 
-test("validates Firestore filter settings", () => {
+test("validates Firestore step settings", () => {
     assert.equal(isChangeFilter(rubles), true)
-    assert.equal(isChangeFilter({type: "numericThreshold", minChange: 0.1}), true)
-    for (const filter of [null, {}, {...rubles, type: "unknown"}, {...rubles, minChange: 0},
-        {...rubles, minChange: NaN}, {...rubles, minChange: "1"}, {...rubles, roundTo: -1},
-        {...rubles, roundTo: Infinity}]) {
+    assert.equal(isChangeFilter({type: "numericThreshold", step: 0.1}), true)
+    for (const filter of [null, {}, {type: "numericThreshold"}, {...rubles, type: "unknown"}, {...rubles, step: 0},
+        {...rubles, step: NaN}, {...rubles, step: "1"}, {...rubles, step: -1},
+        {...rubles, step: Infinity}]) {
         assert.equal(isChangeFilter(filter), false)
     }
 })

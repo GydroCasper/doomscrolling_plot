@@ -231,17 +231,16 @@ For USD/RUB, use:
 {
   "changeFilter": {
     "type": "numericThreshold",
-    "minChange": 1,
-    "roundTo": 1
+    "step": 1
   }
 }
 ```
 
-The crawler rounds both the saved and incoming values down to a multiple of `roundTo`
-using `Math.floor`, then suppresses differences strictly below `minChange`. Thus
-90.40 → 90.60 is suppressed, while 90.60 → 91.00 is shown. Both settings must be positive,
-finite numbers. Omit `roundTo` to compare unrounded values. Each source can use
-its own settings; sources without a filter retain their existing behavior.
+The crawler rounds both the saved and incoming values down to a multiple of `step`
+using `Math.floor` and suppresses changes within the same interval. Thus
+90.40 → 90.60 is suppressed, while 90.60 → 91.00 is shown. The step must be a
+positive, finite number. Each source can use its own step; sources without a
+filter retain their existing behavior.
 
 The filter accepts plain numbers (decimal dot or comma) and transformer output
 such as `90.40 (+1.25%)`; the parenthesized text does not affect comparison.
@@ -257,12 +256,12 @@ Rounding always uses `Math.floor`.
 The backup configuration uses these settings; add the same top-level
 `changeFilter` map to each corresponding document in `sources`:
 
-| Source document | type | minChange | roundTo |
-| --- | --- | --- | --- |
-| `usdrub-rate` | `numericThreshold` | 1 | 1 |
-| `brent-crude-oil-usd` | `numericThreshold` | 1 | 1 |
-| `bitcoin-usd` | `numericThreshold` | 1000 | 1000 |
-| `imoex-index` | `numericThreshold` | 100 | 100 |
+| Source document | type | step |
+| --- | --- | --- |
+| `usdrub-rate` | `numericThreshold` | 1 |
+| `brent-crude-oil-usd` | `numericThreshold` | 1 |
+| `bitcoin-usd` | `numericThreshold` | 1000 |
+| `imoex-index` | `numericThreshold` | 100 |
 
 Bitcoin 95400 → 95900 is suppressed, while 95900 → 96000 is shown.
 IMOEX 3240 → 3250 is suppressed, while 3299 → 3300 is shown (3200 → 3300).

@@ -14,8 +14,7 @@ export type SourceConfig = {
 
 export type ChangeFilter = {
     type: "numericThreshold";
-    minChange: number;
-    roundTo?: number;
+    step: number;
 };
 
 export type PlaywrightOptions = {
