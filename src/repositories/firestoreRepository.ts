@@ -3,6 +3,7 @@ import {FieldValue, getFirestore, Timestamp} from "firebase-admin/firestore"
 import {ConfigFile, SnapshotsFile, SourceConfig} from "../types"
 import {areStrings} from "../utils/typeGuards"
 import {randomUUID} from "node:crypto"
+import {isChangeFilter} from "../changeFilter"
 
 const RUN_LOCK_DURATION_MS = 60 * 60 * 1000
 const BATCH_SIZE = 500
@@ -310,6 +311,7 @@ function isSourceConfig(value: Record<string, unknown>): value is SourceConfig {
     const matchDefinition = match as Record<string, unknown>
 
     return areStrings(matchDefinition.extract)
+        && (value.changeFilter === undefined || isChangeFilter(value.changeFilter))
         && (
             areStrings(matchDefinition.selector)
             || Array.isArray(matchDefinition.selectors)

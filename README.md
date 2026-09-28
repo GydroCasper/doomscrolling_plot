@@ -222,7 +222,38 @@ source ID as the document ID. A minimal source document contains:
 }
 ```
 
-### Match options
+### Suppressing small numeric changes
+
+Add a top-level `changeFilter` field to the relevant Firestore `sources` document.
+For USD/RUB, use:
+
+```json
+{
+  "changeFilter": {
+    "type": "numericThreshold",
+    "minChange": 1,
+    "roundTo": 1
+  }
+}
+```
+
+The crawler rounds both the saved and incoming values down to a multiple of `roundTo`
+using `Math.floor`, then suppresses differences strictly below `minChange`. Thus
+90.40 → 90.60 is suppressed, while 90.60 → 91.00 is shown. Both settings must be positive,
+finite numbers. Omit `roundTo` to compare unrounded values. Each source can use
+its own settings; sources without a filter retain their existing behavior.
+
+The filter accepts plain numbers (decimal dot or comma) and transformer output
+such as `90.40 (+1.25%)`; the parenthesized text does not affect comparison.
+Unrecognized formats are not suppressed. Original text is preserved in diffs.
+Suppressed updates do not overwrite the saved snapshot or advance daily/monthly
+markers, so small movements accumulate against the last accepted snapshot.
+The initial snapshot is always saved. Existing diffs are not changed.
+
+These settings must be added to Firestore to enable filtering; local backup
+configuration files are not used by the crawler.
+
+### Extraction options
 
 **HTML extraction:**
 - `selector` - CSS/jQuery selector

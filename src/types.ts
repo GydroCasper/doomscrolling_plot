@@ -9,6 +9,13 @@ export type SourceConfig = {
     body?: object;
     playwright?: PlaywrightOptions;
     frequency?: "daily" | "monthly";
+    changeFilter?: ChangeFilter;
+};
+
+export type ChangeFilter = {
+    type: "numericThreshold";
+    minChange: number;
+    roundTo?: number;
 };
 
 export type PlaywrightOptions = {
