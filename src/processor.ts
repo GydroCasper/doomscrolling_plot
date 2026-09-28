@@ -8,6 +8,7 @@ import {SourceConfig, Summary} from "./types"
 import {getDateStringInEtTz} from "./utils/date"
 import {logger} from "./utils/logger"
 import {databaseRepository} from "./repositories/firestoreRepository"
+import {isInsignificantChange} from "./changeFilter"
 
 export async function processSources() {
     const releaseLock = await databaseRepository.acquireRunLock()
@@ -87,6 +88,12 @@ async function processSource(src: SourceConfig, lastChange: Record<string, strin
     if (previous === extracted) {
         summary.unchanged++
         logger.info(`${src.id}: unchanged`)
+        return
+    }
+
+    if (previous !== undefined && isInsignificantChange(previous, extracted, src.changeFilter)) {
+        summary.unchanged++
+        logger.info(`${src.id}: unchanged (below change threshold)`)
         return
     }
 
