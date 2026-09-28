@@ -15,6 +15,21 @@ test("compares rates rounded down and ignores accompanying percentage changes", 
     assert.equal(isInsignificantChange("90", "92", rubles), false)
 })
 
+test("Bitcoin rounds down to thousands", () => {
+    const filter = {...rubles, minChange: 1000, roundTo: 1000} as const
+    assert.equal(isInsignificantChange("95400", "95900", filter), true)
+    assert.equal(isInsignificantChange("95900", "96000", filter), false)
+    assert.equal(isInsignificantChange("96000", "95999", filter), false)
+})
+
+test("IMOEX rounds down to hundreds", () => {
+    const filter = {...rubles, minChange: 100, roundTo: 100} as const
+    assert.equal(isInsignificantChange("3210", "3240", filter), true)
+    assert.equal(isInsignificantChange("3240", "3250", filter), true)
+    assert.equal(isInsignificantChange("3299.99", "3300", filter), false)
+    assert.equal(isInsignificantChange("3300", "3299.99", filter), false)
+})
+
 test("supports source-specific thresholds and accumulated movement from the baseline", () => {
     const filter = {type: "numericThreshold", minChange: 2} as const
     assert.equal(isInsignificantChange("90", "91", filter), true)

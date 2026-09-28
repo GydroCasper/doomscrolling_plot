@@ -253,6 +253,20 @@ The initial snapshot is always saved. Existing diffs are not changed.
 These settings must be added to Firestore to enable filtering; local backup
 configuration files are not used by the crawler.
 
+Rounding always uses `Math.floor`.
+The backup configuration uses these settings; add the same top-level
+`changeFilter` map to each corresponding document in `sources`:
+
+| Source document | type | minChange | roundTo |
+| --- | --- | --- | --- |
+| `usdrub-rate` | `numericThreshold` | 1 | 1 |
+| `brent-crude-oil-usd` | `numericThreshold` | 1 | 1 |
+| `bitcoin-usd` | `numericThreshold` | 1000 | 1000 |
+| `imoex-index` | `numericThreshold` | 100 | 100 |
+
+Bitcoin 95400 → 95900 is suppressed, while 95900 → 96000 is shown.
+IMOEX 3240 → 3250 is suppressed, while 3299 → 3300 is shown (3200 → 3300).
+
 ### Extraction options
 
 **HTML extraction:**
