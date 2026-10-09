@@ -1276,7 +1276,7 @@
     "id": "philippines-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_the_Philippines#Vital_statistics",
     "match": {
-      "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(2)",
+      "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(n+2):nth-last-child(-n+3)",
       "extract": "html",
       "filters": ["cleanWikipediaMarkup"]
     }
@@ -1312,7 +1312,7 @@
     "id": "romania-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Romania#After_World_War_II",
     "match": {
-      "selector": ".mw-heading:has(#After_World_War_II) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
+      "selector": ".mw-heading:has(#After_World_War_II) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-3)",
       "extract": "html",
       "filters": ["cleanWikipediaMarkup"]
     }
@@ -1519,7 +1519,7 @@
     "id": "taiwan-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Taiwan",
     "match": {
-      "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
+      "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-3)",
       "extract": "html",
       "filters": ["cleanWikipediaMarkup"]
     }
