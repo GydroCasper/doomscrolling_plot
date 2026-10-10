@@ -1,6 +1,7 @@
 [
   {
     "id": "mortgage-rates-mnd",
+    "threshold": { "below": 6 },
     "url": "https://www.mortgagenewsdaily.com/mortgage-rates/mnd",
     "frequency": "daily",
     "match": {
@@ -10,6 +11,7 @@
   },
   {
     "id": "boa-mortgage-rates",
+    "threshold": { "below": 6 },
     "url": "https://www.bankofamerica.com/home-loans-sales/getProductRates",
     "frequency": "daily",
     "method": "POST",

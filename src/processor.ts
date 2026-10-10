@@ -9,6 +9,7 @@ import {getDateStringInEtTz} from "./utils/date"
 import {logger} from "./utils/logger"
 import {databaseRepository} from "./repositories/firestoreRepository"
 import {isInsignificantChange} from "./changeFilter"
+import {meetsThreshold} from "./threshold"
 
 export async function processSources() {
     const releaseLock = await databaseRepository.acquireRunLock()
@@ -85,13 +86,26 @@ async function processSource(src: SourceConfig, lastChange: Record<string, strin
 
     const previous = snapshots[src.id]
 
+    if (!meetsThreshold(extracted, src.threshold)) {
+        // Keep a silent baseline, including the first fetch. Do not consume the
+        // daily/monthly allowance: a later fetch may cross the threshold.
+        if (previous !== extracted) {
+            await databaseRepository.saveSnapshot(src.id, extracted)
+            snapshots[src.id] = extracted
+        }
+        summary.skipped++
+        logger.info(`${src.id}: skipped (value threshold not met)`)
+        return
+    }
+
     if (previous === extracted) {
         summary.unchanged++
         logger.info(`${src.id}: unchanged`)
         return
     }
 
-    if (previous !== undefined && isInsignificantChange(previous, extracted, src.changeFilter)) {
+    if (previous !== undefined && isInsignificantChange(previous, extracted, src.changeFilter)
+        && meetsThreshold(previous, src.threshold)) {
         summary.unchanged++
         logger.info(`${src.id}: unchanged (below change threshold)`)
         return
