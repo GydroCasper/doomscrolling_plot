@@ -222,6 +222,38 @@ source ID as the document ID. A minimal source document contains:
 }
 ```
 
+### Only showing values below a threshold
+
+Add a top-level field to a Firestore `sources` document:
+
+```json
+{
+  "threshold": { "below": 6 }
+}
+```
+
+Updates are allowed only while **at least one** extracted numeric value is
+strictly below the threshold. Exactly 6 does not qualify. For mortgage rates,
+6 means 6%, not 0.06. Local examples enable this for `mortgage-rates-mnd` and
+`boa-mortgage-rates`; add the field to the desired live Firestore documents
+yourself to activate it. The crawler does not read these local examples.
+
+The threshold accepts a finite number. Values may be plain numeric lines,
+percentages, or labeled lines such as `Fixed 30 Years: 5.95`. Decimal dots and
+commas and transformer output such as `5.95 (-0.1%)` are supported. Numbers
+inside product names are ignored. HTML and arbitrary JSON structures are not
+supported: configure extraction to produce these text formats. If no numeric
+values can be read, the source logs an error and saves nothing.
+
+While all values are at or above the threshold, the crawler updates the
+snapshot silently without creating diffs or advancing daily/monthly markers.
+This also establishes the initial baseline. A subsequent drop below the
+threshold produces a diff, even if a `changeFilter` would suppress that crossing.
+Further eligible changes follow the existing change filter and frequency rules.
+Returning to all values at or above the threshold silences updates again.
+As usual, a first-ever snapshot does not create a diff. Sources without
+`threshold` and existing saved diffs are unaffected.
+
 ### Suppressing small numeric changes
 
 Add a top-level `changeFilter` field to the relevant Firestore `sources` document.

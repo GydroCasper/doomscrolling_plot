@@ -10,6 +10,11 @@ export type SourceConfig = {
     playwright?: PlaywrightOptions;
     frequency?: "daily" | "monthly";
     changeFilter?: ChangeFilter;
+    threshold?: ValueThreshold;
+};
+
+export type ValueThreshold = {
+    below: number;
 };
 
 export type ChangeFilter = {
