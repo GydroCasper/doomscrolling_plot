@@ -224,7 +224,7 @@
     "id": "armenia-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Armenia#Vital_statistics",
     "match": {
-      "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:last-child",
+      "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
       "filters": ["cleanWikipediaMarkup"]
     }
@@ -332,7 +332,7 @@
     "id": "bosnia-herzegovina-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Bosnia_and_Herzegovina#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
       "filters": ["cleanWikipediaMarkup"]
     }
@@ -368,7 +368,7 @@
     "id": "bulgaria-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Bulgaria#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics_1900_to_present) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics_1900_to_present) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
       "filters": ["cleanWikipediaMarkup"]
     }
@@ -701,7 +701,7 @@
     "id": "guatemala-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Guatemala#Vital_statistics",
     "match": {
-      "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:last-child",
+      "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
       "filters": ["cleanWikipediaMarkup"]
     }
@@ -782,7 +782,7 @@
     "id": "iran-demographics-registered-births-deaths-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Iran#Registered_births_and_deaths",
     "match": {
-      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(2)",
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
       "filters": ["cleanWikipediaMarkup"]
     }
@@ -863,7 +863,7 @@
     "id": "kazakhstan-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Kazakhstan",
     "match": {
-      "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
+      "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-3)",
       "extract": "html",
       "filters": ["cleanWikipediaMarkup"]
     }
@@ -899,7 +899,7 @@
     "id": "kyrgyzstan-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Kyrgyzstan",
     "match": {
-      "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
+      "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-3)",
       "extract": "html",
       "filters": ["cleanWikipediaMarkup"]
     }
@@ -917,7 +917,7 @@
     "id": "latvia-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Latvia#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
       "filters": ["cleanWikipediaMarkup"]
     }
@@ -998,7 +998,7 @@
     "id": "malaysia-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Malaysia",
     "match": {
-      "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):last",
+      "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-3)",
       "extract": "html",
       "filters": ["cleanWikipediaMarkup"]
     }
@@ -1070,7 +1070,7 @@
     "id": "mongolia-demographics-registered-births-deaths-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Mongolia#Registered_births_and_deaths",
     "match": {
-      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
       "filters": ["cleanWikipediaMarkup"]
     }
@@ -1412,7 +1412,7 @@
     "id": "slovakia-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Slovakia#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-3)",
       "extract": "html",
       "filters": ["cleanWikipediaMarkup"]
     }
@@ -1421,7 +1421,7 @@
     "id": "slovenia-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Slovenia#Vital_statistics",
     "match": {
-      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Vital_statistics) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
       "filters": ["cleanWikipediaMarkup"]
     }
@@ -1475,7 +1475,7 @@
     "id": "sri-lanka-demographics-registered-births-deaths-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Sri_Lanka#Registered_births_and_deaths",
     "match": {
-      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):last",
+      "selector": ".mw-heading:has(#Registered_births_and_deaths) ~ table.wikitable:first tbody tr:not(.mw-empty-elt):gt(-3)",
       "extract": "html",
       "filters": ["cleanWikipediaMarkup"]
     }
@@ -1655,7 +1655,7 @@
     "id": "us-demographics-vital-statistics-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_the_United_States#Vital_statistics",
     "match": {
-      "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(2)",
+      "selector": "section[aria-labelledby='Vital_statistics'] table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
       "filters": ["cleanWikipediaMarkup"]
     }
@@ -1664,7 +1664,7 @@
     "id": "uzbekistan-demographics-registered-birth-deaths-last-row",
     "url": "https://en.wikipedia.org/wiki/Demographics_of_Uzbekistan",
     "match": {
-      "selector": ".mw-heading:has(#Registered_birth_and_deaths) ~ table.wikitable:first tbody tr:last-child",
+      "selector": ".mw-heading:has(#Registered_birth_and_deaths) ~ table.wikitable:first tbody tr:nth-last-child(-n+2)",
       "extract": "html",
       "filters": ["cleanWikipediaMarkup"]
     }
