@@ -62,3 +62,21 @@ test("last two non-empty rows ignore a trailing MediaWiki row", () => {
     assert.match(extracted, /2025/);
     assert.doesNotMatch(extracted, /mw-empty-elt/);
 });
+
+test("cleanWikipediaMarkup ignores alignment changes while preserving Bahrain values", () => {
+    const before = '<td align="right">10.6</td><td align="right">2.2</td><td align="right">8.4</td>';
+    const after = '<td>10.6</td><td align="right">2.2</td><td>8.4</td>';
+    for (const selector of ["tr", "td"]) {
+        const extract = (cells: string, filtered = true) => extractPart(`<table><tr>${cells}</tr></table>`, {
+            selector,
+            extract: "html",
+            filters: filtered ? ["cleanWikipediaMarkup"] : []
+        });
+
+        assert.equal(extract(before), extract(after));
+        assert.equal(extract(before), extract(before.replaceAll('align="right"', 'align="left"')));
+        assert.doesNotMatch(extract(after), /\salign=/);
+        assert.notEqual(extract(before), extract(after.replace("10.6", "10.7")));
+        assert.notEqual(extract(before, false), extract(after, false));
+    }
+});

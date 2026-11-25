@@ -303,7 +303,7 @@ IMOEX 3240 → 3250 is suppressed, while 3299 → 3300 is shown (3200 → 3300).
 **HTML extraction:**
 - `selector` - CSS/jQuery selector
 - `extract` - `"html"` or `"text"`
-- `filters` - Optional HTML cleanup filters. `cleanWikipediaMarkup` removes generated `id` attributes, inline `style` attributes, and superscript elements from selected Wikipedia content.
+- `filters` - Optional HTML cleanup filters. `cleanWikipediaMarkup` removes generated `id` and `about` attributes, inline `style` and alignment `align` attributes, and superscript elements from selected Wikipedia content.
   `removeDataId` removes only `data-id` attributes from selected elements and their descendants. Enable it with `"filters": ["removeDataId"]` in the `match` field of the Firestore source document `us-interest-rate-first-row`. Dates and rate values remain in the diff. Existing snapshots retain their attributes until the next update, so the first run can show their removal.
 
 **JSON extraction:**

@@ -42,8 +42,8 @@ function applyHtmlFilters(
                 break;
             case "cleanWikipediaMarkup":
                 nodes.find("sup").remove();
-                nodes.removeAttr("id").removeAttr("style").removeAttr("about");
-                nodes.find("[id], [style], [about]").removeAttr("id").removeAttr("style").removeAttr("about");
+                nodes.removeAttr("id").removeAttr("style").removeAttr("about").removeAttr("align");
+                nodes.find("[id], [style], [about], [align]").removeAttr("id").removeAttr("style").removeAttr("about").removeAttr("align");
                 break;
             default:
                 throw new Error(`Unknown HTML filter: ${filter}`);
